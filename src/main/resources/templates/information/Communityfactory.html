@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社区工厂</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!-- datatables-->
+    <link href="/css/plugins/dataTables/dataTables.bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/hjia/headimg/amazeui.min.css">
+    <link rel="stylesheet" href="/css/hjia/headimg/amazeui.cropper.css">
+    <link rel="stylesheet" href="/css/hjia/headimg/custom_up_img.css">
+
+</head>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#">Link</a>
+                        </li>
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Something else here</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">Separated link</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">One more separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" />
+                        </div> <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Something else here</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">Separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        编号
+                    </th>
+                    <th>
+                        产品
+                    </th>
+                    <th>
+                        交付时间
+                    </th>
+                    <th>
+                        状态
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        01/04/2012
+                    </td>
+                    <td>
+                        Default
+                    </td>
+                </tr>
+                <tr class="success">
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        01/04/2012
+                    </td>
+                    <td>
+                        Approved
+                    </td>
+                </tr>
+                <tr class="error">
+                    <td>
+                        2
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        02/04/2012
+                    </td>
+                    <td>
+                        Declined
+                    </td>
+                </tr>
+                <tr class="warning">
+                    <td>
+                        3
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        03/04/2012
+                    </td>
+                    <td>
+                        Pending
+                    </td>
+                </tr>
+                <tr class="info">
+                    <td>
+                        4
+                    </td>
+                    <td>
+                        TB - Monthly
+                    </td>
+                    <td>
+                        04/04/2012
+                    </td>
+                    <td>
+                        Call in to confirm
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--新增社区工厂信息-->
+<div class="modal inmodal" id="useradd" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 10px 15px;text-align: left">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                </button>
+                <h6 id="addupdate" class="modal-title" style="font-size:16px">新增社区工厂信息</h6>
+            </div>
+            <form class="form-horizontal m-t" id="commentForm" action="#" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">社区工厂名称：</label>
+                        <div class="col-sm-8">
+                            <input id="id" name="id"  type="hidden" >
+                            <input id="username" name="username" placeholder="请输入社区工厂名称..." minlength="2" type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">从业人数：</label>
+                        <div class="col-sm-8">
+                            <input id="password" name="password"  placeholder="请输入从业人数..."    minlength="2" type="password" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">从业贫困劳动力人数：</label>
+                        <div class="col-sm-8">
+                            <input id="realname" name="realname" placeholder="请输入从业贫困劳动力人数..."  minlength="2" type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">是否建在安置点：</label>
+                        <div class="col-sm-3">
+                            <select id="usertype"  class="form-control m-b" name="usertype"></select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">认定时间：</label>
+                        <div class="col-sm-8">
+                            <input id="mobilephome" name="mobilephome" placeholder="请输入认定时间..."  minlength="2" type="date" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">注销时间：</label>
+                        <div class="col-sm-8">
+                            <input id="email" type="email" class="form-control" name="email"   required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">营业时间段：</label>
+                        <div class="col-sm-8">
+                            <textarea id="comment" name="comment" class="form-control" required="" aria-required="true"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">社区工厂地址：</label>
+                        <div class="col-sm-8">
+                            <textarea id="comment1" name="comment" class="form-control" required="" aria-required="true"></textarea>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveUser()">保存</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+<script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+<script src="/js/hjia/plugins/jeditable/jquery.jeditable.js"></script>
+<script src="/js/hjia/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="/js/hjia/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="/js/hjia/content.min.js?v=1.0.0"></script>
+<script src="/js/hjia/plugins/layer/layer.min.js"></script>
+<script src="/js/hjia/demo/layer-demo.min.js"></script>
+<script src="/js/hjia/plugins/validate/jquery.validate.min.js"></script>
+<script src="/js/hjia/plugins/validate/messages_zh.min.js"></script>
+<script src="/js/hjia/demo/form-validate-demo.min.js"></script>
+<script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/js/hjia/headimg/amazeui.min.js" charset="utf-8"></script>
+<script src="/js/hjia/headimg/cropper.min.js" charset="utf-8"></script>
+<script src="/js/hjia/headimg/custom_up_img.js" charset="utf-8"></script>
+<script>
+
+    var tdkj_datatable;
+    $(function () {
+        queryDict();//查询人员类型的方法
+        querySex();//查询人员性别
+        //提示信息  初始化设置 一般不需要改
+        var lang = {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "每页 _MENU_ 项",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
+            "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页",
+                "sJump": "跳转"
+            },
+            "oAria": {
+                "sSortAscending": ": 以升序排列此列",
+                "sSortDescending": ": 以降序排列此列"
+            }
+        };
+
+
+        //重要修改 表格内容的自定义，需要根据业务定制
+        tdkj_datatable = $("#editable").dataTable({
+            language:lang,  //提示信息
+            autoWidth: false,  //禁用自动调整列宽
+            stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+            processing: true,  //隐藏加载提示,自行处理
+            serverSide: false,  //启用服务器端分页
+            aLengthMenu:[10,20,50,100],  //用户可自选每页展示数量 5条或10条
+            searching: false,  //禁用原生搜索
+            orderMulti: false,  //启用多列排序
+            order: [],  //取消默认排序查询,否则复选框一列会出现小箭头
+            renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+            pagingType: "full_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
+            columnDefs: [{
+                "targets": 'nosort',  //列的样式名
+                "orderable": false    //包含上样式名‘nosort’的禁止排序
+            }],
+            ajax: function (data, callback, settings) {
+
+                //封装请求参数
+                var param = {};
+                param.pageSize= data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+                param.startIndex = data.start;//开始的记录序号
+                param.pageIndex = (data.start / data.length);//当前页码
+
+                //ajax请求数据方法
+                $.ajax({
+                    type: "GET",
+                    url: "/user/queryAllUser",//url请求的地址
+                    cache: false,  //禁用缓存
+                    data: param,  //传入组装的参数
+                    dataType: "json",
+                    success: function (result) {
+
+                        //封装返回数据重要
+                        var returnData = {};
+                        //这里直接自行返回了draw计数器,应该由后台返回
+                        //returnData.draw = data.draw;
+                        //返回数据全部记录
+                        returnData.recordsTotal = result.recordsTotal;
+                        //后台不实现过滤功能，每次查询均视作全部结果
+                        returnData.recordsFiltered = result.recordsFiltered;
+                        //返回的数据列表
+                        returnData.data = result.data;
+
+                        //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                        //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                        callback(returnData);
+                    }
+                });
+            },
+            //列表表头字段
+            columns: [
+                { "data": "username" },
+                { "data": "realname" },
+                { "data": "sex" },
+                { "data": "mobilephome" },
+                { "data": "usertype" },
+                { "data": "createddate" },
+                {"data":"id", "render":function(data, type, full, meta){
+                        return	data="<button onclick=\"updateUser('"+data+"')\"  class='btn btn-sm btn-primary btn-edit' data-toggle='modal' data-target='#useradd' >修 改</button>   <button  class='btn btn-sm btn-danger btn-del' onclick=\"delUser('"+data+"')\">删 除</button>  <button  class='btn btn-sm btn-danger btn-del'  onclick=\"uploadheadimg('"+data+"')\">上传头像</button>";
+                    }}]
+        }).api();
+        //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
+    });
+
+
+    /**
+     * 查询字典表，获取对应的人员类型
+     */
+    function queryDict(){
+        $("#usertype").empty();
+        $.ajax({
+            url:"/user/queryDictType",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"type":"USER"},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    var options ="";
+                    for(var i=0;i<data.length;i++){
+                        options +="<option value='"+data[i].value+"'>"+data[i].typename+"</option>";
+                    }
+                    $("#usertype").append(options);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     * 查询字典表，获取对应的性别
+     */
+    function querySex(){
+        $("#sex").empty();
+        $.ajax({
+            url:"/user/queryDictType",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"type":"SEX"},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    var options ="";
+                    for(var i=0;i<data.length;i++){
+                        options +="<option value='"+data[i].value+"'>"+data[i].typename+"</option>";
+                    }
+                    $("#sex").append(options);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+    /**
+     * 保存用户信息
+     */
+    function saveUser(){
+        $.ajax({
+            url:"/user/saveUser",    //请求的url地址
+            dataType:"text",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:$('#commentForm').serialize(),    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    if(data == 'update'){
+                        //请求完成的处理
+                        $("input").val('');
+                        $("#useradd").modal("hide");
+                        tdkj_datatable.ajax.reload();
+                        swal("保存成功！", "您已经成功修改了这条信息。", "success");
+                    }else if(data == 'insert'){
+                        //请求完成的处理
+                        $("input").val('');
+                        $("#useradd").modal("hide");
+                        tdkj_datatable.ajax.reload();
+                        swal("保存成功！", "您已经成功保存了这条信息。", "success");
+                    }
+                }
+            },
+            complete:function(){
+
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     *删除用户信息
+     */
+    function delUser(id){
+        swal({
+            title: "您确定要删除这条信息吗",
+            text: "删除后将无法恢复，请谨慎操作！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            cancelButtonText:"取消",
+            confirmButtonText: "删除",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url:"/user/delUser",    //请求的url地址
+                dataType:"text",   //返回格式为json
+                async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{"id":id},    //参数值
+                type:"POST",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    //请求成功时处理
+                    if(data != null && data != undefined){
+                        if(data == 'yes'){
+                            tdkj_datatable.ajax.reload();
+                            swal("删除成功！", "您已经永久删除了这条信息。", "success");
+                        }else if(data == 'no'){
+                            swal("删除失败！", "您未删除这条信息。", "fail");
+                        }
+                    }
+                },
+                complete:function(){
+
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+
+        });
+    }
+
+
+    /**
+     * 修改用户信息
+     */
+    function updateUser(id){
+
+        $("#addupdate").text("修改用户");
+        $.ajax({
+            url:"/user/updateUser",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"id":id},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                $("#id").val(data.id);
+                $("#username").val(data.username);
+                $("#password").val(data.password);
+                $("#realname").val(data.realname);
+                $("#usertype").prop("value",data.usertype);
+                $("#sex").prop("value",data.sex);
+                $("#mobilephome").val(data.mobilephome);
+                $("#email").val(data.email);
+                $("#comment").val(data.comment);
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     * 上传用户头像
+     */
+    function uploadheadimg(id){
+        $("#hide_id").val(id);
+        $("#doc-modal-1").modal({width:'600px'});
+    }
+
+</script>
+
+</body>
+
+</html>

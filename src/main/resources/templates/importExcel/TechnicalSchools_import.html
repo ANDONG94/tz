@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>技工院校信息导入</title>
+    <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="/js/ztree/css/zTreeStyle.css" rel="stylesheet">
+    <link href="/css/plugins/dataTables/dataTables.bootstrap.css" type="text/css" rel="stylesheet">
+
+    <!--引入CSS-->
+    <link rel="stylesheet" type="text/css" href="/css/webuploader/webuploader.css">
+
+    <script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/js/hjia/content.min.js?v=1.0.0"></script>
+
+    <script src="/js/ztree/jquery.ztree.core.js"></script>
+    <script src="/js/ztree/jquery.ztree.excheck.js"></script>
+    <script src="/js/ztree/jquery.ztree.exedit.js"></script>
+
+    <script src="/js/hjia/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="/js/hjia/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/js/hjia/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/js/hjia/content.min.js?v=1.0.0"></script>
+    <script src="/js/hjia/plugins/layer/layer.min.js"></script>
+    <script src="/js/hjia/demo/layer-demo.min.js"></script>
+    <script src="/js/hjia/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/js/hjia/plugins/validate/messages_zh.min.js"></script>
+    <script src="/js/hjia/demo/form-validate-demo.min.js"></script>
+    <script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="/js/hjia/plugins/layer/laydate/laydate.js"></script>
+    <!--引入JS-->
+    <script type="text/javascript" src="/js/webuploader/webuploader.js"></script>
+
+
+    <style>
+        .jindutiao_box{width:397px; height:300px; margin:30px auto; }
+        .jindutiao_ok{width:200px; height:100px; margin:0 auto; text-align:center; background:#999; line-height:100px; color:#FFF; display:none; }
+        .jindutiao_tbox{width:397px; height:49px; background:url(/images/bak.png) no-repeat; margin-top:20px;}
+        .jindutiao_tbox div{width:0px; height:49px; background:url(/images/pro.png) no-repeat; text-align:center;
+            font-family:Tahoma; font-size:18px; line-height:48px;}
+    </style>
+
+</head>
+
+<body class="gray-bg">
+<input id="aab301" name="aab301" type="hidden">
+<div class="">
+    <div class="row">
+        <div class="col-sm-3" style="padding-right: 2px;width:17%">
+            <div class="ibox-content" id="ztree_div_div" style="overflow-y:auto;">
+                <ul id="tree-div" class="ztree" style="overflow: auto;"></ul>
+            </div>
+        </div>
+        <div class="col-sm-9 animated fadeInRight" style="padding-left: 1px;width:83%">
+            <!--这是列表信息开始-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">劳动力技工院校正确信息列表</a>
+                            </li>
+                            <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">劳动力技工院校错误信息列表</a>
+                            </li>
+                            <a  href="javascript:void(0);"  class="btn btn-primary "  onclick="saveImportInfo()" style="float: right;margin-top: 0.5%; margin-right: 1%">保存</a>
+                            <a  href="/Excle/技工院校信息导入模板.xlsx"  class="btn btn-primary "  style="float: right;margin-top: 0.5%; margin-right: 1%">下载模板</a>
+                            <div id="picker" style="float: right;margin-top: 0.5%; margin-right: 1%">选择文件</div>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="panel-body">
+                                    <!--这是列表信息开始-->
+                                    <div class="row">
+                                        <div class="col-sm-13" style="margin-top: -1%;">
+                                            <div class="ibox float-e-margins">
+                                                <div class="ibox-content" id="table_div">
+                                                    <table class="table table-striped table-bordered table-hover " id="technical_schools_true_table"><thead>
+                                                    <tr>
+                                                        <th>劳动力姓名</th>
+                                                        <th>技工院校名称</th>
+                                                        <th>技工院校地址</th>
+                                                        <th>所学专业</th>
+                                                        <th>入学日期</th>
+                                                        <th>毕业日期</th>
+                                                        <th>毕业后就业年月</th>
+                                                        <th>学年制</th>
+                                                        <th>是否苏陕协作</th>
+                                                        <th>享受助学金（元）</th>
+                                                        <th>享受免学费补贴（元）</th>
+                                                        <th>享受雨露计划补贴（元）</th>
+                                                    </tr>
+                                                    </thead></table><table>
+                                                </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--这是列表信息结束-->
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-pane">
+                                <div class="panel-body">
+                                    <!--这是列表信息开始-->
+                                    <div class="row">
+                                        <div class="col-sm-13" style="margin-top: -1%;">
+                                            <div class="ibox float-e-margins">
+                                                <div class="ibox-content" id="table_div2">
+                                                    <table class="table table-striped table-bordered table-hover " id="technical_schools_false_table"><thead>
+                                                    <tr>
+                                                        <th>错误信息</th>
+                                                        <th>劳动力姓名</th>
+                                                        <th>技工院校名称</th>
+                                                        <th>技工院校地址</th>
+                                                        <th>所学专业</th>
+                                                        <th>入学日期</th>
+                                                        <th>毕业日期</th>
+                                                        <th>毕业后就业年月</th>
+                                                        <th>学年制</th>
+                                                        <th>是否苏陕协作</th>
+                                                        <th>享受助学金（元）</th>
+                                                        <th>享受雨露计划补贴（元）</th>
+                                                        <th>享受免学费补贴（元）</th>
+                                                    </tr>
+                                                    </thead></table><table>
+                                                </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--这是列表信息结束-->
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!--这是列表信息结束-->
+        </div>
+    </div>
+</div>
+<input id="batch" name="batch" type="hidden">
+
+<!--等待的模态框  和等待特效-->
+<div class="modal inmodal fade" id="loading_div" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="scene">
+            <svg style="width: 200px;height: 200px;"
+                 version="1.1"
+                 id="dc-spinner"
+                 xmlns="http://www.w3.org/2000/svg"
+                 x="0px" y="0px"
+                 viewBox="0 0 38 38"
+                 preserveAspectRatio="xMinYMin meet"
+            >
+                <text x="14" y="21" font-family="Monaco" font-size="2px" style="letter-spacing:0.6" fill="yellow">LOADING
+                    <animate
+                            attributeName="opacity"
+                            values="0;1;0" dur="1.8s"
+                            repeatCount="indefinite"/>
+                </text>
+                <path fill="#373a42" d="M20,35c-8.271,0-15-6.729-15-15S11.729,5,20,5s15,6.729,15,15S28.271,35,20,35z M20,5.203
+    C11.841,5.203,5.203,11.841,5.203,20c0,8.159,6.638,14.797,14.797,14.797S34.797,28.159,34.797,20
+    C34.797,11.841,28.159,5.203,20,5.203z">
+                </path>
+
+                <path fill="#373a42" d="M20,33.125c-7.237,0-13.125-5.888-13.125-13.125S12.763,6.875,20,6.875S33.125,12.763,33.125,20
+    S27.237,33.125,20,33.125z M20,7.078C12.875,7.078,7.078,12.875,7.078,20c0,7.125,5.797,12.922,12.922,12.922
+    S32.922,27.125,32.922,20C32.922,12.875,27.125,7.078,20,7.078z">
+                </path>
+
+                <path fill="#2AA198" stroke="#2AA198" stroke-width="0.6027" stroke-miterlimit="10" d="M5.203,20
+			c0-8.159,6.638-14.797,14.797-14.797V5C11.729,5,5,11.729,5,20s6.729,15,15,15v-0.203C11.841,34.797,5.203,28.159,5.203,20z">
+                    <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            from="0 20 20"
+                            to="360 20 20"
+                            calcMode="spline"
+                            keySplines="0.4, 0, 0.2, 1"
+                            keyTimes="0;1"
+                            dur="2s"
+                            repeatCount="indefinite" />
+                </path>
+
+                <path fill="#859900" stroke="#859900" stroke-width="0.2027" stroke-miterlimit="10" d="M7.078,20
+  c0-7.125,5.797-12.922,12.922-12.922V6.875C12.763,6.875,6.875,12.763,6.875,20S12.763,33.125,20,33.125v-0.203
+  C12.875,32.922,7.078,27.125,7.078,20z">
+                    <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            from="0 20 20"
+                            to="360 20 20"
+                            dur="1.8s"
+                            repeatCount="indefinite" />
+                </path>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+<!--下载的 进度条特效  -->
+
+<div class="modal inmodal fade" id="jindutiao_div" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="jindutiao_box">
+            <div class="jindutiao_ok"></div>
+            <div class="jindutiao_tbox">
+                <div class="jindutiao_tiao"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(function () {
+        //设置树的高度
+        $("#ztree_div_div").css({"height":$(window).height()});
+        $("#table_div").css({"height":$(window).height()-170});
+        $("#table_div2").css({"height":$(window).height()-170});
+    })
+
+
+    var uploader = WebUploader.create({
+
+        // swf文件路径
+        swf: '/js/Uploader.swf',
+
+        // 文件接收服务端。
+        server: '/importThs/TechnicalSchools',
+
+        // 选择文件的按钮。可选。
+        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+
+        pick: '#picker',
+        auto: true,
+        duplicate :true,
+        accept: {
+            extensions: "xls,xlsx",
+            mimeTypes: ".xls,.xlsx"
+        },
+        // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+        resize: false
+    });
+
+    //文件上传时
+    uploader.on( 'uploadBeforeSend', function( block, data ) {
+        var file = block.file;
+        var aab301=$("#aab301").val();
+        console.log("当前文件名", file.name);
+        // 上传时添加自定义参数
+        if(aab301.substring(9,12)=="000"){
+            return false;
+        }
+        data.aab301= aab301;
+        $("#jindutiao_div").modal('show');
+        startJindutiao();//调用特效的方法
+        startExcute();//调用查询后台
+    },2);
+
+    //上传成功
+    uploader.on( 'uploadSuccess', function( file,response ) {
+
+        if(response._raw == 'no'){
+            //说明没有选择到村级
+            swal({
+                title: "请您选择村级进行导入!",
+                text: "您好！您必须选择村级行政区划进行数据导入",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }else if(response._raw == 'error'){
+            //说明没有选择到村级
+            swal({
+                title: "您好，导入模板不正确!",
+                text: "您好！您必须使用正确的导入模板进行导入",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }else if(response._raw == 'MAX'){
+            //说明没有选择到村级
+            swal({
+                title: "您好，导入数据不能超过999!",
+                text: "您好！您请导入一千条以下的数据",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+
+    });
+
+    //上传失败
+    uploader.on( 'uploadError', function( file,response ) {
+        $("#jindutiao_div").modal('hide');
+    });
+
+    //上传完成
+    uploader.on( 'uploadComplete', function( file,response ) {
+        $("#jindutiao_div").modal('hide');
+    });
+
+</script>
+<script>
+
+    /**
+     * Created by len on 2019-04-28.
+     */
+    $(function () {
+
+        //树节点的初始化事件
+        $.fn.zTree.init($("#tree-div"), sys_perm_setting);
+
+    })
+
+    //树配置
+    var sys_perm_setting = {
+        edit: {
+            drag:{
+                prev: true,
+                next: true,
+                inner:true
+            },
+            enable: true,
+            showRemoveBtn: false,
+            showRenameBtn: false
+        },
+        view: {
+            showLine: true,
+            nameIsHTML: true
+        },
+        check: {
+            enable: false,
+            chkboxType:  { "Y": "s", "N": "s" } //chkboxType: { “Y”: “ps”, “N”: “ps” } Y 属性定义 checkbox 被勾选后的情况;N 属性定义 checkbox 取消勾选后的情况;“p” 表示操作会影响父级节点;“s” 表示操作会影响子级节点;请注意大小写，不要改变
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                pIdKey: "parentid"
+            }
+        },
+        callback: {
+            onClick: onClick,
+            onAsyncSuccess:getTreeFirstNodeId
+        },
+        async: {
+            enable: true,
+            url:"/ztree/treedata",
+            autoParam:["groupid"]
+        }
+    };
+
+    //树节点的点击事件
+    function onClick (event, treeId, treeNode, clickFlag) {
+        $("#aab301").val(treeNode.groupid);
+    }
+
+
+    var treetype;         // 获取登录用户级别   树默认展开第一级节点
+    function getTreeFirstNodeId(){
+        var treeObj = $.fn.zTree.getZTreeObj("tree-div");
+        var nodes = treeObj.getNodes();
+        var firstNode = nodes[0];
+        treeObj.expandNode(nodes[0], true);  treetype = firstNode.type;
+        $("#aab301").val(firstNode.groupid);
+    }
+
+
+    var poorwork_true_datatable;//贫困户正确列表
+    var poorwork_false_datatable;//贫困户错误列表
+
+    var lang ;
+    $(function () {
+
+        //提示信息  初始化设置 一般不需要改
+        lang = {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "每页 _MENU_ 项",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
+            "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页",
+                "sJump": "跳转"
+            },
+            "oAria": {
+                "sSortAscending": ": 以升序排列此列",
+                "sSortDescending": ": 以降序排列此列"
+            }
+        };
+
+
+    });
+
+
+    /**
+     * 加载贫困户正确表格
+     */
+    function  load_true_poor() {
+        poorwork_true_datatable = $("#technical_schools_true_table").dataTable({
+            language:lang,  //提示信息
+            autoWidth: true,  //禁用自动调整列宽
+            ordering:false,//禁止排序
+            scrollY:$(window).height()-170,//表窗口高度-100px
+            scrollX:$(window).width(),
+            destroy: true,
+            stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+            processing: false,  //隐藏加载提示,自行处理
+            serverSide: false,  //启用服务器端分页
+            bLengthChange:false,//去掉下面的没有多少条
+            aLengthMenu:[1000],  //用户可自选每页展示数量 5条或10条
+            searching: false,  //禁用原生搜索
+            orderMulti: true,  //启用多列排序
+            order: [],  //取消默认排序查询,否则复选框一列会出现小箭头
+            renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+            pagingType: "full_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
+            columnDefs: [{
+                "targets": 'nosort',  //列的样式名
+                "orderable": false    //包含上样式名‘nosort’的禁止排序
+            }],
+            ajax: function (data, callback, settings) {
+
+                $("#loading_div").modal('show');
+                //封装请求参数
+                var param = {};
+                /* param.length= data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+                 param.start = data.start;//开始的记录序号
+                 param.pageIndex = (data.start / data.length);//当前页码
+                 param.phd002_scan = $("#phd002_scan").val();
+                 param.phd003_scan = $("#phd003_scan").val();
+                 //param.phd012_scan = $("#phd012_scan").val();*/
+                param.treeid = $("#aab301").val();
+                param.batch =  $("#batch").val();//批次号
+                //ajax请求数据方法
+                $.ajax({
+                    type: "GET",
+                    url: "/importThs/Correct",//url请求的地址
+                    cache: false,  //禁用缓存
+                    data: param,  //传入组装的参数
+                    dataType: "json",
+                    success: function (result) {
+                        //封装返回数据重要
+                        var returnData = {};
+                        //这里直接自行返回了draw计数器,应该由后台返回
+                        //returnData.draw = data.draw;
+                        //返回数据全部记录
+                        returnData.recordsTotal = result.recordsTotal;
+                        //后台不实现过滤功能，每次查询均视作全部结果
+                        returnData.recordsFiltered = result.recordsFiltered;
+                        //返回的数据列表
+                        returnData.data = result.data;
+
+                        //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                        //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                        callback(returnData);
+
+                        //清除modal框
+                        $("#loading_div").modal('hide');//清除加载动画
+                        $(".dataTables_scrollHeadInner").css('width', '');
+                        $(".dataTables_scrollHeadInner table").css('width', '');
+                        $("#technical_schools_true_table").css('width', '');
+                    }
+                });
+            },
+            //列表表头字段
+            columns: [
+                { "data": "aac003","width":"70px" },
+                { "data": "ths003","width":"70px" },
+                { "data": "ths004","width":"100px" },
+                { "data": "ths007","width":"100px" },
+                { "data": "ths005" ,"width":"120px"},
+                { "data": "ths006","width":"90px" },
+                { "data": "ths008","width":"150px" },
+                { "data": "ths013","width":"70px" },
+                { "data": "ths010","width":"70px" },
+                { "data": "ths014","width":"70px" },
+                { "data": "ths015","width":"70px" },
+                { "data": "ths016","width":"70px" }]
+        }).api();
+        //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
+    }
+
+
+    /**
+     * 加载贫困户错误表格
+     */
+    function  load_false_poor() {
+        //重要修改 表格内容的自定义，需要根据业务定制
+        //重要修改 表格内容的自定义，需要根据业务定制
+        poorwork_false_datatable = $("#technical_schools_false_table").dataTable({
+            language:lang,  //提示信息
+            autoWidth: false,  //禁用自动调整列宽
+            ordering:false,//禁止排序
+            scrollY:$(window).height()-170,//表窗口高度-100px
+            destroy: true,
+            stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+            processing: false,  //隐藏加载提示,自行处理
+            serverSide: false,  //启用服务器端分页
+            bLengthChange:false,//去掉下面的没有多少条
+            aLengthMenu:[1000],  //用户可自选每页展示数量 5条或10条
+            searching: false,  //禁用原生搜索
+            orderMulti: true,  //启用多列排序
+            order: [],  //取消默认排序查询,否则复选框一列会出现小箭头
+            renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+            pagingType: "full_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
+            columnDefs: [{
+                "targets": 'nosort',  //列的样式名
+                "orderable": false    //包含上样式名‘nosort’的禁止排序
+            }],
+            ajax: function (data, callback, settings) {
+
+                $("#loading_div").modal('show');
+                //封装请求参数
+                var param = {};
+                /*param.length= data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+                param.start = data.start;//开始的记录序号
+                param.pageIndex = (data.start / data.length);//当前页码
+                param.phd002_scan = $("#phd002_scan").val();
+                param.phd003_scan = $("#phd003_scan").val();*/
+                //param.phd012_scan = $("#phd012_scan").val();
+                param.treeid = $("#aab301").val();
+                param.batch =  $("#batch").val();//批次号
+                //ajax请求数据方法
+                $.ajax({
+                    type: "GET",
+                    url: "/importThs/Error",//url请求的地址
+                    cache: false,  //禁用缓存
+                    data: param,  //传入组装的参数
+                    dataType: "json",
+                    success: function (result) {
+                        //封装返回数据重要
+                        var returnData = {};
+                        //这里直接自行返回了draw计数器,应该由后台返回
+                        //returnData.draw = data.draw;
+                        //返回数据全部记录
+                        returnData.recordsTotal = result.recordsTotal;
+                        //后台不实现过滤功能，每次查询均视作全部结果
+                        returnData.recordsFiltered = result.recordsFiltered;
+                        //返回的数据列表
+                        returnData.data = result.data;
+
+                        //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                        //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                        callback(returnData);
+
+                        //清除modal框
+                        $("#loading_div").modal('hide');//清除加载动画
+                        $(".dataTables_scrollHeadInner").css('width', '');
+                        $(".dataTables_scrollHeadInner table").css('width', '');
+                        $("#technical_schools_false_table").css('width', '');
+                    }
+                });
+            },
+            //列表表头字段
+            columns: [
+                { "data": "message","width":"150px" },
+                { "data": "aac003","width":"70px" },
+                { "data": "ths003","width":"70px" },
+                { "data": "ths004","width":"100px" },
+                { "data": "ths007","width":"100px" },
+                { "data": "ths005" ,"width":"120px"},
+                { "data": "ths006","width":"90px" },
+                { "data": "ths008","width":"150px" },
+                { "data": "ths013","width":"70px" },
+                { "data": "ths010","width":"70px" },
+                { "data": "ths014","width":"70px" },
+                { "data": "ths015","width":"70px" },
+                { "data": "ths016","width":"70px" }
+            ]
+        }).api();
+        //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
+    }
+
+
+    /**
+     * 点击保存按钮
+     */
+    function saveImportInfo() {
+        var batch = $("#batch").val();
+        var aab301 = $("#aab301").val();
+        if(batch != null && batch != ''){
+            $.ajax({
+                url:"/importThs/save",    //请求的url地址
+                dataType:"text",   //返回格式为json
+                async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{"batch":batch,"aab301":aab301},    //参数值
+                type:"GET",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    //请求成功时处理
+                    if(data != null && data != undefined && data !=''){
+                        //清空datatable数据
+                        $('#technical_schools_true_table').dataTable().fnClearTable();//清空datatables
+                        $('#technical_schools_false_table').dataTable().fnClearTable();//清空datatables
+                        swal("导入成功！", "您已经成功导入信息。", "success");
+                    }else{
+                        swal("导入失败！", "您未成功导入该信息。", "fail");
+                    }
+                },
+                complete:function(){
+                    //请求完成的处理
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+        }else{
+            swal({
+                title: "请您先进行数据导入!",
+                text: "您好！您还没有进行数据导入，无法保存",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        }
+
+    }
+
+
+
+
+
+    //*************以下是进度条的特效*************************************************************************************
+    var i=0;
+    /*add——创建tbx下的div加文字和变宽度的方法*/
+    function add(i){
+        var tbox =$(".jindutiao_tbox");
+        var tiao =$(".jindutiao_tiao");
+        tiao.css("width",i+"%").html(i+"%");
+    }
+
+    /*创建方法（i++循环起来）*/
+    function startJindutiao(){
+        $(".jindutiao_ok").html("导入完成。。。").fadeOut("slow");
+        $(".jindutiao_ok").html("正在进行数据导入请稍等。。。").fadeIn("slow");
+        if(i<=90){
+            setTimeout("startJindutiao()",1000)
+            add(i);
+            i++;
+        }
+    }
+
+    //*************以下是查询正确数据*************************************************************************************
+
+    //判断文件是否上传完成
+
+    //判断文件是否上传完成
+    function isfilecomplete(){
+        var aab301 = $("#aab301").val();;
+        $.ajax({
+            url:"/importThs/clean",    //请求的url地址
+            dataType:"text",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"aab301":aab301},    //参数值
+            type:"GET",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data !="false"){
+                    //返回的批次号
+                    $("#batch").val(data);
+                    //加载正确列表表格
+                    load_true_poor();
+                    //加载错误列表表格
+                    load_false_poor();
+                    i=100;
+                    add(i);//设置上传进度为100%  ,间隔2秒后关闭弹出窗
+                    stopExcute();
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+    //每隔10秒开始执行
+    var t ;
+
+    function startExcute(){
+        t=setInterval(isfilecomplete,5000);
+    }
+    //停止每隔 10秒执行的方法
+    function stopExcute(){
+        clearInterval(t);
+    }
+
+
+</script>
+</body>
+
+</html>

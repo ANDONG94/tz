@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>用户管理</title>
+    <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="/js/ztree/css/zTreeStyle.css" rel="stylesheet">
+    <link href="/css/plugins/dataTables/dataTables.bootstrap.css" type="text/css" rel="stylesheet">
+
+    <script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/js/hjia/content.min.js?v=1.0.0"></script>
+
+    <script src="/js/ztree/jquery.ztree.core.js"></script>
+    <script src="/js/ztree/jquery.ztree.excheck.js"></script>
+    <script src="/js/ztree/jquery.ztree.exedit.js"></script>
+
+    <script src="/js/hjia/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="/js/hjia/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/js/hjia/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/js/hjia/content.min.js?v=1.0.0"></script>
+    <script src="/js/hjia/plugins/layer/layer.min.js"></script>
+    <script src="/js/hjia/demo/layer-demo.min.js"></script>
+    <script src="/js/hjia/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/js/hjia/plugins/validate/messages_zh.min.js"></script>
+    <script src="/js/hjia/demo/form-validate-demo.min.js"></script>
+    <script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="/js/hjia/plugins/layer/laydate/laydate.js"></script>
+
+    <style>
+        .col-lable2{width: 12%}
+        .col-lable3{width: 21%}
+        .col-lable4{width: 23%}
+        .col-lable5{width: 73%}
+        .form-group{
+            margin-bottom: 0px;
+        }
+    </style>
+    <style>
+        .jindutiao_box {
+            width: 397px;
+            height: 300px;
+            margin: 30px auto;
+        }
+
+        .jindutiao_ok {
+            width: 200px;
+            height: 100px;
+            margin: 0 auto;
+            text-align: center;
+            background: #999;
+            line-height: 100px;
+            color: #FFF;
+            display: none;
+        }
+
+        .jindutiao_tbox {
+            width: 397px;
+            height: 49px;
+            background: url(/images/bak.png) no-repeat;
+            margin-top: 20px;
+        }
+
+        .jindutiao_tbox div {
+            width: 0px;
+            height: 49px;
+            background: url(/images/pro.png) no-repeat;
+            text-align: center;
+            font-family: Tahoma;
+            font-size: 18px;
+            line-height: 48px;
+        }
+    </style>
+</head>
+
+<body class="gray-bg">
+<div class="">
+    <div class="row">
+        <div class="col-sm-3" style="padding-right: 2px;width:17%">
+            <div class="ibox-content" id="ztree_div_div" style="overflow-y:auto;">
+                <ul id="tree-div" class="ztree" style="overflow: auto;"></ul>
+            </div>
+        </div>
+        <div class="col-sm-9 animated fadeInRight" style="padding-left: 15px;width:83%">
+
+            <div class="row">
+                <div class="col-sm-14">
+                    <div class="ibox float-e-margins border-bottom" style="margin-bottom: 0px;height: 50px;">
+                        <div class="ibox-title">
+                            <h5>查询条件&nbsp;&nbsp;&nbsp;&nbsp;目前所查询区域为：<span id="scan_xzqh" style="color: red"></span></h5>
+                            <label style="width: 65%;margin-bottom: 0.1%;">
+                                <a  href="javascript:void(0);" class="btn btn-primary " data-toggle="modal" data-target="#fpuseradd" style="float: right;margin-top: -1%; margin-right: 1%">添加</a>
+                                <a  href="javascript:void(0);" class="btn btn-primary " onclick="zidongByOne()" style="float: right;margin-top: -1%; margin-right: 1%">生成单个</a>
+                                <a  href="javascript:void(0);" class="btn btn-primary " onclick="zidongByAllNext()" style="float: right;margin-top: -1%; margin-right: 1%">生成所有下级</a>
+                                <a  href="javascript:void(0);" class="btn btn-primary " onclick="searchInformation()" style="float: right;margin-top: -1%; margin-right: 1%">查询</a>
+                                <a href="javascript:void(0);" onclick="reset()" class="btn btn-primary "
+                                   style="float: right;margin-top: -1%; margin-right: 1%">重置</a>
+
+                            </label>
+                            <div class="ibox-tools">
+                                <a class="collapse-link" onclick="click_shousuo(this)">
+                                    <i class="fa fa-chevron-down"><font color="blue">展开</font></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content" id="select_div" style="display: none">
+                            <label class="col-sm-1 control-label" style="width: 12%">身份证：</label>
+                            <div class="col-sm-3" style="width: 22%;top: -7px; margin-left: -25px">
+                                <input id="idcard_scan" name="idcard_scan" placeholder="请输入身份证..." type="text" class="form-control" required="" aria-required="true">
+                            </div>
+                            <label class="col-sm-1 control-label" style="width: 12%">用户名：</label>
+                            <div class="col-sm-3" style="width:22%;top: -7px; margin-left: -25px">
+                                <input id="username_scan" name="username_scan" placeholder="请输入用户名..." type="text" class="form-control" required="" aria-required="true">
+
+                            </div>
+                            <label class="col-sm-1 control-label" style="width: 12%">姓名：</label>
+                            <div class="col-sm-3" style="width:22%;top: -7px; margin-left: -25px">
+                                <input id="realname_scan" name="realname_scan" placeholder="请输入姓名..." type="text" class="form-control" required="" aria-required="true">
+
+                            </div>
+
+                            <label style="width: 100%;margin-top: 5px;margin-bottom: -15px">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-14">
+                    <div class="ibox float-e-margins border-bottom" style="margin-bottom: 0px;">
+                        <div class="ibox-title">
+                            <h5>信息展示项》》》》<span id="zong_count" style="color: blue"></span></h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link" onclick="click_shousuo(this)">
+                                    <i class="fa fa-chevron-down"><font color="blue">展开</font></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content" style="display: none">
+                            <!--<label onclick="check_onclick()"><input  name="checkname"  value="6" type="checkbox" ><span>社区工厂地址</span></label>
+                            <label onclick="check_onclick()"><input  name="checkname"  value="7" type="checkbox" ><span>从业人数</span></label>
+                            <label onclick="check_onclick()"><input  name="checkname"  value="8" type="checkbox" ><span>从业贫困劳动力数量</span></label>
+                            <label onclick="check_onclick()"><input  name="checkname"  value="9" type="checkbox" ><span>安置点名称</span></label>
+                            <label onclick="check_onclick()"><input  name="checkname"  value="4"  type="checkbox" ><span>认定时间</span></label>
+                            <label onclick="check_onclick()"><input  name="checkname" value="5" type="checkbox" ><span>注销时间</span></label>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--这是列表信息开始-->
+            <div class="row">
+                <div class="col-sm-13" style="margin-top: -1%;">
+                    <div class="ibox-content" id="table_div">
+                        <table class="table table-striped table-bordered table-hover " id="fpuser_table"><thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>所属区域</th>
+                            <th>登录名</th>
+                            <th>真实姓名</th>
+                            <th>身份证号码</th>
+                            <th>联系电话</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead></table><table>
+                    </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--这是列表信息结束-->
+    </div>
+</div>
+</div>
+
+<!--模态窗口  扶贫基地信息  div-->
+<div class="modal inmodal" id="fpuseradd" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="margin:auto;width:800px">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 10px 15px;text-align: left">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                </button>
+                <h6 id="fpuseradd_head" class="modal-title" style="font-size:16px">新增用户信息</h6>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="fpuseraddForm" action="#" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">所属行政区划：</label>
+                        <div class="col-sm-9">
+                            <input id="id" name="id" type="hidden">
+                            <input id="aab301" name="aab301" type="hidden">
+                            <input id="info" readonly="readonly" name="info" placeholder="请输入所属行政区划..."  type="text" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">真实姓名*：<span style="color: red">*</span></label>
+                        <div class="col-sm-9">
+                            <input id="realname" name="realname" placeholder="请输入真实姓名..."  type="text" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">用户类型：<span style="color: red">*</span></label>
+                        <div class="col-sm-9">
+                            <select id="usertype"  class="form-control" style="margin-top:0px;background: #cabdbd" name="usertype" required="required">
+                                <option value='1'>经办用户</option>
+                                <option value='2'>管理员</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">手机号码：<span style="color: red">*</span></label>
+                        <div class="col-sm-9">
+                            <input id="mobilephome" onchange="telphone_fp(this.value)" name="mobilephome" placeholder="请输入手机号码..." type="text" style="margin-top:0px;background: #cabdbd" class="form-control" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">身份证号：<span style="color: red">*</span></label>
+                        <div class="col-sm-9">
+                            <input id="idcard" name="idcard" onchange="idcardvaldit_fp(this.value)" placeholder="请输入身份证号..." type="text" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">登录用户名：<span style="color: red">*</span></label>
+                        <div class="col-sm-9">
+                            <input id="username" name="username" placeholder="请输入登录用户名..."  type="text" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">密码：<span style="color: red">*</span></label>
+                        <div class="col-sm-9">
+                            <input id="password" name="password" placeholder="请输入密码..." type="password" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">确认密码：<span style="color: red">*</span></label>
+                        <div class="col-sm-9">
+                            <input id="password_2" name="password_2" placeholder="请输入确认密码..." type="password" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-primary" onclick="saveFpUser()">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-white" onclick="cleaninput()">清空</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--模态窗口  培训信息  div-->
+
+
+
+<!--等待的模态框  和等待特效-->
+<div class="modal inmodal fade" id="loading_div" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="scene">
+            <svg style="width: 200px;height: 200px;"
+                 version="1.1"
+                 id="dc-spinner"
+                 xmlns="http://www.w3.org/2000/svg"
+                 x="0px" y="0px"
+                 viewBox="0 0 38 38"
+                 preserveAspectRatio="xMinYMin meet"
+            >
+                <text x="14" y="21" font-family="Monaco" font-size="2px" style="letter-spacing:0.6" fill="yellow">LOADING
+                    <animate
+                            attributeName="opacity"
+                            values="0;1;0" dur="1.8s"
+                            repeatCount="indefinite"/>
+                </text>
+                <path fill="#373a42" d="M20,35c-8.271,0-15-6.729-15-15S11.729,5,20,5s15,6.729,15,15S28.271,35,20,35z M20,5.203
+    C11.841,5.203,5.203,11.841,5.203,20c0,8.159,6.638,14.797,14.797,14.797S34.797,28.159,34.797,20
+    C34.797,11.841,28.159,5.203,20,5.203z">
+                </path>
+
+                <path fill="#373a42" d="M20,33.125c-7.237,0-13.125-5.888-13.125-13.125S12.763,6.875,20,6.875S33.125,12.763,33.125,20
+    S27.237,33.125,20,33.125z M20,7.078C12.875,7.078,7.078,12.875,7.078,20c0,7.125,5.797,12.922,12.922,12.922
+    S32.922,27.125,32.922,20C32.922,12.875,27.125,7.078,20,7.078z">
+                </path>
+
+                <path fill="#2AA198" stroke="#2AA198" stroke-width="0.6027" stroke-miterlimit="10" d="M5.203,20
+			c0-8.159,6.638-14.797,14.797-14.797V5C11.729,5,5,11.729,5,20s6.729,15,15,15v-0.203C11.841,34.797,5.203,28.159,5.203,20z">
+                    <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            from="0 20 20"
+                            to="360 20 20"
+                            calcMode="spline"
+                            keySplines="0.4, 0, 0.2, 1"
+                            keyTimes="0;1"
+                            dur="2s"
+                            repeatCount="indefinite" />
+                </path>
+
+                <path fill="#859900" stroke="#859900" stroke-width="0.2027" stroke-miterlimit="10" d="M7.078,20
+  c0-7.125,5.797-12.922,12.922-12.922V6.875C12.763,6.875,6.875,12.763,6.875,20S12.763,33.125,20,33.125v-0.203
+  C12.875,32.922,7.078,27.125,7.078,20z">
+                    <animateTransform
+                            attributeName="transform"
+                            type="rotate"
+                            from="0 20 20"
+                            to="360 20 20"
+                            dur="1.8s"
+                            repeatCount="indefinite" />
+                </path>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+<!--下载的 进度条特效  -->
+
+<div class="modal inmodal fade" id="jindutiao_div" tabindex="-1" role="dialog" data-backdrop="static"
+     data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <div class="jindutiao_box">
+            <div class="jindutiao_ok"></div>
+            <div class="jindutiao_tbox">
+                <div class="jindutiao_tiao"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var fpuser_datatable;
+    var lang ;
+    $(function () {
+
+        //设置树的高度
+        $("#ztree_div_div").css({"height":$(window).height()});
+        $("#table_div").css({"height":$(window).height()-70});
+
+
+        //点击叉号调用的事件
+        $('#fpuseradd').on('hide.bs.modal', function () {
+            cleaninput();
+        });
+
+        //树节点的初始化事件
+        $.fn.zTree.init($("#tree-div"), sys_perm_setting);
+
+        //查询的收缩事件
+        $(".collapse-link").click(function(){
+            var o=$(this).closest("div.ibox"),e=$(this).find("i"),i=o.find("div.ibox-content");
+            i.slideToggle(200),e.toggleClass("fa-chevron-up").toggleClass("fa-chevron-down"),o.toggleClass("").toggleClass("border-bottom"),setTimeout(function(){o.resize(),o.find("[id^=map-]").resize()},50)})
+
+
+        //树节点的初始化事件
+        $.fn.zTree.init($("#tree-div"), sys_perm_setting);
+
+
+        //提示信息  初始化设置 一般不需要改
+        lang = {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "每页 _MENU_ 项",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
+            "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页",
+                "sJump": "跳转"
+            },
+            "oAria": {
+                "sSortAscending": ": 以升序排列此列",
+                "sSortDescending": ": 以降序排列此列"
+            }
+        };
+
+        //loadfactory();//加载社区工厂列表
+
+    });
+
+    //树配置
+    var sys_perm_setting = {
+        edit: {
+            drag:{
+                prev: true,
+                next: true,
+                inner:true
+            },
+            enable: true,
+            showRemoveBtn: false,
+            showRenameBtn: false
+        },
+        view: {
+            showLine: true,
+            nameIsHTML: true
+        },
+        check: {
+            enable: false,
+            chkboxType:  { "Y": "s", "N": "s" } //chkboxType: { “Y”: “ps”, “N”: “ps” } Y 属性定义 checkbox 被勾选后的情况;N 属性定义 checkbox 取消勾选后的情况;“p” 表示操作会影响父级节点;“s” 表示操作会影响子级节点;请注意大小写，不要改变
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                pIdKey: "parentid"
+            }
+        },
+        callback: {
+            onClick: onClick,
+            onAsyncSuccess:getTreeFirstNodeId
+        },
+        async: {
+            enable: true,
+            url:"/ztree/treedata",
+            autoParam:["groupid"]
+        }
+    };
+
+
+    //树节点的点击事件
+    function onClick (event, treeId, treeNode, clickFlag) {
+        $("#aab301").val(treeNode.groupid);
+        $("#scan_xzqh").text(treeNode.name);
+        searchInformation();
+    }
+
+    var treetype;         // 获取登录用户级别   树默认展开第一级节点
+    function getTreeFirstNodeId(){
+        var treeObj = $.fn.zTree.getZTreeObj("tree-div");
+        var nodes = treeObj.getNodes();
+        var firstNode = nodes[0];
+        treeObj.expandNode(nodes[0], true);  treetype = firstNode.type;
+        $("#aab301").val(firstNode.groupid);
+
+        $("#scan_xzqh").text(firstNode.name);
+    }
+
+    //加载用户
+    function loadFpUser() {
+        //重要修改 表格内容的自定义，需要根据业务定制
+        fpuser_datatable = $("#fpuser_table").dataTable({
+            language:lang,  //提示信息
+            autoWidth: true,  //禁用自动调整列宽
+            ordering:false,//禁止排序
+            scrollY:$(window).height()-170,//表窗口高度-100px
+            scrollX:$(window).width(),
+            destroy: true,
+            stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+            processing: false,  //隐藏加载提示,自行处理
+            serverSide: true,  //启用服务器端分页
+            bLengthChange:false,//去掉下面的没有多少条
+            aLengthMenu:[50,100],  //用户可自选每页展示数量 5条或10条
+            searching: false,  //禁用原生搜索
+            orderMulti: false,  //启用多列排序
+            order: [],  //取消默认排序查询,否则复选框一列会出现小箭头
+            renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+            pagingType: "full_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
+            columnDefs: [{
+                "targets": 'nosort',  //列的样式名
+                "orderable": false    //包含上样式名‘nosort’的禁止排序
+            }],
+            ajax: function (data, callback, settings) {
+                $("#loading_div").modal('show');
+                //封装请求参数
+                var param = {};
+                param.length= data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+                param.start = data.start;//开始的记录序号
+                param.pageIndex = (data.start / data.length);//当前页码
+                param.username = $("#username_scan").val();
+                param.realname = $("#realname_scan").val();
+                param.idcard = $("#idcard_scan").val();
+                param.aab301 = $("#aab301").val();
+                //ajax请求数据方法
+                $.ajax({
+                    type: "POST",
+                    url: "/fpUser/queryFpUserByAab301",//url请求的地址
+                    cache: false,  //禁用缓存
+                    data: param,  //传入组装的参数
+                    dataType: "json",
+                    success: function (result) {
+                        //封装返回数据重要
+                        var returnData = {};
+                        //这里直接自行返回了draw计数器,应该由后台返回
+                        //returnData.draw = data.draw;
+                        //返回数据全部记录
+                        returnData.recordsTotal = result.recordsTotal;
+                        //后台不实现过滤功能，每次查询均视作全部结果
+                        returnData.recordsFiltered = result.recordsFiltered;
+                        //返回的数据列表
+                        returnData.data = result.data;
+
+                        //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                        //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                        callback(returnData);
+                        $("#zong_count").text("总条数："+result.recordsTotal+"条");
+                        $("#loading_div").modal('hide');
+                    }
+                });
+            },
+            //列表表头字段
+            columns: [
+                { "data": "rn","width":"40px" },
+                { "data": "aab301","width":"150px" },
+                { "data": "username" },
+                { "data": "realname" },
+                { "data": "idcard" },
+                { "data": "mobilephome" },
+                {"data":"id", "render":function(data, type, full, meta){
+                    return	data="<button onclick=\"updateFpUser('"+data+"')\"  class='btn btn-sm btn-primary btn-edit' data-toggle='modal' data-target='#fpuseradd' >修 改</button>   <button  class='btn btn-sm btn-danger btn-del' onclick=\"delFpUser('"+data+"')\">删 除</button>  ";
+                }}
+            ]
+        }).api();
+        //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
+    }
+
+
+    /**
+     * 保存用户信息
+     */
+    function saveFpUser(){
+        if(checkAll() == 1){
+            $.ajax({
+                url:"/fpUser/saveFpUser",    //请求的url地址
+                dataType:"text",   //返回格式为json
+                async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:$('#fpuseraddForm').serialize(),    //参数值
+                type:"POST",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    $("input").val('');
+                    $("#pab010").prop("value","");
+                    //请求成功时处理
+                    if(data != null && data != undefined){
+                        if(data == 'update'){
+                            loadFpUser();
+                            swal("修改成功！", "您已经成功修改了这条信息。", "success");
+                        }else{
+                            loadFpUser();
+                            swal("保存成功！", "您已经成功保存了这条信息。", "success");
+                        }
+                    }
+                },
+                complete:function(){
+
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+        }
+    }
+
+    /**
+     * 修改用户信息
+     */
+    function updateFpUser(id){
+
+        $("#fpuseradd_head").text("修改用户信息");
+        $.ajax({
+            url:"/fpUser/updateFpUser",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"id":id},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                $("#id").val(data.id);
+                $("#info").val(data.info);
+                $("#username").val(data.username);
+                $("#password").val(data.password);
+                $("#mobilephome").val(data.mobilephome);
+                $("#realname").val(data.realname);
+                $("#idcard").val(data.idcard);
+                $("#usertype").prop("value",data.usertype);
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+    /**
+     *删除用户信息
+     */
+    function delFpUser(id){
+        swal({
+            title: "您确定要删除这条信息吗",
+            text: "删除后将无法恢复，请谨慎操作！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            cancelButtonText:"取消",
+            confirmButtonText: "删除",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url:"/fpUser/delFpUser",    //请求的url地址
+                dataType:"text",   //返回格式为json
+                async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{"id":id},    //参数值
+                type:"POST",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    //请求成功时处理
+                    if(data != null && data != undefined){
+                        if(data == 'yes'){
+                            loadFpUser();
+                            swal("删除成功！", "您已经永久删除了这条信息。", "success");
+                        }else if(data == 'no'){
+                            swal("删除失败！", "您未删除这条信息。", "fail");
+                        }
+                    }
+                },
+                complete:function(){
+
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+
+        });
+    }
+
+
+    /**
+     * 查询参数，获取对应的下拉值
+     */
+    function queryParam(aaa100,id){
+        $("#"+id).empty();
+        $.ajax({
+            url:"/aa10/queryAa10",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"aaa100":aaa100},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    var options ="";
+                    options +="<option value=''>-- 请选择 --</option>";
+                    for(var i=0;i<data.length;i++){
+                        options +="<option value='"+data[i].aaa102+"'>"+data[i].aaa103+"</option>";
+                    }
+                    $("#"+id).append(options);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     *输入条件进行查询
+     */
+    function searchInformation() {
+        loadFpUser();
+    }
+
+    //清空的点击按钮
+    function cleaninput() {
+        var id = $("#id").val();
+        if(id != null && id !=''){
+            $("input").val('');
+            updateFpUser(id);
+        }else{
+            $("input").val('');
+        };
+    }
+
+    //手机号码校验
+    function telphone_fp(tel){
+        var re = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+        if(!re.test(tel)){
+            swal({
+                title: "手机号码错误!",
+                text: "您好！请输入正确的手机号码",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            $("#mobilephome").val('');
+            $("#mobilephome").focus();
+        }
+    }
+
+    function idcardvaldit_fp(card){
+        var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if(!pattern.test(card)){
+            swal({
+                title: "身份证错误!",
+                text: "您好！请输入正确的身份证号码",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            $("#idcard").val('');
+            $("#idcard").focus();
+        }
+    }
+    //重置按钮
+    function reset() {
+        $("#select_div input").val('');
+        $("#select_div select").prop('value', '');
+    }
+
+    /**
+     *生成单个
+     */
+    function zidongByOne() {
+        var aab301 = $("#aab301").val();
+        var aab301name = $("#scan_xzqh").text();
+        swal({
+            title: "您好，请填写【"+aab301name+"】生成用户个数",
+            html: true,
+            type: "input",
+            inputPlaceholder:"您好，请填写【"+aab301name+"】生成用户个数",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            cancelButtonText:"取消",
+            confirmButtonText: "确定",
+            closeOnConfirm: false
+        }, function (inputValue) {
+            if (inputValue == '') {
+                swal.showInputError('请填写生成用户个数');
+                return;
+            }else{
+                if(isNaN(inputValue) == false){     //说明是数字则进行用户生成方法
+                     $.ajax({
+                         url:"/fpUser/zidongByOne",    //请求的url地址
+                         dataType:"text",   //返回格式为json
+                         async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                         data:{"aab301":aab301,"counts":inputValue},    //参数值
+                         type:"POST",   //请求方式
+                         beforeSend:function(){
+                         //请求前的处理
+                         },
+                         success:function(data){
+                         //请求成功时处理
+                         if(data != null && data != undefined){
+                             if(data == 'yes'){
+                                 loadFpUser();
+                                swal("生成成功！", "您已经生成成功。", "success");
+                             }else if(data == 'no'){
+                                swal("生成失败！", "您未生成成功。", "fail");
+                             }
+                         }
+                     },
+                     complete:function(){
+
+                     },
+                     error:function(){
+                     //请求出错处理
+                     }
+                     });
+                }else{
+                    swal.showInputError('请填写正确的生成用户个数');
+                    return;
+                }
+            }
+
+
+        });
+    }
+
+    /**
+     * 生成所有下级
+     */
+    function zidongByAllNext() {
+        var aab301 = $("#aab301").val();
+        var aab301name = $("#scan_xzqh").text();
+        swal({
+            title: "您好，请填写【"+aab301name+"】下所有生成用户个数",
+            html: true,
+            type: "input",
+            inputPlaceholder:"您好，请填写【"+aab301name+"】下所有生成用户个数",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            cancelButtonText:"取消",
+            confirmButtonText: "确定",
+            closeOnConfirm: false
+        }, function (inputValue) {
+            if (inputValue == '') {
+                swal.showInputError('请填写生成用户个数');
+                return;
+            }else{
+                if(isNaN(inputValue) == false){     //说明是数字则进行用户生成方法
+                    $.ajax({
+                        url:"/fpUser/zidongByAllNext",    //请求的url地址
+                        dataType:"text",   //返回格式为json
+                        async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                        data:{"aab301":aab301,"counts":inputValue},    //参数值
+                        type:"POST",   //请求方式
+                        beforeSend:function(){
+                            //请求前的处理
+                        },
+                        success:function(data){
+                            //请求成功时处理
+                            if(data != null && data != undefined){
+                                if(data == 'yes'){
+                                    loadFpUser();
+                                    swal("生成成功！", "您已经生成成功。", "success");
+                                }else if(data == 'no'){
+                                    swal("生成失败！", "您未生成成功。", "fail");
+                                }
+                            }
+                        },
+                        complete:function(){
+
+                        },
+                        error:function(){
+                            //请求出错处理
+                        }
+                    });
+                }else{
+                    swal.showInputError('请填写正确的生成用户个数');
+                    return;
+                }
+            }
+
+
+        });
+    }
+</script>
+</body>
+
+</html>

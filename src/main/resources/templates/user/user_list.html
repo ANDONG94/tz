@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!-- datatables-->
+    <link href="/css/plugins/dataTables/dataTables.bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/hjia/headimg/amazeui.min.css">
+    <link rel="stylesheet" href="/css/hjia/headimg/amazeui.cropper.css">
+    <link rel="stylesheet" href="/css/hjia/headimg/custom_up_img.css">
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeInRight" id="img_head_upload">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>用户管理</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="">
+                        <a  href="javascript:void(0);" class="btn btn-primary " data-toggle="modal" data-target="#useradd" style="float: right">添加</a>
+                    </div>
+                    <table class="table table-striped table-bordered table-hover " id="editable"><thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>手机号码</th>
+                        <th>人员类型</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead></table><table>
+                </table>
+                    <div id="example" style="text-align: center"> <ul id="pageLimit" style="margin:0px"></ul> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--模态窗口  新增，修改用户  div-->
+<div class="modal inmodal" id="useradd" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 10px 15px;text-align: left">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                </button>
+                <h6 id="addupdate" class="modal-title" style="font-size:16px">添加用户</h6>
+            </div>
+            <form class="form-horizontal m-t" id="commentForm" action="#" method="post">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">用户名：</label>
+                        <div class="col-sm-8">
+                            <input id="id" name="id"  type="hidden" >
+                            <input id="username" name="username" placeholder="请输入用户名..." minlength="2" type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">密码：</label>
+                        <div class="col-sm-8">
+                            <input id="password" name="password" minlength="2" type="password" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">姓名：</label>
+                        <div class="col-sm-8">
+                            <input id="realname" name="realname" placeholder="请输入真实姓名..."  minlength="2" type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">人员类型：</label>
+                        <div class="col-sm-3">
+                            <select id="usertype"  class="form-control m-b" name="usertype"></select>
+                        </div>
+                        <label class="col-sm-2 control-label">性别：</label>
+                        <div class="col-sm-3">
+                            <select id="sex"  class="form-control m-b" name="sex"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">手机号码：</label>
+                        <div class="col-sm-8">
+                            <input id="mobilephome" name="mobilephome" placeholder="请输入手机号码..."  minlength="2" type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">E-mail：</label>
+                        <div class="col-sm-8">
+                            <input id="email" type="email" class="form-control" name="email" placeholder="请输入邮箱地址..."  required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">备注：</label>
+                        <div class="col-sm-8">
+                            <textarea id="comment" name="comment" class="form-control" required="" aria-required="true"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" onclick="saveUser()">保存</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--上传用户头像  div-->
+<div class="am-modal am-modal-no-btn up-frame-bj " tabindex="-1" id="doc-modal-1">
+    <div class="am-modal-dialog up-frame-parent up-frame-radius">
+        <div class="am-modal-hd up-frame-header">
+            <label>修改头像</label>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd  up-frame-body">
+            <div class="am-g am-fl">
+                <div class="am-form-group am-form-file">
+                    <div class="am-fl">
+                        <button type="button" class="am-btn am-btn-default am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+                    </div>
+                        <input id="hide_id" type="hidden">
+                        <input type="file" id="inputImage">
+                </div>
+            </div>
+            <div class="am-g am-fl" >
+                <div class="up-pre-before up-frame-radius">
+                    <img alt="" src="" id="image" >
+                </div>
+                <div class="up-pre-after up-frame-radius">
+                </div>
+            </div>
+            <div class="am-g am-fl">
+                <div class="up-control-btns">
+                    <span class="am-icon-rotate-left"  onclick="rotateimgleft()"></span>
+                    <span class="am-icon-rotate-right" onClick="rotateimgright()"></span>
+                    <span class="am-icon-check" id="up-btn-ok" url="/user/uploadheadimg"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+<script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+<script src="/js/hjia/plugins/jeditable/jquery.jeditable.js"></script>
+<script src="/js/hjia/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="/js/hjia/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="/js/hjia/content.min.js?v=1.0.0"></script>
+<script src="/js/hjia/plugins/layer/layer.min.js"></script>
+<script src="/js/hjia/demo/layer-demo.min.js"></script>
+<script src="/js/hjia/plugins/validate/jquery.validate.min.js"></script>
+<script src="/js/hjia/plugins/validate/messages_zh.min.js"></script>
+<script src="/js/hjia/demo/form-validate-demo.min.js"></script>
+<script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/js/hjia/headimg/amazeui.min.js" charset="utf-8"></script>
+<script src="/js/hjia/headimg/cropper.min.js" charset="utf-8"></script>
+<script src="/js/hjia/headimg/custom_up_img.js" charset="utf-8"></script>
+<script>
+
+    var tdkj_datatable;
+    $(function () {
+        queryDict();//查询人员类型的方法
+        querySex();//查询人员性别
+        //提示信息  初始化设置 一般不需要改
+        var lang = {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "每页 _MENU_ 项",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
+            "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页",
+                "sJump": "跳转"
+            },
+            "oAria": {
+                "sSortAscending": ": 以升序排列此列",
+                "sSortDescending": ": 以降序排列此列"
+            }
+        };
+
+
+        //重要修改 表格内容的自定义，需要根据业务定制
+        tdkj_datatable = $("#editable").dataTable({
+            language:lang,  //提示信息
+            autoWidth: false,  //禁用自动调整列宽
+            stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+            processing: true,  //隐藏加载提示,自行处理
+            serverSide: false,  //启用服务器端分页
+            aLengthMenu:[10,20,50,100],  //用户可自选每页展示数量 5条或10条
+            searching: false,  //禁用原生搜索
+            orderMulti: false,  //启用多列排序
+            order: [],  //取消默认排序查询,否则复选框一列会出现小箭头
+            renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+            pagingType: "full_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
+            columnDefs: [{
+                "targets": 'nosort',  //列的样式名
+                "orderable": false    //包含上样式名‘nosort’的禁止排序
+            }],
+            ajax: function (data, callback, settings) {
+
+                //封装请求参数
+                var param = {};
+                param.pageSize= data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+                param.startIndex = data.start;//开始的记录序号
+                param.pageIndex = (data.start / data.length);//当前页码
+
+                //ajax请求数据方法
+                $.ajax({
+                    type: "GET",
+                    url: "/user/queryAllUser",//url请求的地址
+                    cache: false,  //禁用缓存
+                    data: param,  //传入组装的参数
+                    dataType: "json",
+                    success: function (result) {
+
+                        //封装返回数据重要
+                        var returnData = {};
+                        //这里直接自行返回了draw计数器,应该由后台返回
+                        //returnData.draw = data.draw;
+                        //返回数据全部记录
+                        returnData.recordsTotal = result.recordsTotal;
+                        //后台不实现过滤功能，每次查询均视作全部结果
+                        returnData.recordsFiltered = result.recordsFiltered;
+                        //返回的数据列表
+                        returnData.data = result.data;
+
+                        //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                        //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                        callback(returnData);
+                    }
+                });
+            },
+            //列表表头字段
+            columns: [
+                { "data": "username" },
+                { "data": "realname" },
+                { "data": "sex" },
+                { "data": "mobilephome" },
+                { "data": "usertype" },
+                { "data": "createddate" },
+                {"data":"id", "render":function(data, type, full, meta){
+                    return	data="<button onclick=\"updateUser('"+data+"')\"  class='btn btn-sm btn-primary btn-edit' data-toggle='modal' data-target='#useradd' >修 改</button>   <button  class='btn btn-sm btn-danger btn-del' onclick=\"delUser('"+data+"')\">删 除</button>  <button  class='btn btn-sm btn-danger btn-del'  onclick=\"uploadheadimg('"+data+"')\">上传头像</button>";
+                }}]
+        }).api();
+        //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
+    });
+
+
+    /**
+     * 查询字典表，获取对应的人员类型
+     */
+    function queryDict(){
+        $("#usertype").empty();
+        $.ajax({
+            url:"/user/queryDictType",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"type":"USER"},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    var options ="";
+                    for(var i=0;i<data.length;i++){
+                        options +="<option value='"+data[i].value+"'>"+data[i].typename+"</option>";
+                    }
+                    $("#usertype").append(options);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     * 查询字典表，获取对应的性别
+     */
+    function querySex(){
+        $("#sex").empty();
+        $.ajax({
+            url:"/user/queryDictType",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"type":"SEX"},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    var options ="";
+                    for(var i=0;i<data.length;i++){
+                        options +="<option value='"+data[i].value+"'>"+data[i].typename+"</option>";
+                    }
+                    $("#sex").append(options);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+    /**
+     * 保存用户信息
+     */
+    function saveUser(){
+        $.ajax({
+            url:"/user/saveUser",    //请求的url地址
+            dataType:"text",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:$('#commentForm').serialize(),    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    if(data == 'update'){
+                        //请求完成的处理
+                        $("input").val('');
+                        $("#useradd").modal("hide");
+                        tdkj_datatable.ajax.reload();
+                        swal("保存成功！", "您已经成功修改了这条信息。", "success");
+                    }else if(data == 'insert'){
+                        //请求完成的处理
+                        $("input").val('');
+                        $("#useradd").modal("hide");
+                        tdkj_datatable.ajax.reload();
+                        swal("保存成功！", "您已经成功保存了这条信息。", "success");
+                    }
+                }
+            },
+            complete:function(){
+
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     *删除用户信息
+     */
+    function delUser(id){
+        swal({
+            title: "您确定要删除这条信息吗",
+            text: "删除后将无法恢复，请谨慎操作！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            cancelButtonText:"取消",
+            confirmButtonText: "删除",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url:"/user/delUser",    //请求的url地址
+                dataType:"text",   //返回格式为json
+                async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{"id":id},    //参数值
+                type:"POST",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    //请求成功时处理
+                    if(data != null && data != undefined){
+                        if(data == 'yes'){
+                            tdkj_datatable.ajax.reload();
+                            swal("删除成功！", "您已经永久删除了这条信息。", "success");
+                        }else if(data == 'no'){
+                            swal("删除失败！", "您未删除这条信息。", "fail");
+                        }
+                    }
+                },
+                complete:function(){
+
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+
+        });
+    }
+
+
+    /**
+     * 修改用户信息
+     */
+    function updateUser(id){
+
+        $("#addupdate").text("修改用户");
+        $.ajax({
+            url:"/user/updateUser",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"id":id},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                $("#id").val(data.id);
+                $("#username").val(data.username);
+                $("#password").val(data.password);
+                $("#realname").val(data.realname);
+                $("#usertype").prop("value",data.usertype);
+                $("#sex").prop("value",data.sex);
+                $("#mobilephome").val(data.mobilephome);
+                $("#email").val(data.email);
+                $("#comment").val(data.comment);
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     * 上传用户头像
+     */
+    function uploadheadimg(id){
+        $("#hide_id").val(id);
+        $("#doc-modal-1").modal({width:'600px'});
+    }
+
+</script>
+
+</body>
+
+</html>

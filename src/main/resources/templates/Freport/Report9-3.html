@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>综合信息统计</title>
+    <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="/js/ztree/css/zTreeStyle.css" rel="stylesheet">
+    <link href="/css/plugins/dataTables/dataTables.bootstrap.css" type="text/css" rel="stylesheet">
+
+
+    <script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/js/hjia/content.min.js?v=1.0.0"></script>
+
+
+    <script src="/js/ztree/jquery.ztree.core.js"></script>
+    <script src="/js/ztree/jquery.ztree.excheck.js"></script>
+    <script src="/js/ztree/jquery.ztree.exedit.js"></script>
+
+    <script src="/js/hjia/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="/js/hjia/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/js/hjia/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/js/hjia/content.min.js?v=1.0.0"></script>
+    <script src="/js/hjia/plugins/layer/layer.min.js"></script>
+    <script src="/js/hjia/demo/layer-demo.min.js"></script>
+    <script src="/js/hjia/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/js/hjia/plugins/validate/messages_zh.min.js"></script>
+    <script src="/js/hjia/demo/form-validate-demo.min.js"></script>
+    <script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="/js/hjia/plugins/layer/laydate/laydate.js"></script>
+</head>
+
+<body>
+
+
+<iframe  id="myIframe"  width="99.6%" ></iframe>
+
+</body>
+<script type="text/javascript">
+
+    $("#myIframe").height($(window).height());
+
+    $(function () {
+        skip();
+    });
+
+    function skip() {
+        $.ajax({
+            url: "/ComprehensiveStatistics/getaab301",    //请求的url地址
+            dataType: "json",   //返回格式为json
+            async: false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{},
+            type: "POST",   //请求方式
+            success: function (data) {
+                //请求成功时处理
+                if (data != null && data != undefined) {
+                    if (data != '610000000000') {
+                        var reportletUrl = "http://47.111.27.232:8080/report/ReportServer?reportlet=fptz/report9-3.cpt&aaa148=" + data;
+                        $("#myIframe").attr("src", reportletUrl);
+                    } else {
+                        var reportletUrl = "http://114.55.37.27:8080/report/ReportServer?reportlet=fptz/report9-3.cpt&aaa148=" + data;
+                        $("#myIframe").attr("src", reportletUrl);
+                    }
+
+                }
+            }
+        });
+
+    }
+</script>
+</html>

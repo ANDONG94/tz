@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - 富文本编辑器</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <form id="add_article_form" method="post">
+                <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>文章标题：</h5>
+                    <div class="col-sm-9" style="margin-top: -10px">
+                        <input id="id" name="id" type="hidden"><input type="hidden" id="input_content"/>
+                        <input id="title" name="title" placeholder="请输入文章标题..."  minlength="2" type="text" class="form-control" required="" aria-required="true">
+                    </div>
+                    <button id="save" class="btn btn-primary" style="margin-top: -10px;float: right;" onclick="saveArticle()" type="button">保存</button>
+                </div>
+                    <div class="ibox-title">
+                        <h5>文章简介：</h5>
+                        <div class="col-sm-9" style="margin-top: -10px">
+                            <input id="articleintro" name="articleintro" placeholder="请输入文章简介..."  minlength="2" type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                <div class="ibox-content no-padding">
+                    <div class="summernote" id="content">
+
+
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+<script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+<script src="/js/hjia/content.min.js?v=1.0.0"></script>
+<script src="/js/hjia/plugins/summernote/summernote.min.js"></script>
+<script src="/js/hjia/plugins/summernote/summernote-zh-CN.js"></script>
+<script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function(){
+            $(".summernote").summernote({
+                lang:"zh-CN",
+                onImageUpload: function(files, editor, welEditable) {
+                    sendFile(files[0],editor,welEditable);
+                }
+            })});
+            var edit=function(){$("#eg").addClass("no-padding");
+            $(".click2edit").summernote({lang:"zh-CN",focus:true})
+        };
+
+
+    //上传图片时调用
+    function sendFile(file,editor,welEditable) {
+        var filename = false;
+        try{
+            filename = file['name'];
+        } catch(e){
+            filename = false;
+        }
+        if(!filename){
+            $(".note-alarm").remove();
+        }
+        //以上防止在图片在编辑器内拖拽引发第二次上传导致的提示错误
+        data = new FormData();
+        data.append("key",filename); //唯一性参数
+        data.append("file", file);
+        $.ajax({
+            data: data,
+            type: "POST",
+            url: "/article/textAreaUploadImage",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                editor.insertImage(welEditable, data);
+            }
+        });
+    }
+
+
+    /**
+     * 保存文章信息
+     */
+    function saveArticle(){
+        var contect = $(".note-editable").html();
+        var title = $("#title").val();
+        var articleintro = $("#articleintro").val();
+        var id = $("#id").val();
+        if(contect != null && contect !='' && contect !=undefined){
+            $("#input_content").val(contect);
+        }
+        var contenttext = $("#input_content").val();
+        $.ajax({
+            url:"/article/saveArticle",    //请求的url地址
+            dataType:"text",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"id":id,"title":title,"articleintro":articleintro,"content":contenttext},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    if(data == 'update'){
+                        swal("保存成功！", "您已经成功保存了文章信息。", "success");
+                    }else if(data == 'insert'){
+                        //请求完成的处理
+                        $(".note-editable").html('');
+                        $("#title").val('');
+                        $("#articleintro").val('');
+                        $("#id").val('');
+                        $("#input_content").val('');
+                        swal("保存成功！", "您已经成功保存了文章信息。", "success");
+                    }
+                }
+            },
+            complete:function(){
+
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+</script>
+</body>
+
+</html>

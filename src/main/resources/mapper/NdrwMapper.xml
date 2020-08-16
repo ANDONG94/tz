@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdkj.dao.ndrw.NdrwMapper">
+  <resultMap id="BaseResultMap" type="com.tdkj.model.Ndrw">
+    <id column="NDRWID" jdbcType="VARCHAR" property="ndrwid" />
+    <result column="XZQHBM" jdbcType="VARCHAR" property="xzqhbm" />
+    <result column="XZQHMC" jdbcType="VARCHAR" property="xzqhmc" />
+    <result column="ZYJYRW" jdbcType="VARCHAR" property="zyjyrw" />
+    <result column="ZZCYRW" jdbcType="VARCHAR" property="zzcyrw" />
+    <result column="JNPXRW" jdbcType="VARCHAR" property="jnpxrw" />
+    <result column="CYPXRW" jdbcType="VARCHAR" property="cypxrw" />
+    <result column="AAE036" jdbcType="TIMESTAMP" property="aae036" />
+    <result column="AAE011" jdbcType="VARCHAR" property="aae011" />
+    <result column="AAE100" jdbcType="VARCHAR" property="aae100" />
+    <result column="UPDATEBY" jdbcType="VARCHAR" property="updateby" />
+    <result column="UPDATEDATE" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="CREATEBY" jdbcType="VARCHAR" property="createby" />
+    <result column="DELETEBY" jdbcType="VARCHAR" property="deleteby" />
+    <result column="DELETEDATE" jdbcType="TIMESTAMP" property="deletedate" />
+    <result column="AAB301" jdbcType="VARCHAR" property="aab301" />
+    <result column="NIANDU" jdbcType="VARCHAR" property="niandu" />
+    <result column="AAE102" jdbcType="VARCHAR" property="aae102" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    NDRWID, XZQHBM, XZQHMC, ZYJYRW, ZZCYRW, JNPXRW, CYPXRW, AAE036, AAE011, AAE100, UPDATEBY,
+    UPDATEDATE, CREATEBY, DELETEBY, DELETEDATE, AAB301,NIANDU, AAE102
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from NDRW
+    where NDRWID = #{ndrwid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from NDRW
+    where NDRWID = #{ndrwid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.Ndrw">
+    insert into NDRW (NDRWID, XZQHBM, XZQHMC,
+    ZYJYRW, ZZCYRW, JNPXRW,
+    CYPXRW, AAE036, AAE011,
+    AAE100, UPDATEBY, UPDATEDATE,
+    CREATEBY, DELETEBY, DELETEDATE,
+    AAB301,NIANDU, AAE102)
+    values (#{ndrwid,jdbcType=VARCHAR}, #{xzqhbm,jdbcType=VARCHAR}, #{xzqhmc,jdbcType=VARCHAR},
+    #{zyjyrw,jdbcType=VARCHAR}, #{zzcyrw,jdbcType=VARCHAR}, #{jnpxrw,jdbcType=VARCHAR},
+    #{cypxrw,jdbcType=VARCHAR}, #{aae036,jdbcType=TIMESTAMP}, #{aae011,jdbcType=VARCHAR},
+    #{aae100,jdbcType=VARCHAR}, #{updateby,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP},
+    #{createby,jdbcType=VARCHAR}, #{deleteby,jdbcType=VARCHAR}, #{deletedate,jdbcType=TIMESTAMP},
+    #{aab301,jdbcType=VARCHAR},#{niandu,jdbcType=VARCHAR}, #{aae102,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdkj.model.Ndrw">
+    insert into NDRW
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ndrwid != null">
+        NDRWID,
+      </if>
+      <if test="xzqhbm != null">
+        XZQHBM,
+      </if>
+      <if test="xzqhmc != null">
+        XZQHMC,
+      </if>
+      <if test="zyjyrw != null">
+        ZYJYRW,
+      </if>
+      <if test="zzcyrw != null">
+        ZZCYRW,
+      </if>
+      <if test="jnpxrw != null">
+        JNPXRW,
+      </if>
+      <if test="cypxrw != null">
+        CYPXRW,
+      </if>
+      <if test="aae036 != null">
+        AAE036,
+      </if>
+      <if test="aae011 != null">
+        AAE011,
+      </if>
+      <if test="aae100 != null">
+        AAE100,
+      </if>
+      <if test="updateby != null">
+        UPDATEBY,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="createby != null">
+        CREATEBY,
+      </if>
+      <if test="deleteby != null">
+        DELETEBY,
+      </if>
+      <if test="deletedate != null">
+        DELETEDATE,
+      </if>
+      <if test="aab301 != null">
+        AAB301,
+      </if>
+      <if test="niandu != null">
+        NIANDU,
+      </if>
+      <if test="aae102 != null">
+        AAE102,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ndrwid != null">
+        #{ndrwid,jdbcType=VARCHAR},
+      </if>
+      <if test="xzqhbm != null">
+        #{xzqhbm,jdbcType=VARCHAR},
+      </if>
+      <if test="xzqhmc != null">
+        #{xzqhmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zyjyrw != null">
+        #{zyjyrw,jdbcType=VARCHAR},
+      </if>
+      <if test="zzcyrw != null">
+        #{zzcyrw,jdbcType=VARCHAR},
+      </if>
+      <if test="jnpxrw != null">
+        #{jnpxrw,jdbcType=VARCHAR},
+      </if>
+      <if test="cypxrw != null">
+        #{cypxrw,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aae011 != null">
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null">
+        #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null">
+        #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aab301 != null">
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="niandu != null">
+        #{niandu,jdbcType=VARCHAR},
+      </if>
+      <if test="aae102 != null">
+        #{aae102,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.Ndrw">
+    update NDRW
+    <set>
+      <if test="xzqhbm != null">
+        XZQHBM = #{xzqhbm,jdbcType=VARCHAR},
+      </if>
+      <if test="xzqhmc != null">
+        XZQHMC = #{xzqhmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zyjyrw != null">
+        ZYJYRW = #{zyjyrw,jdbcType=VARCHAR},
+      </if>
+      <if test="zzcyrw != null">
+        ZZCYRW = #{zzcyrw,jdbcType=VARCHAR},
+      </if>
+      <if test="jnpxrw != null">
+        JNPXRW = #{jnpxrw,jdbcType=VARCHAR},
+      </if>
+      <if test="cypxrw != null">
+        CYPXRW = #{cypxrw,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aae011 != null">
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updateby != null">
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createby != null">
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null">
+        DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null">
+        DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aab301 != null">
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="niandu != null">
+        NIANDU = #{niandu,jdbcType=VARCHAR},
+      </if>
+      <if test="aae102 != null">
+        AAE102 = #{aae102,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where NDRWID = #{ndrwid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.Ndrw">
+    update NDRW
+    set XZQHBM = #{xzqhbm,jdbcType=VARCHAR},
+    XZQHMC = #{xzqhmc,jdbcType=VARCHAR},
+    ZYJYRW = #{zyjyrw,jdbcType=VARCHAR},
+    ZZCYRW = #{zzcyrw,jdbcType=VARCHAR},
+    JNPXRW = #{jnpxrw,jdbcType=VARCHAR},
+    CYPXRW = #{cypxrw,jdbcType=VARCHAR},
+    AAE036 = #{aae036,jdbcType=TIMESTAMP},
+    AAE011 = #{aae011,jdbcType=VARCHAR},
+    AAE100 = #{aae100,jdbcType=VARCHAR},
+    UPDATEBY = #{updateby,jdbcType=VARCHAR},
+    UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+    CREATEBY = #{createby,jdbcType=VARCHAR},
+    DELETEBY = #{deleteby,jdbcType=VARCHAR},
+    DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+    AAB301 = #{aab301,jdbcType=VARCHAR},
+    NIANDU = #{niandu,jdbcType=VARCHAR},
+    AAE102 = #{aae102,jdbcType=VARCHAR}
+    where NDRWID = #{ndrwid,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <!--根据行政区划查询年度任务信息-->
+  <select id="queryNdrwByAab301" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select NDRWID, XZQHBM, XZQHMC, ZYJYRW, ZZCYRW, JNPXRW, CYPXRW, AAE036, AAE011, AAE100, UPDATEBY,isnext,
+    UPDATEDATE, CREATEBY, DELETEBY, DELETEDATE, AAB301,NIANDU, AAE102,rn
+    from (select NDRWID, XZQHBM, XZQHMC, ZYJYRW, ZZCYRW, JNPXRW, CYPXRW, AAE036, AAE011, AAE100, UPDATEBY,isnext,
+    UPDATEDATE, CREATEBY, DELETEBY, DELETEDATE, AAB301,NIANDU, AAE102, rownum rn
+    from (select NDRWID, t.XZQHBM, t.XZQHMC, ZYJYRW, ZZCYRW, JNPXRW, CYPXRW, AAE036, n.AAE011, n.AAE100, UPDATEBY,
+    (case when n.aab301 like #{ndrw.aab301,jdbcType=VARCHAR} and  #{ndrw.clickaab301,jdbcType=VARCHAR} =  #{ndrw.isnext,jdbcType=VARCHAR} and n.aab301 != #{ndrw.isnext,jdbcType=VARCHAR} then 'yes' else 'no' end) isnext,
+    UPDATEDATE, CREATEBY, DELETEBY, DELETEDATE, t.info AAB301,NIANDU, AAE102
+    from NDRW n,POOR_XZQH t where n.AAB301=t.XZQHBM and aae100='1'
+    <if test="ndrw.aab301 != null and ndrw.aab301 !=''  ">
+        and n.AAB301 like #{ndrw.aab301,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.isnext != null and ndrw.isnext !=''  and ndrw.clickaab301 =='610100000000'.toString()">
+      and n.AAB301 not in ('610181000000','610182000000','610183000000','610184000000','610185000000')
+    </if>
+    <if test="ndrw.niandu != null and ndrw.niandu !=''  ">
+        and  n.niandu = #{ndrw.niandu,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.xzqhbm != null and ndrw.xzqhbm !=''  ">
+       and  n.XZQHBM = #{ndrw.xzqhbm,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.xzqhmc != null and ndrw.xzqhmc !=''  ">
+        and n.XZQHMC = #{ndrw.xzqhmc,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.zyjyrw != null and ndrw.zyjyrw !=''  ">
+        and n.ZYJYRW = #{ndrw.zyjyrw,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.zzcyrw != null and ndrw.zzcyrw !=''  ">
+        and n.ZZCYRW = #{ndrw.zzcyrw,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.jnpxrw != null and ndrw.jnpxrw !=''  ">
+        and  n.JNPXRW = #{ndrw.jnpxrw,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.cypxrw != null and ndrw.cypxrw !=''  ">
+        and  n.CYPXRW = #{ndrw.cypxrw,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.aae036 != null and ndrw.aae036 !=''  ">
+        and  n.AAE036 = #{ndrw.aae036,jdbcType=TIMESTAMP}
+    </if>
+    <if test="ndrw.aae011 != null and ndrw.aae011 !=''  ">
+        and  n.AAE011 = #{ndrw.aae011,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.aae100 != null and ndrw.aae100 !=''  ">
+        and  n.AAE100 = #{ndrw.aae100,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.updateby != null and ndrw.updateby !=''  ">
+        and  n.UPDATEBY = #{ndrw.updateby,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.updatedate != null and ndrw.updatedate !=''  ">
+        and n.UPDATEDATE = #{ndrw.updatedate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="ndrw.createby != null and ndrw.createby !=''  ">
+        and n.CREATEBY = #{ndrw.createby,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.deleteby != null and ndrw.deleteby !=''  ">
+        and  n.DELETEBY = #{ndrw.deleteby,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.deletedate != null and ndrw.deletedate !=''  ">
+        and  n.DELETEDATE = #{ndrw.deletedate,jdbcType=TIMESTAMP}
+    </if>
+    order by  t.XZQHBM
+    ) a1
+    where rownum &lt;= #{pageSize})
+    where rn &gt;= #{startRecord}
+  </select>
+
+  <!--根据行政区划查询信用乡村信息总条数-->
+  <select id="queryAllCountByAab301" resultType="java.lang.String" parameterType="java.lang.String" >
+    select count(1)
+    from NDRW n
+    where  aae100='1'
+    <if test="ndrw.aab301 != null and ndrw.aab301 !=''  ">
+      and n.AAB301 like #{ndrw.aab301,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.isnext != null and ndrw.isnext !=''  and ndrw.clickaab301 =='610100000000'.toString()">
+      and n.AAB301 not in ('610181000000','610182000000','610183000000','610184000000','610185000000')
+    </if>
+      <if test="ndrw.xzqhbm != null and ndrw.xzqhbm !=''  ">
+          and  n.XZQHBM = #{ndrw.xzqhbm,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.xzqhmc != null and ndrw.xzqhmc !=''  ">
+          and n.XZQHMC = #{ndrw.xzqhmc,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.zyjyrw != null and ndrw.zyjyrw !=''  ">
+          and n.ZYJYRW = #{ndrw.zyjyrw,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.zzcyrw != null and ndrw.zzcyrw !=''  ">
+          and n.ZZCYRW = #{ndrw.zzcyrw,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.jnpxrw != null and ndrw.jnpxrw !=''  ">
+          and  n.JNPXRW = #{ndrw.jnpxrw,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.cypxrw != null and ndrw.cypxrw !=''  ">
+          and  n.CYPXRW = #{ndrw.cypxrw,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.aae036 != null and ndrw.aae036 !=''  ">
+          and  n.AAE036 = #{ndrw.aae036,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ndrw.aae011 != null and ndrw.aae011 !=''  ">
+          and  n.AAE011 = #{ndrw.aae011,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.aae100 != null and ndrw.aae100 !=''  ">
+          and  n.AAE100 = #{ndrw.aae100,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.updateby != null and ndrw.updateby !=''  ">
+          and  n.UPDATEBY = #{ndrw.updateby,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.updatedate != null and ndrw.updatedate !=''  ">
+          and n.UPDATEDATE = #{ndrw.updatedate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ndrw.createby != null and ndrw.createby !=''  ">
+          and n.CREATEBY = #{ndrw.createby,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.deleteby != null and ndrw.deleteby !=''  ">
+          and  n.DELETEBY = #{ndrw.deleteby,jdbcType=VARCHAR}
+      </if>
+      <if test="ndrw.deletedate != null and ndrw.deletedate !=''  ">
+          and  n.DELETEDATE = #{ndrw.deletedate,jdbcType=TIMESTAMP}
+      </if>
+  </select>
+
+
+
+  <select id="checkNdrwByAab301" resultType="java.lang.String" parameterType="java.lang.String" >
+    select NDRWID, XZQHBM, XZQHMC, ZYJYRW, ZZCYRW, JNPXRW, CYPXRW, AAE036, AAE011, AAE100, UPDATEBY,
+    UPDATEDATE, CREATEBY, DELETEBY, DELETEDATE, AAB301,NIANDU, AAE102
+    from NDRW n
+    where  aae100='1'
+    <if test="ndrw.aab301 != null and ndrw.aab301 !=''  ">
+      and n.AAB301 like #{ndrw.aab301,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.niandu != null and ndrw.niandu !=''  ">
+      and  n.niandu = #{ndrw.niandu,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.xzqhbm != null and ndrw.xzqhbm !=''  ">
+      and  n.XZQHBM = #{ndrw.xzqhbm,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.xzqhmc != null and ndrw.xzqhmc !=''  ">
+      and n.XZQHMC = #{ndrw.xzqhmc,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.zyjyrw != null and ndrw.zyjyrw !=''  ">
+      and n.ZYJYRW = #{ndrw.zyjyrw,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.zzcyrw != null and ndrw.zzcyrw !=''  ">
+      and n.ZZCYRW = #{ndrw.zzcyrw,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.jnpxrw != null and ndrw.jnpxrw !=''  ">
+      and  n.JNPXRW = #{ndrw.jnpxrw,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.cypxrw != null and ndrw.cypxrw !=''  ">
+      and  n.CYPXRW = #{ndrw.cypxrw,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.aae036 != null and ndrw.aae036 !=''  ">
+      and  n.AAE036 = #{ndrw.aae036,jdbcType=TIMESTAMP}
+    </if>
+    <if test="ndrw.aae011 != null and ndrw.aae011 !=''  ">
+      and  n.AAE011 = #{ndrw.aae011,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.aae100 != null and ndrw.aae100 !=''  ">
+      and  n.AAE100 = #{ndrw.aae100,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.updateby != null and ndrw.updateby !=''  ">
+      and  n.UPDATEBY = #{ndrw.updateby,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.updatedate != null and ndrw.updatedate !=''  ">
+      and n.UPDATEDATE = #{ndrw.updatedate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="ndrw.createby != null and ndrw.createby !=''  ">
+      and n.CREATEBY = #{ndrw.createby,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.deleteby != null and ndrw.deleteby !=''  ">
+      and  n.DELETEBY = #{ndrw.deleteby,jdbcType=VARCHAR}
+    </if>
+    <if test="ndrw.deletedate != null and ndrw.deletedate !=''  ">
+      and  n.DELETEDATE = #{ndrw.deletedate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+</mapper>

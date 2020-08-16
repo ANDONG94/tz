@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>公司信息</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/hjia/cropper/cropper.min.css">
+    <link rel="stylesheet" href="/css/hjia/cropper/ImgCropping.css">
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Sk8VMvAKhgwMVGmprHAjAntwulhVCrZq"></script>
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>公司信息</h5>
+
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="companyForm">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">公司名称：</label>
+                            <div class="col-sm-3">
+                                <input id="id" name="id" type="hidden"/>
+                                <input id="companyname" name="companyname"  type="text" class="form-control" required="" aria-required="true">
+                            </div>
+                            <label class="col-sm-2 control-label">联系电话：</label>
+                            <div class="col-sm-3">
+                                <input id="phone" name="phone"  type="text" class="form-control" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">E-mail：</label>
+                            <div class="col-sm-3">
+                                <input id="email" name="email"  type="text" class="form-control" required="" aria-required="true">
+                            </div>
+                            <label class="col-sm-2 control-label">QQ号：</label>
+                            <div class="col-sm-3">
+                                <input id="qq" name="qq"  type="text" class="form-control" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">联系人1：</label>
+                            <div class="col-sm-3">
+                                <input id="contectperson1" name="contectperson1"  type="text" class="form-control" required="" aria-required="true">
+                            </div>
+                            <label class="col-sm-2 control-label">手机号码1：</label>
+                            <div class="col-sm-3">
+                                <input id="mobilephome1" name="mobilephome1"  type="text" class="form-control" required="" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">联系人2：</label>
+                            <div class="col-sm-3">
+                                <input id="contectperson2" name="contectperson2"  type="text" class="form-control" >
+                            </div>
+                            <label class="col-sm-2 control-label">手机号码2：</label>
+                            <div class="col-sm-3">
+                                <input id="mobilephome2" name="mobilephome2"  type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">联系人3：</label>
+                            <div class="col-sm-3">
+                                <input id="contectperson3" name="contectperson3"  type="text" class="form-control" >
+                            </div>
+                            <label class="col-sm-2 control-label">手机号码3：</label>
+                            <div class="col-sm-3">
+                                <input id="mobilephome3" name="mobilephome3"  type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">公司地址：</label>
+                            <div class="col-sm-3">
+                                <input id="address" name="address"  type="text" class="form-control" required="" aria-required="true">
+                            </div>
+                            <label class="col-sm-2 control-label">详细地址：</label>
+                            <div class="col-sm-3">
+                                <input id="detail" name="detail"  type="text" class="form-control" required="" aria-required="true">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">公司介绍：</label>
+                            <div class="col-sm-8">
+                                <textarea id="introduce" name="introduce" class="form-control" required="" aria-required="true"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-3">
+                                <button class="btn btn-primary" onclick="saveCompany()">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+
+   <div id="l-map" style="height:300px;width:100%;"></div>
+<div id="r-result">请输入:<input type="text" id="suggestId" size="20" value="百度" style="width:150px;" /></div>
+<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+
+
+<button id="replaceImg" class="l-btn">更换图片</button>
+<div style="width: 320px;height: 320px;border: solid 1px #555;padding: 5px;margin-top: 10px">
+    <img id="finalImg" src="" width="100%">
+</div>
+
+
+<!--图片裁剪框 start-->
+<div style="display: none;" class="tailoring-container">
+    <div class="black-cloth" onclick="closeTailor(this)"></div>
+    <div class="tailoring-content">
+        <div class="tailoring-content-one">
+            <label title="上传图片" for="chooseImg" class="l-btn choose-btn">
+                <input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hidden" onchange="selectImg(this)">
+                选择图片
+            </label>
+            <div class="close-tailoring"  onclick="closeTailor(this)">×</div>
+        </div>
+        <div class="tailoring-content-two">
+            <div class="tailoring-box-parcel">
+                <img id="tailoringImg">
+            </div>
+            <div class="preview-box-parcel">
+                <p>图片预览：</p>
+                <div class="square previewImg"></div>
+                <div class="circular previewImg"></div>
+            </div>
+        </div>
+        <div class="tailoring-content-three">
+            <button class="l-btn cropper-reset-btn">复位</button>
+            <button class="l-btn cropper-rotate-btn">旋转</button>
+            <button class="l-btn cropper-scaleX-btn">换向</button>
+            <button class="l-btn sureCut" id="sureCut">确定</button>
+        </div>
+    </div>
+</div>
+<!--图片裁剪框 end-->
+
+<script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+<script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+<script src="/js/hjia/content.min.js?v=1.0.0"></script>
+<script src="/js/hjia/plugins/validate/jquery.validate.min.js"></script>
+<script src="/js/hjia/plugins/validate/messages_zh.min.js"></script>
+<script src="/js/hjia/demo/form-validate-demo.min.js"></script>
+<script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+
+<script src="/js/hjia/cropper/cropper.min.js"></script>
+</body>
+
+
+<script>
+    
+    $(function () {
+        queryCompany();
+    })
+
+
+    /**
+     * 查询公司信息
+     */
+    function queryCompany(){
+        $.ajax({
+            url:"/company/queryCompany",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:"",    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    $("#id").val(data.id);
+                    $("#companyname").val(data.companyname);
+                    $("#phone").val(data.phone);
+                    $("#email").val(data.email);
+                    $("#qq").val(data.qq);
+                    $("#contectperson1").val(data.contectperson1);
+                    $("#mobilephome1").val(data.mobilephome1);
+                    if(data.contectperson2 != null){
+                        $("#contectperson2").val(data.contectperson2);
+                    }
+                    if(data.mobilephome2 != null){
+                        $("#mobilephome2").val(data.mobilephome2);
+                    }
+                    if(data.contectperson3 != null){
+                        $("#contectperson3").val(data.contectperson3);
+                    }
+                    if(data.mobilephome3 != null){
+                        $("#mobilephome3").val(data.mobilephome3);
+                    }
+                    if(data.wechatimg != null){
+                        $("#wechatimg").val(data.wechatimg);
+                    }
+
+                    $("#address").val(data.address);
+                    $("#detail").val(data.detail);
+                    $("#introduce").val(data.introduce);
+
+                }
+            },
+            complete:function(){
+
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     * 保存公司信息
+     */
+    function saveCompany(){
+        $.ajax({
+            url:"/company/saveCompany",    //请求的url地址
+            dataType:"text",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:$('#companyForm').serialize(),    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    //请求完成的处理
+                    swal("保存成功！", "您已经成功保存了这条信息。", "success");
+                }
+            },
+            complete:function(){
+
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    //弹出框水平垂直居中
+    (window.onresize = function () {
+        var win_height = $(window).height();
+        var win_width = $(window).width();
+        if (win_width <= 768){
+            $(".tailoring-content").css({
+                "top": (win_height - $(".tailoring-content").outerHeight())/2,
+                "left": 0
+            });
+        }else{
+            $(".tailoring-content").css({
+                "top": (win_height - $(".tailoring-content").outerHeight())/2,
+                "left": (win_width - $(".tailoring-content").outerWidth())/2
+            });
+        }
+    })();
+
+    //弹出图片裁剪框
+    $("#replaceImg").on("click",function () {
+        $(".tailoring-container").toggle();
+    });
+    //图像上传
+    function selectImg(file) {
+        if (!file.files || !file.files[0]){
+            return;
+        }
+        var reader = new FileReader();
+        reader.onload = function (evt) {
+            var replaceSrc = evt.target.result;
+            //更换cropper的图片
+            $('#tailoringImg').cropper('replace', replaceSrc,false);//默认false，适应高度，不失真
+        }
+        reader.readAsDataURL(file.files[0]);
+    }
+    //cropper图片裁剪
+    $('#tailoringImg').cropper({
+        aspectRatio: 1/1,//默认比例
+        preview: '.previewImg',//预览视图
+        guides: false,  //裁剪框的虚线(九宫格)
+        autoCropArea: 0.5,  //0-1之间的数值，定义自动剪裁区域的大小，默认0.8
+        movable: false, //是否允许移动图片
+        dragCrop: true,  //是否允许移除当前的剪裁框，并通过拖动来新建一个剪裁框区域
+        movable: true,  //是否允许移动剪裁框
+        resizable: true,  //是否允许改变裁剪框的大小
+        zoomable: false,  //是否允许缩放图片大小
+        mouseWheelZoom: false,  //是否允许通过鼠标滚轮来缩放图片
+        touchDragZoom: true,  //是否允许通过触摸移动来缩放图片
+        rotatable: true,  //是否允许旋转图片
+        crop: function(e) {
+            // 输出结果数据裁剪图像。
+        }
+    });
+    //旋转
+    $(".cropper-rotate-btn").on("click",function () {
+        $('#tailoringImg').cropper("rotate", 45);
+    });
+    //复位
+    $(".cropper-reset-btn").on("click",function () {
+        $('#tailoringImg').cropper("reset");
+    });
+    //换向
+    var flagX = true;
+    $(".cropper-scaleX-btn").on("click",function () {
+        if(flagX){
+            $('#tailoringImg').cropper("scaleX", -1);
+            flagX = false;
+        }else{
+            $('#tailoringImg').cropper("scaleX", 1);
+            flagX = true;
+        }
+        flagX != flagX;
+    });
+
+    //裁剪后的处理   点击确定的方法
+    $("#sureCut").on("click",function () {
+        if ($("#tailoringImg").attr("src") == null ){
+            return false;
+        }else{
+            var cas = $('#tailoringImg').cropper('getCroppedCanvas');//获取被裁剪后的canvas
+            var base64url = cas.toDataURL('image/png'); //转换为base64地址形式
+            $("#finalImg").prop("src",base64url);//显示为图片的形式
+
+            //调用图片上传到服务器的方法
+            saveWechatimg(base64url);
+
+            //关闭裁剪框
+            closeTailor();
+        }
+    });
+    //关闭裁剪框
+    function closeTailor() {
+        $(".tailoring-container").toggle();
+    }
+
+
+    /**
+     * 保存公司微信图片
+     */
+    function saveWechatimg(imgpath){
+        var id = $("#id").val();
+        $.ajax({
+            url:"/company/saveWechatimg",    //请求的url地址
+            dataType:"text",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"imgpath":imgpath,"id":id},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    //请求完成的处理
+                    swal("保存成功！", "您已经成功保存了这条信息。", "success");
+                }
+            },
+            complete:function(){
+
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+
+    // 百度地图API功能
+    function G(id) {
+        return document.getElementById(id);
+    }
+
+    var map = new BMap.Map("l-map");
+    map.centerAndZoom("北京",12);                   // 初始化地图,设置城市和地图级别。
+
+    var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+        {"input" : "suggestId"
+            ,"location" : map
+        });
+
+    ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+        var str = "";
+        var _value = e.fromitem.value;
+        var value = "";
+        if (e.fromitem.index > -1) {
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+        value = "";
+        if (e.toitem.index > -1) {
+            _value = e.toitem.value;
+            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        }
+        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+        G("searchResultPanel").innerHTML = str;
+    });
+
+    var myValue;
+    ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+        var _value = e.item.value;
+        myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+        G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+
+        setPlace();
+    });
+
+    function setPlace(){
+        map.clearOverlays();    //清除地图上所有覆盖物
+        function myFun(){
+            var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+            map.centerAndZoom(pp, 18);
+            map.addOverlay(new BMap.Marker(pp));    //添加标注
+        }
+        var local = new BMap.LocalSearch(map, { //智能搜索
+            onSearchComplete: myFun
+        });
+        local.search(myValue);
+    }
+
+</script>
+</html>

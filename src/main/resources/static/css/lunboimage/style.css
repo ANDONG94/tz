@@ -1,0 +1,245 @@
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #333
+}
+
+img {
+    border: none
+}
+
+ul,
+li {
+    list-style: none
+}
+
+a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.cl:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0
+}
+
+.cl {
+    zoom: 1
+}
+
+.successlunbo {
+    width: 900px;
+    margin:0 auto 45px;
+}
+/* sildes css begin */
+
+.control {
+    width: 757px;
+    height: 600px;
+    background: #282828;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.change li {
+    width: 757px;
+    overflow: hidden;
+    text-align: center
+}
+/* 图片垂直居中,不是很准确 */
+
+.change li .imgWrap {
+    display: table-cell;
+    width: 757px;
+    height: 600px;
+    vertical-align: middle;
+    cursor: pointer;
+    *font-size: 500px;
+}
+
+.change li img {
+    max-width: 757px;
+    max-height: 600px;
+    width: expression(this.width > 757 && this.width > this.height ? 600: true);
+    height: expression(this.height >757 ? 600: true);
+    vertical-align: middle;
+    overflow: hidden
+}
+/* 描述部分 */
+
+.change li .textDesc {
+    width: 100%;
+    height: 35px;
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    text-align: left;
+    overflow: hidden;
+}
+
+.change li .opacity {
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #000;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+}
+
+.change li .title {
+    padding: 10px 15px 0;
+    color: #e6e6e6;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.change li .title a {
+    color: #e6e6e6;
+}
+/*.change li .text{color:#b7b7b7;line-height:18px;padding:5px 15px;font-size:12px;}*/
+/* 翻页按钮 */
+
+.ssprev,
+.ssnext {
+    width: 49px;
+    height: 49px;
+    position: absolute;
+    bottom: 300px;
+    color: #FFF;
+    font-size: 14px;
+    z-index: 9;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none
+}
+
+.ssprev span,
+.ssnext span {
+    display: none;
+}
+.ssprev {
+    left: 0;
+    background: url(../images/arrows_01.png) no-repeat;
+    _filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src="../images/arrows_01.png");
+    _background: none
+}
+.ssnext {
+    right: 0;
+    background: url(../images/arrows_02.png) no-repeat;
+    _filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src="../images/arrows_02.png");
+    _background: none
+}
+/* 分页 */
+.pageClass {
+    text-align: center;
+    z-index: 9;
+    position: absolute;
+    top: 50px;
+    padding-top: 10px;
+}
+.pageClass a {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+    overflow: hidden;
+    border: 1px solid #bebebe;
+    background: #bebebe;
+    border-radius: 5px;
+    outline: none
+}
+.pageClass a span {
+    display: none
+}
+.pageClass a:hover,
+.pageClass a.cur {
+    border: 1px solid #be230a;
+    background: #be230a
+}
+/* 缩图部分 */
+
+.thumbWrap {
+    width: 145px;
+    height: 600px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #0d0d0d;
+    overflow: hidden;
+}
+
+.thumbWrap .thumbCont {
+    height: 516px;
+    margin: 45px auto 0;
+    overflow: hidden;
+    position: relative;
+    width: 134px;
+}
+.thumbWrap ul li {
+    /*height: 92px;*/
+    overflow: hidden;
+    padding-bottom: 13px;
+    padding-left: 10px;
+    text-align: center;
+    width: 127px;
+}
+.thumbWrap ul li div {
+    display: table-cell;
+    width: 127px;
+    height: 92px;
+    vertical-align: middle;
+    cursor: pointer;
+    *font-size: 79px;
+}
+.thumbWrap ul li img {
+    max-width: 127px;
+    max-height: 92px;
+    width: expression(this.width > 127 && this.width > this.height ? 127: true);
+    height: expression(this.height >89 ? 89: true);
+    vertical-align: middle;
+    overflow: hidden
+}
+.thumbWrap ul li.cur {}
+/* 缩图按钮 */
+.thumbPrev,
+.thumbNext {
+    width: 100px;
+    height: 24px;
+    text-align: center;
+    position: absolute;
+    color: #000;
+    z-index: 9;
+    outline: none
+}
+.thumbPrev span,
+.thumbNext span {
+    display: none;
+}
+.thumbPrev {
+    left: 25px;
+    top: 15px;
+    background: url(../images/sprev.png) no-repeat;
+}
+.thumbNext {
+    left: 25px;
+    bottom: 10px;
+    background: url(../images/snext.png) no-repeat;
+}

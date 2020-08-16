@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>登录页面--欢迎</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+    <link href="css/hjia/bootstrap.min.css" rel="stylesheet">
+    <link href="css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/hjia/animate.min.css" rel="stylesheet">
+    <link href="css/hjia/style.min.css" rel="stylesheet">
+    <link href="css/hjia/login.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>
+        if(window.top!==window.self){window.top.location=window.location};
+    </script>
+
+    <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="/js/ztree/css/zTreeStyle.css" rel="stylesheet">
+    <link href="/css/plugins/dataTables/dataTables.bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
+    <script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/js/hjia/content.min.js?v=1.0.0"></script>
+
+
+    <script src="/js/hjia/plugins/jeditable/jquery.jeditable.js"></script>
+    <script src="/js/hjia/content.min.js?v=1.0.0"></script>
+    <script src="/js/hjia/plugins/layer/layer.min.js"></script>
+    <script src="/js/hjia/demo/layer-demo.min.js"></script>
+    <script src="/js/hjia/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/js/hjia/plugins/validate/messages_zh.min.js"></script>
+    <script src="/js/hjia/demo/form-validate-demo.min.js"></script>
+    <script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="/js/ztree/jquery.ztree.core.js"></script>
+    <script src="/js/ztree/jquery.ztree.excheck.js"></script>
+    <script src="/js/ztree/jquery.ztree.exedit.js"></script>
+    <link title="orange" href="css/login.css" rel="stylesheet" type="text/css"/>
+
+
+<style>
+   /* html {
+        filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+        -webkit-filter: grayscale(100%);
+    }*/
+    .form-control{margin-top: 0px}
+</style>
+    <style>
+        #verify {
+            height: 34px;
+            vertical-align: top;
+            font-size: 16px;
+        }
+
+        #code_img {
+            width: 100px;
+            height: 40px;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        /*setup*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        @font-face {
+            font-family: 'Monoton';
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Iceland';
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Pacifico';
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'PressStart';
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Audiowide';
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Vampiro One';
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        body{
+            background-color: #222222;
+        }
+
+        #container{
+            width:500px;
+            margin:auto;
+        }
+
+
+        /*neeeeoooon*/
+        p{
+            text-align:center;
+            font-size:3.5em;
+            margin:20px 0 20px 0;
+        }
+
+        a{
+            text-decoration:none;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        p:nth-child(1) a{
+            color:#011eff;
+            font-family:Vampiro One;
+        }
+        p:nth-child(1){
+            -webkit-animation: neon6 1.5s ease-in-out infinite alternate;
+            -moz-animation: neon6 1.5s ease-in-out infinite alternate;
+            animation: neon6 1.5s ease-in-out infinite alternate;
+        }
+
+        p a:hover{
+            color:#ffffff;
+        }
+
+
+
+        /*glow for webkit*/
+        @-webkit-keyframes neon1 {
+            from {
+                text-shadow: 0 0 10px #fff,
+                0 0 20px  #fff,
+                0 0 30px  #fff,
+                0 0 40px  #FF1177,
+                0 0 70px  #FF1177,
+                0 0 80px  #FF1177,
+                0 0 100px #FF1177,
+                0 0 150px #FF1177;
+            }
+            to {
+                text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #FF1177,
+                0 0 35px #FF1177,
+                0 0 40px #FF1177,
+                0 0 50px #FF1177,
+                0 0 75px #FF1177;
+            }
+        }
+
+
+
+        /*glow for mozilla*/
+        @-moz-keyframes neon1 {
+            from {
+                text-shadow: 0 0 10px #fff,
+                0 0 20px  #fff,
+                0 0 30px  #fff,
+                0 0 40px  #FF1177,
+                0 0 70px  #FF1177,
+                0 0 80px  #FF1177,
+                0 0 100px #FF1177,
+                0 0 150px #FF1177;
+            }
+            to {
+                text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #FF1177,
+                0 0 35px #FF1177,
+                0 0 40px #FF1177,
+                0 0 50px #FF1177,
+                0 0 75px #FF1177;
+            }
+        }
+
+
+
+        /*glow*/
+        @keyframes neon1 {
+            from {
+                text-shadow: 0 0 10px #fff,
+                0 0 20px  #fff,
+                0 0 30px  #fff,
+                0 0 40px  #FF1177,
+                0 0 70px  #FF1177,
+                0 0 80px  #FF1177,
+                0 0 100px #FF1177,
+                0 0 150px #FF1177;
+            }
+            to {
+                text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #FF1177,
+                0 0 35px #FF1177,
+                0 0 40px #FF1177,
+                0 0 50px #FF1177,
+                0 0 75px #FF1177;
+            }
+        }
+
+
+
+
+
+        @keyframes neon6 {
+            from {
+                text-shadow: 0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 40px #ff00de,
+                0 0 70px #ff00de,
+                0 0 80px #ff00de,
+                0 0 100px #ff00de,
+                0 0 150px #ff00de;
+            }
+            to {
+                text-shadow: 0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #fff,
+                0 0 20px #ff00de,
+                0 0 35px #ff00de,
+                0 0 40px #ff00de,
+                0 0 50px #ff00de,
+                0 0 75px #ff00de;
+            }
+        }
+
+
+        /*REEEEEEEEEEESPONSIVE*/
+        @media (max-width: 650px) {
+
+            #container{
+                width: 100%;
+            }
+
+            p{
+                font-size:3.5em;
+            }
+
+        }
+    </style>
+</head>
+
+<body class="signin">
+
+<div>
+    <p style="color:#011eff;font-family:Vampiro One;margin-left: -50%"><a href="#">
+        陕西省就业扶贫台账系统
+    </a>
+    </p>
+</div>
+<div class="login">
+    <header>
+        <h1>欢迎使用</h1>
+    </header>
+    <div class="sr">
+        <form  action="javascript:void(0);">
+            <!--<h4 class="no-margins">登录：</h4>
+            <p class="m-t-md">登录到陕西省就业扶贫台账系统</p>-->
+            <input type="hidden" class="form-control" id="rand" name="rand">
+            <input type="text" id="user_name"  name="user_name" class="form-control uname" placeholder="用户名" />
+            <input type="password" id="pass_word" name="pass_word" class="form-control pword m-b" placeholder="密码" />
+            <input type="text" class="form-control" id="verify" name="verify" style="width:60%" placeholder="验证码">
+                <canvas width="100" height="40" id="verifyCanvas"></canvas>
+                <img id="code_img" style="float: right;margin-top: -14%;">
+            <a href="javascript:void(0);" data-toggle='modal' data-target='#register_add'>忘记密码&raquo;&raquo;&raquo;</a>
+            <button class="btn btn-success btn-block" onclick="login_user()">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+        </form>
+    </div>
+</div>
+
+<div class="signup-footer" style="margin: 0px; padding-top: 0px">
+    <div style="text-align: center;color: blue">
+        &copy;2019 西安艾克瑞信息技术有限责任公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+</div>
+
+
+
+<div class="modal inmodal" id="register_add" tabindex="-1" role="dialog" aria-hidden="true" >
+    <div class="modal-dialog" style="margin:auto;width:600px">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 10px 15px;text-align: left">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                </button>
+                <h6 id="register_head" class="modal-title" style="font-size:16px;color: black">重置密码</h6>
+            </div>
+            <div class="modal-body" style="background: #0f0d63;padding: 0">
+                <form class="form-horizontal" id="registerForm" rules="form"  action="#" method="post">
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">真实姓名*：<span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input id="realname" name="realname" placeholder="请输入真实姓名..."  type="text" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">手机号码：<span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input id="mobilephome" onchange="telphone(this.value)" name="mobilephome" placeholder="请输入手机号码..." type="text" style="margin-top:0px;background: #cabdbd" class="form-control" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">身份证号：<span style="color: red">*</span><span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input id="idcard" name="idcard" onchange="idcardvaldit(this.value)" placeholder="请输入身份证号..." type="text" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer" style="text-align: center;padding: 8px">
+                <button type="button" class="btn btn-primary" onclick="registerSave()">重置</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-white" onclick="clean()" style="background: #825858">清空</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--模态窗口  登录弹出  div-->
+<!--<div class="modal inmodal" id="register_add" tabindex="-1" role="dialog" aria-hidden="true" >
+    <div class="modal-dialog" style="margin:auto;width:600px">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 10px 15px;text-align: left">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                </button>
+                <h6 id="register_head" class="modal-title" style="font-size:16px;color: black">用户注册</h6>
+            </div>
+            <div class="modal-body" style="background: #0f0d63;padding: 0">
+                <form class="form-horizontal" id="registerForm" rules="form"  action="#" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">行政区划：<span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input name="aab301" id="aab301" type="hidden">
+                            <input id="aab301_name" name="aab301_name" type="text" style="margin-top:0px;background: #cabdbd" onclick="showMenu(); return false;"
+                                   class="form-control" placeholder="请选择行政区划"/>
+                        </div>
+                        <div id="menuContent" class="menuContent" style="display: none;background: #f9f9f9;
+                             position: absolute;z-index: 10">
+                            <ul id="tree-div" class="ztree col-sm-8" style="margin-top: 0;">
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">真实姓名*：<span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input id="realname" name="realname" placeholder="请输入真实姓名..."  type="text" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">用户类型：<span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <select id="usertype"  class="form-control" style="margin-top:0px;background: #cabdbd" name="usertype" required="required"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">手机号码：<span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input id="mobilephome" onchange="telphone(this.value)" name="mobilephome" placeholder="请输入手机号码..." type="text" style="margin-top:0px;background: #cabdbd" class="form-control" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">身份证号：<span style="color: red">*</span><span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input id="idcard" name="idcard" onchange="idcardvaldit(this.value)" placeholder="请输入身份证号..." type="text" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">登录用户名：<span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input id="username" name="username" placeholder="请输入登录用户名..."  type="text" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">密码：<span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input id="password" name="password" placeholder="请输入密码..." type="password" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">确认密码：<span style="color: red">*</span></label>
+                        <div class="col-sm-6">
+                            <input id="password_2" name="password_2" placeholder="请输入确认密码..." type="password" class="form-control" style="margin-top:0px;background: #cabdbd" required="required" aria-required="true">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer" style="text-align: center;padding: 8px">
+                <button type="button" class="btn btn-primary" onclick="registerSave()">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-white" onclick="clean()" style="background: #825858">清空</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+<!--模态窗口  培训信息  div-->
+</div>
+
+
+
+</body>
+<script>
+    window.onload = function(){
+        //屏蔽键盘事件
+        document.onkeydown = function (){
+            var e = window.event || arguments[0];
+            //F12
+            if(e.keyCode == 123){
+                return false;
+                //Ctrl+Shift+I
+            }else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+                return false;
+                //Shift+F10
+            }else if((e.shiftKey) && (e.keyCode == 121)){
+                return false;
+                //Ctrl+U
+            }else if((e.ctrlKey) && (e.keyCode == 85)){
+                return false;
+            }
+        };
+        //屏蔽鼠标右键
+        document.oncontextmenu = function (){
+            return false;
+        }
+    }
+
+
+    $(function(){
+        queryParam('AAA015','usertype');//用户类型
+        // $.fn.zTree.init($("#tree-div"), sys_perm_setting);
+    })
+
+
+    function clean() {
+        $("input").val('');
+        $("#usertype").prop("value","");
+    }
+
+    /**
+     * 重置密码
+     * @param username
+     */
+    function registerSave(){
+
+        if(checkAll() == 1) {
+            $.ajax({
+                url: "/register/update",    //请求的url地址
+                dataType: "text",   //返回格式为json
+                async: false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data: $('#registerForm').serialize(),    //参数值
+                type: "POST",   //请求方式
+                beforeSend: function () {
+                    //请求前的处理
+                },
+                success: function (data) {
+                    //请求成功时处理
+                    if (data != null && data != undefined) {
+                        if (data != 'fail') {
+                            $('#register_add').modal('hide');//隐藏弹出
+                            swal("重置密码成功！", "您已经成功重置密码，账户名为《" + data + "》,密码为《123456》。", "success");
+                        } else {
+                            swal({
+                                title: "重置密码失败！",
+                                text: "你填写的信息有误，请重新填写。",
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                        }
+
+                    }
+                },
+                complete: function () {
+
+                },
+                error: function () {
+                    //请求出错处理
+                }
+            });
+        }
+    }
+
+
+   /* /!**
+     * 注册保存
+     * @param username
+     *!/
+    function registerSave(){
+
+        if(checkAll() == 1){
+            var pass1 = $("#password").val();
+            var ps2 = $("#password_2").val();
+            if(pass1 == ps2){
+                $.ajax({
+                    url:"/register/save",    //请求的url地址
+                    dataType:"text",   //返回格式为json
+                    async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                    data:$('#registerForm').serialize(),    //参数值
+                    type:"POST",   //请求方式
+                    beforeSend:function(){
+                        //请求前的处理
+                    },
+                    success:function(data){
+                        //请求成功时处理
+                        if(data != null && data != undefined){
+                            if(data == 'success'){
+                                $('#register_add').modal('hide');//隐藏弹出
+                                swal("注册成功！", "您已经成功注册了，请登录系统。", "success");
+                            }else{
+                                swal("注册失败！", "请联系管理员。", "fail");
+                            }
+
+                        }
+                    },
+                    complete:function(){
+
+                    },
+                    error:function(){
+                        //请求出错处理
+                    }
+                });
+            }else{
+                swal({
+                    title:"警告！！！",
+                    text:"两次密码不一样，请查证后再注册！！！。"
+                });
+                $("#password_2").focus();
+            }
+        }
+
+    }*/
+
+    /**
+     * 点击登录的方法
+     */
+    function loginUserName(username){
+        if(username != null && username != ''){
+            //通过ajax  调用后台方法
+            $.ajax({
+                async : true,
+                dataType:"text",   //返回格式为text
+                cache : false,
+                type : 'get',
+                data: {username: username},
+                url :  '/loginUserName',
+                success : function(data) { //请求成功后处理函数。
+                    if(data != 'success'){
+                        swal({
+                            title:"警告！！！",
+                            text:"用名不存在，请先注册！！！。"
+                        })
+                    }
+                }
+            });
+        }else{
+            swal({
+                title:"警告！！！",
+                text:"用户名不能为空，否则无法登录。"
+            })
+        }
+
+    }
+
+
+    /**
+     * 点击登录的方法
+     */
+    function login_user(){
+        var username = $("#user_name").val();
+        var password = $("#pass_word").val();
+        var rand = $("#rand").val();
+        var verify = $("#verify").val();//输入的验证码
+        rand = rand.replace(/,/g, "");
+        var yanzhengma=rand.toLowerCase();//转为小写
+        verify = verify.toLowerCase();//转为小写
+        if(username != null && username != '' && password != null && password !='' && verify != null && verify !=''){
+            //通过ajax  调用后台方法
+            if(verify == yanzhengma){
+                $.ajax({
+                    async : false,
+                    dataType:"text",   //返回格式为text
+                    cache : false,
+                    type : 'get',
+                    data: {username: username, password: password},
+                    url :  '/loginValidate',
+                    success : function(data) { //请求成功后处理函数。
+                        if(data != null && data !=''){
+
+                            if (data=='2') {
+                                swal({
+                                    title:"警告！！！",
+                                    text:"用户名不存在！"
+                                })
+                            }else if (data=='3') {
+                                swal({
+                                    title:"警告！！！",
+                                    text:"密码错误！"
+                                })
+                            }else if(data=='1'){
+                                window.location.href = "/indexa"; //主页面
+                            }
+                        }else{
+                            swal({
+                                title:"警告！！！",
+                                text:"用名不存在请重新登录。"
+                            })
+                        }
+                    }
+                });
+            }else{
+                swal({
+                    title:"验证码输入错误！！！",
+                    text:"验证码不正确，请输入正确的验证码。",
+                    timer: 2000,
+                    showConfirmButton: false
+                })
+                $('#verifyCanvas').remove();
+                $('#verify').after('<canvas width="100" height="40" id="verifyCanvas"></canvas>')
+                drawCode();
+                $("#verify").focus().val("");
+            }
+        }else{
+            if(username == null || username == undefined || username == ''){
+                swal({
+                    title:"警告！！！",
+                    text:"用户名不能为空，否则无法登录。",
+                    timer: 2000,
+                    showConfirmButton: false
+                })
+            }
+            if(password == null || password == undefined || password == ''){
+                swal({
+                    title:"警告！！！",
+                    text:"密码不能为空，否则无法登录。",
+                    timer: 2000,
+                    showConfirmButton: false
+                })
+            }
+            if(verify == null || verify == undefined || verify == ''){
+                swal({
+                    title:"警告！！！",
+                    text:"验证码不能为空，否则无法登录。",
+                    timer: 2000,
+                    showConfirmButton: false
+                })
+            }
+        }
+
+    }
+
+    /**
+     * 查询参数，获取对应的下拉值
+     */
+    function queryParam(aaa100,id){
+        $("#"+id).empty();
+        $.ajax({
+            url:"/aa10/queryAa10",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"aaa100":aaa100},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    var options ="";
+                    options +="<option value=''>-- 请选择 --</option>";
+                    for(var i=0;i<data.length;i++){
+                        options +="<option value='"+data[i].aaa102+"'>"+data[i].aaa103+"</option>";
+                    }
+                    $("#"+id).append(options);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+
+    //保存前校验必填项是否都填写
+    function checkAll() {
+        var realname = $("#realname").val();
+        var aab301 = $("#aab301").val();
+        var usertype = $("#usertype").val();
+        var username = $("#username").val();
+        var mobilephome = $("#mobilephome").val();
+        var idcard = $("#idcard").val();
+        var password = $("#password").val();
+        var password_2 = $("#password_2").val();
+        var flag = 0;
+        if(realname =="" || realname == null){
+            swal({
+                title: "请输入真实姓名!",
+                text: "您好！真实姓名不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag;
+        }
+       /* if(aab301 =="" || aab301 == null){
+            swal({
+                title: "请选择行政区划!",
+                text: "您好！行政区划不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag;
+        }*/
+       /* if(usertype =="" || usertype == null){
+            swal({
+                title: "请选择用户类型!",
+                text: "您好！用户类型不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag;
+        }
+        if(username =="" || username == null){
+            swal({
+                title: "请输入登录用户名!",
+                text: "您好！登录用户名不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag;
+        }*/
+        if(mobilephome =="" || mobilephome == null){
+            swal({
+                title: "请输入请输入联系方式!",
+                text: "您好！联系方式不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag;
+        }
+        if(idcard =="" || idcard == null){
+            swal({
+                title: "请输入身份证号码!",
+                text: "您好！身份证号码不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag;
+        }
+        /*if(password =="" || password == null){
+            swal({
+                title: "请输入密码!",
+                text: "您好！密码不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag;
+        }
+        if(password_2 =="" || password_2 == null){
+            swal({
+                title: "请再次输入密码!",
+                text: "您好！再次输入密码不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag;
+        }*/
+        flag = 1;
+        return flag;
+    }
+
+    //手机号码校验
+    function telphone(tel){
+        var re = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+        if(!re.test(tel)){
+            $("#mobilephome").val("");
+
+            swal({
+                title: "手机号码错误!",
+                text: "您好！请输入正确的手机号码",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            $("#mobilephome").focus();
+        }
+    }
+
+    function idcardvaldit(card){
+        var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if(!pattern.test(card)){
+            $("#idcard").val();
+            swal({
+                title: "身份证错误!",
+                text: "您好！请输入正确的身份证号码",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            $("#idcard").focus();
+        }
+    }
+
+
+    /**
+     * 查询参数，获取对应的下拉值
+     */
+    function queryPoorXzqh(){
+        $.ajax({
+            url:"/register/queryPoorXzqh",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    var options ="";
+                    options +="<option value=''>-- 请选择 --</option>";
+                    for(var i=0;i<data.length;i++){
+                        options +="<option value='"+data[i].xzqhbm+"'>"+data[i].info+"</option>";
+                    }
+                    $("#aab301").append(options);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+    var sys_perm_setting = {
+        edit: {
+            drag:{
+                prev: true,
+                next: true,
+                inner:true
+            },
+            enable: true,
+            showRemoveBtn: false,
+            showRenameBtn: false
+        },
+        view: {
+            showLine: true,
+            nameIsHTML: true
+        },
+        check: {
+            enable: false,
+            chkboxType:  { "Y": "s", "N": "s" } //chkboxType: { “Y”: “ps”, “N”: “ps” } Y 属性定义 checkbox 被勾选后的情况;N 属性定义 checkbox 取消勾选后的情况;“p” 表示操作会影响父级节点;“s” 表示操作会影响子级节点;请注意大小写，不要改变
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                pIdKey: "parentid"
+            }
+        },
+        callback: {
+            onClick: onClick,
+            onAsyncSuccess:getTreeFirstNodeId
+        },
+        async: {
+            enable: true,
+            url:"/ztree/treedata",
+            autoParam:["groupid"]
+        }
+    };
+
+    function onClick(e, treeId, treeNode) {
+        $('#aab301_name').val(treeNode.name);
+        $('#aab301').val(treeNode.groupid);
+        $("#menuContent").fadeOut("fast");
+    }
+
+
+    var treetype;         // 获取登录用户级别   树默认展开第一级节点
+    function getTreeFirstNodeId(){
+        var treeObj = $.fn.zTree.getZTreeObj("tree-div");
+        var nodes = treeObj.getNodes();
+        var firstNode = nodes[0];
+        treeObj.expandNode(nodes[0], true);  treetype = firstNode.type;
+    }
+
+    function showMenu() {
+        var cityObj = $('#aab301');
+        var cityOffset = cityObj.offset();
+        $("#menuContent").css({ left: 29+ "%", top: 14.4+"%" }).slideDown("fast");
+        $("body").bind("mousedown", onBodyDown);
+    }
+    function hideMenu() {
+        $("#menuContent").fadeOut("fast");
+        $("body").unbind("mousedown", onBodyDown);
+    }
+    function onBodyDown(event) {
+        if (!(event.target.id == "menuBtn" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
+            hideMenu();
+        }
+    }
+
+</script>
+
+
+<script>
+    var nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+        'y', 'z'];
+
+    drawCode();
+    // 绘制验证码
+    function drawCode() {
+        var canvas = document.getElementById("verifyCanvas");  //获取HTML端画布
+        var context = canvas.getContext("2d");                 //获取画布2D上下文
+        context.fillStyle = "cornflowerblue";                  //画布填充色
+        context.fillRect(0, 0, canvas.width, canvas.height);   //清空画布
+        context.fillStyle = "white";                           //设置字体颜色
+        context.font = "25px Arial";                           //设置字体
+        var rand = new Array();
+        var x = new Array();
+        var y = new Array();
+        for (var i = 0; i < 5; i++) {
+            rand[i] = nums[Math.floor(Math.random() * nums.length)]
+            x[i] = i * 16 + 10;
+            y[i] = Math.random() * 20 + 20;
+            context.fillText(rand[i], x[i], y[i]);
+        }
+        $("#rand").val(rand);//将验证码设置的隐藏域
+        //画3条随机线
+        for (var i = 0; i < 3; i++) {
+            drawline(canvas, context);
+        }
+
+        // 画30个随机点
+        for (var i = 0; i < 30; i++) {
+            drawDot(canvas, context);
+        }
+        convertCanvasToImage(canvas)
+    }
+
+    // 随机线
+    function drawline(canvas, context) {
+        context.moveTo(Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height));             //随机线的起点x坐标是画布x坐标0位置，y坐标是画布高度的随机数
+        context.lineTo(Math.floor(Math.random() * canvas.width), Math.floor(Math.random() * canvas.height));  //随机线的终点x坐标是画布宽度，y坐标是画布高度的随机数
+        context.lineWidth = 0.5;                                                  //随机线宽
+        context.strokeStyle = 'rgba(50,50,50,0.3)';                               //随机线描边属性
+        context.stroke();                                                         //描边，即起点描到终点
+    }
+    // 随机点(所谓画点其实就是画1px像素的线，方法不再赘述)
+    function drawDot(canvas, context) {
+        var px = Math.floor(Math.random() * canvas.width);
+        var py = Math.floor(Math.random() * canvas.height);
+        context.moveTo(px, py);
+        context.lineTo(px + 1, py + 1);
+        context.lineWidth = 0.2;
+        context.stroke();
+
+    }
+    // 绘制图片
+    function convertCanvasToImage(canvas) {
+        document.getElementById("verifyCanvas").style.display = "none";
+        var image = document.getElementById("code_img");
+        image.src = canvas.toDataURL("image/png");
+        return image;
+    }
+
+    // 点击图片刷新
+    document.getElementById('code_img').onclick = function () {
+        $('#verifyCanvas').remove();
+        $('#verify').after('<canvas width="100" height="40" id="verifyCanvas"></canvas>')
+        drawCode();
+    }
+
+</script>
+
+
+</html>

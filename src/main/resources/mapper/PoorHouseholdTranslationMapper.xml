@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdkj.dao.DataStatistics.PoorHouseholdTranslationMapper">
+  <resultMap id="BaseResultMap" type="com.tdkj.model.PoorHouseholdTranslation">
+    <id column="AAB301" jdbcType="VARCHAR" property="aab301" />
+    <result column="XZQHMC" jdbcType="VARCHAR" property="xzqhmc" />
+    <result column="PHT001" jdbcType="VARCHAR" property="pht001" />
+    <result column="PHT002" jdbcType="VARCHAR" property="pht002" />
+    <result column="PHT003" jdbcType="VARCHAR" property="pht003" />
+    <result column="PHT004" jdbcType="VARCHAR" property="pht004" />
+    <result column="PHT005" jdbcType="VARCHAR" property="pht005" />
+    <result column="PHT006" jdbcType="VARCHAR" property="pht006" />
+    <result column="PHT007" jdbcType="VARCHAR" property="pht007" />
+    <result column="PHT008" jdbcType="VARCHAR" property="pht008" />
+    <result column="PHT009" jdbcType="VARCHAR" property="pht009" />
+    <result column="PHT010" jdbcType="VARCHAR" property="pht010" />
+    <result column="PHT011" jdbcType="VARCHAR" property="pht011" />
+    <result column="PARENTID" jdbcType="VARCHAR" property="parentid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AAB301, XZQHMC, PHT001, PHT002, PHT003, PHT004, PHT005, PHT006, PHT007, PHT008, PHT009, PHT010, PHT011, PARENTID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from POOR_HOUSEHOLD_TRANSLATION
+    where AAB301 = #{aab301,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from POOR_HOUSEHOLD_TRANSLATION
+    where AAB301 = #{aab301,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.PoorHouseholdTranslation">
+    insert into POOR_HOUSEHOLD_TRANSLATION (AAB301, XZQHMC, PHT001, 
+      PHT002, PHT003, PHT004, 
+      PHT005, PHT006, PHT007, 
+      PHT008, PARENTID)
+    values (#{aab301,jdbcType=VARCHAR}, #{xzqhmc,jdbcType=VARCHAR}, #{pht001,jdbcType=VARCHAR}, 
+      #{pht002,jdbcType=VARCHAR}, #{pht003,jdbcType=VARCHAR}, #{pht004,jdbcType=VARCHAR}, 
+      #{pht005,jdbcType=VARCHAR}, #{pht006,jdbcType=VARCHAR}, #{pht007,jdbcType=VARCHAR}, 
+      #{pht008,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdkj.model.PoorHouseholdTranslation">
+    insert into POOR_HOUSEHOLD_TRANSLATION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="aab301 != null">
+        AAB301,
+      </if>
+      <if test="xzqhmc != null">
+        XZQHMC,
+      </if>
+      <if test="pht001 != null">
+        PHT001,
+      </if>
+      <if test="pht002 != null">
+        PHT002,
+      </if>
+      <if test="pht003 != null">
+        PHT003,
+      </if>
+      <if test="pht004 != null">
+        PHT004,
+      </if>
+      <if test="pht005 != null">
+        PHT005,
+      </if>
+      <if test="pht006 != null">
+        PHT006,
+      </if>
+      <if test="pht007 != null">
+        PHT007,
+      </if>
+      <if test="pht008 != null">
+        PHT008,
+      </if>
+      <if test="parentid != null">
+        PARENTID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="aab301 != null">
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="xzqhmc != null">
+        #{xzqhmc,jdbcType=VARCHAR},
+      </if>
+      <if test="pht001 != null">
+        #{pht001,jdbcType=VARCHAR},
+      </if>
+      <if test="pht002 != null">
+        #{pht002,jdbcType=VARCHAR},
+      </if>
+      <if test="pht003 != null">
+        #{pht003,jdbcType=VARCHAR},
+      </if>
+      <if test="pht004 != null">
+        #{pht004,jdbcType=VARCHAR},
+      </if>
+      <if test="pht005 != null">
+        #{pht005,jdbcType=VARCHAR},
+      </if>
+      <if test="pht006 != null">
+        #{pht006,jdbcType=VARCHAR},
+      </if>
+      <if test="pht007 != null">
+        #{pht007,jdbcType=VARCHAR},
+      </if>
+      <if test="pht008 != null">
+        #{pht008,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.PoorHouseholdTranslation">
+    update POOR_HOUSEHOLD_TRANSLATION
+    <set>
+      <if test="xzqhmc != null">
+        XZQHMC = #{xzqhmc,jdbcType=VARCHAR},
+      </if>
+      <if test="pht001 != null">
+        PHT001 = #{pht001,jdbcType=VARCHAR},
+      </if>
+      <if test="pht002 != null">
+        PHT002 = #{pht002,jdbcType=VARCHAR},
+      </if>
+      <if test="pht003 != null">
+        PHT003 = #{pht003,jdbcType=VARCHAR},
+      </if>
+      <if test="pht004 != null">
+        PHT004 = #{pht004,jdbcType=VARCHAR},
+      </if>
+      <if test="pht005 != null">
+        PHT005 = #{pht005,jdbcType=VARCHAR},
+      </if>
+      <if test="pht006 != null">
+        PHT006 = #{pht006,jdbcType=VARCHAR},
+      </if>
+      <if test="pht007 != null">
+        PHT007 = #{pht007,jdbcType=VARCHAR},
+      </if>
+      <if test="pht008 != null">
+        PHT008 = #{pht008,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        PARENTID = #{parentid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where AAB301 = #{aab301,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.PoorHouseholdTranslation">
+    update POOR_HOUSEHOLD_TRANSLATION
+    set XZQHMC = #{xzqhmc,jdbcType=VARCHAR},
+      PHT001 = #{pht001,jdbcType=VARCHAR},
+      PHT002 = #{pht002,jdbcType=VARCHAR},
+      PHT003 = #{pht003,jdbcType=VARCHAR},
+      PHT004 = #{pht004,jdbcType=VARCHAR},
+      PHT005 = #{pht005,jdbcType=VARCHAR},
+      PHT006 = #{pht006,jdbcType=VARCHAR},
+      PHT007 = #{pht007,jdbcType=VARCHAR},
+      PHT008 = #{pht008,jdbcType=VARCHAR},
+      PARENTID = #{parentid,jdbcType=VARCHAR}
+    where AAB301 = #{aab301,jdbcType=VARCHAR}
+  </update>
+
+
+
+
+</mapper>

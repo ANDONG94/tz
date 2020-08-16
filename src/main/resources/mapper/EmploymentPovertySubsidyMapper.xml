@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tdkj.dao.EmploymentPovertySubsidyMapper" >
+  <resultMap id="BaseResultMap" type="com.tdkj.model.EmploymentPovertySubsidy" >
+    <id column="EPS001" property="eps001" jdbcType="VARCHAR" />
+    <result column="EPS002" property="eps002" jdbcType="VARCHAR" />
+    <result column="EPS003" property="eps003" jdbcType="VARCHAR" />
+    <result column="EPS004" property="eps004" jdbcType="VARCHAR" />
+    <result column="EPS005" property="eps005" jdbcType="VARCHAR" />
+    <result column="EPS006" property="eps006" jdbcType="VARCHAR" />
+    <result column="EPS007" property="eps007" jdbcType="VARCHAR" />
+    <result column="EPS008" property="eps008" jdbcType="VARCHAR" />
+    <result column="EPS009" property="eps009" jdbcType="VARCHAR" />
+    <result column="EPS010" property="eps010" jdbcType="VARCHAR" />
+    <result column="EPS011" property="eps011" jdbcType="VARCHAR" />
+    <result column="EPS012" property="eps012" jdbcType="VARCHAR" />
+    <result column="EPS013" property="eps013" jdbcType="VARCHAR" />
+    <result column="EPS014" property="eps014" jdbcType="VARCHAR" />
+    <result column="EPS015" property="eps015" jdbcType="VARCHAR" />
+    <result column="EPS016" property="eps016" jdbcType="VARCHAR" />
+    <result column="AAB301" property="aab301" jdbcType="VARCHAR" />
+    <result column="AAE011" property="aae011" jdbcType="VARCHAR" />
+    <result column="AAE036" property="aae036" jdbcType="TIMESTAMP" />
+    <result column="DATASOURCE" property="datasource" jdbcType="VARCHAR" />
+    <result column="AAE100" property="aae100" jdbcType="VARCHAR" />
+    <result column="UPDATEDATE" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="UPDATEBY" property="updateby" jdbcType="VARCHAR" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="AAE012" property="aae012" jdbcType="VARCHAR" />
+    <result column="DELETEBY" property="deleteby" jdbcType="VARCHAR" />
+    <result column="DELETEDATE" property="deletedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    EPS001, EPS002, EPS003, EPS004, EPS005, EPS006, EPS007, EPS008, EPS009, EPS010, EPS011, 
+    EPS012, EPS013, EPS014, EPS015, EPS016, AAB301, AAE011, AAE036, DATASOURCE, AAE100, 
+    UPDATEDATE, UPDATEBY, CREATEBY, AAE012, DELETEBY, DELETEDATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from EMPLOYMENT_POVERTY_SUBSIDY
+    where EPS001 = #{eps001,jdbcType=VARCHAR}
+  </select>
+  <update id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    update  EMPLOYMENT_POVERTY_SUBSIDY  set aae100='0',DELETEBY=#{realname,jdbcType=VARCHAR},DELETEDATE=sysdate
+    where EPS001 = #{eps001,jdbcType=VARCHAR}
+  </update>
+  <insert id="insert" parameterType="com.tdkj.model.EmploymentPovertySubsidy" >
+    insert into EMPLOYMENT_POVERTY_SUBSIDY (EPS001, EPS002, EPS003, 
+      EPS004, EPS005, EPS006, 
+      EPS007, EPS008, EPS009, 
+      EPS010, EPS011, EPS012, 
+      EPS013, EPS014, EPS015, 
+      EPS016, AAB301, AAE011, 
+      AAE036, DATASOURCE, AAE100, 
+      UPDATEDATE, UPDATEBY, CREATEBY, 
+      AAE012, DELETEBY, DELETEDATE
+      )
+    values (#{eps001,jdbcType=VARCHAR}, #{eps002,jdbcType=VARCHAR}, #{eps003,jdbcType=VARCHAR}, 
+      #{eps004,jdbcType=VARCHAR}, #{eps005,jdbcType=VARCHAR}, #{eps006,jdbcType=VARCHAR}, 
+      #{eps007,jdbcType=VARCHAR}, #{eps008,jdbcType=VARCHAR}, #{eps009,jdbcType=VARCHAR}, 
+      #{eps010,jdbcType=VARCHAR}, #{eps011,jdbcType=VARCHAR}, #{eps012,jdbcType=VARCHAR}, 
+      #{eps013,jdbcType=VARCHAR}, #{eps014,jdbcType=VARCHAR}, #{eps015,jdbcType=VARCHAR}, 
+      #{eps016,jdbcType=VARCHAR}, #{aab301,jdbcType=VARCHAR}, #{aae011,jdbcType=VARCHAR}, 
+      #{aae036,jdbcType=TIMESTAMP}, #{datasource,jdbcType=VARCHAR}, #{aae100,jdbcType=VARCHAR}, 
+      #{updatedate,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{aae012,jdbcType=VARCHAR}, #{deleteby,jdbcType=VARCHAR}, #{deletedate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdkj.model.EmploymentPovertySubsidy" >
+    insert into EMPLOYMENT_POVERTY_SUBSIDY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eps001 != null" >
+        EPS001,
+      </if>
+      <if test="eps002 != null" >
+        EPS002,
+      </if>
+      <if test="eps003 != null" >
+        EPS003,
+      </if>
+      <if test="eps004 != null" >
+        EPS004,
+      </if>
+      <if test="eps005 != null" >
+        EPS005,
+      </if>
+      <if test="eps006 != null" >
+        EPS006,
+      </if>
+      <if test="eps007 != null" >
+        EPS007,
+      </if>
+      <if test="eps008 != null" >
+        EPS008,
+      </if>
+      <if test="eps009 != null" >
+        EPS009,
+      </if>
+      <if test="eps010 != null" >
+        EPS010,
+      </if>
+      <if test="eps011 != null" >
+        EPS011,
+      </if>
+      <if test="eps012 != null" >
+        EPS012,
+      </if>
+      <if test="eps013 != null" >
+        EPS013,
+      </if>
+      <if test="eps014 != null" >
+        EPS014,
+      </if>
+      <if test="eps015 != null" >
+        EPS015,
+      </if>
+      <if test="eps016 != null" >
+        EPS016,
+      </if>
+      <if test="aab301 != null" >
+        AAB301,
+      </if>
+      <if test="aae011 != null" >
+        AAE011,
+      </if>
+      <if test="aae036 != null" >
+        AAE036,
+      </if>
+      <if test="datasource != null" >
+        DATASOURCE,
+      </if>
+      <if test="aae100 != null" >
+        AAE100,
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE,
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="aae012 != null" >
+        AAE012,
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY,
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eps001 != null" >
+        #{eps001,jdbcType=VARCHAR},
+      </if>
+      <if test="eps002 != null" >
+        #{eps002,jdbcType=VARCHAR},
+      </if>
+      <if test="eps003 != null" >
+        #{eps003,jdbcType=VARCHAR},
+      </if>
+      <if test="eps004 != null" >
+        #{eps004,jdbcType=VARCHAR},
+      </if>
+      <if test="eps005 != null" >
+        #{eps005,jdbcType=VARCHAR},
+      </if>
+      <if test="eps006 != null" >
+        #{eps006,jdbcType=VARCHAR},
+      </if>
+      <if test="eps007 != null" >
+        #{eps007,jdbcType=VARCHAR},
+      </if>
+      <if test="eps008 != null" >
+        #{eps008,jdbcType=VARCHAR},
+      </if>
+      <if test="eps009 != null" >
+        #{eps009,jdbcType=VARCHAR},
+      </if>
+      <if test="eps010 != null" >
+        #{eps010,jdbcType=VARCHAR},
+      </if>
+      <if test="eps011 != null" >
+        #{eps011,jdbcType=VARCHAR},
+      </if>
+      <if test="eps012 != null" >
+        #{eps012,jdbcType=VARCHAR},
+      </if>
+      <if test="eps013 != null" >
+        #{eps013,jdbcType=VARCHAR},
+      </if>
+      <if test="eps014 != null" >
+        #{eps014,jdbcType=VARCHAR},
+      </if>
+      <if test="eps015 != null" >
+        #{eps015,jdbcType=VARCHAR},
+      </if>
+      <if test="eps016 != null" >
+        #{eps016,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null" >
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null" >
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null" >
+        #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datasource != null" >
+        #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null" >
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null" >
+        #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.EmploymentPovertySubsidy" >
+    update EMPLOYMENT_POVERTY_SUBSIDY
+    <set >
+      <if test="eps002 != null" >
+        EPS002 = #{eps002,jdbcType=VARCHAR},
+      </if>
+      <if test="eps003 != null" >
+        EPS003 = #{eps003,jdbcType=VARCHAR},
+      </if>
+      <if test="eps004 != null" >
+        EPS004 = #{eps004,jdbcType=VARCHAR},
+      </if>
+      <if test="eps005 != null" >
+        EPS005 = #{eps005,jdbcType=VARCHAR},
+      </if>
+      <if test="eps006 != null" >
+        EPS006 = #{eps006,jdbcType=VARCHAR},
+      </if>
+      <if test="eps007 != null" >
+        EPS007 = #{eps007,jdbcType=VARCHAR},
+      </if>
+      <if test="eps008 != null" >
+        EPS008 = #{eps008,jdbcType=VARCHAR},
+      </if>
+      <if test="eps009 != null" >
+        EPS009 = #{eps009,jdbcType=VARCHAR},
+      </if>
+      <if test="eps010 != null" >
+        EPS010 = #{eps010,jdbcType=VARCHAR},
+      </if>
+      <if test="eps011 != null" >
+        EPS011 = #{eps011,jdbcType=VARCHAR},
+      </if>
+      <if test="eps012 != null" >
+        EPS012 = #{eps012,jdbcType=VARCHAR},
+      </if>
+      <if test="eps013 != null" >
+        EPS013 = #{eps013,jdbcType=VARCHAR},
+      </if>
+      <if test="eps014 != null" >
+        EPS014 = #{eps014,jdbcType=VARCHAR},
+      </if>
+      <if test="eps015 != null" >
+        EPS015 = #{eps015,jdbcType=VARCHAR},
+      </if>
+      <if test="eps016 != null" >
+        EPS016 = #{eps016,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null" >
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null" >
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null" >
+        AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datasource != null" >
+        DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null" >
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null" >
+        AAE012 = #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where EPS001 = #{eps001,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.EmploymentPovertySubsidy" >
+    update EMPLOYMENT_POVERTY_SUBSIDY
+    set EPS002 = #{eps002,jdbcType=VARCHAR},
+      EPS003 = #{eps003,jdbcType=VARCHAR},
+      EPS004 = #{eps004,jdbcType=VARCHAR},
+      EPS005 = #{eps005,jdbcType=VARCHAR},
+      EPS006 = #{eps006,jdbcType=VARCHAR},
+      EPS007 = #{eps007,jdbcType=VARCHAR},
+      EPS008 = #{eps008,jdbcType=VARCHAR},
+      EPS009 = #{eps009,jdbcType=VARCHAR},
+      EPS010 = #{eps010,jdbcType=VARCHAR},
+      EPS011 = #{eps011,jdbcType=VARCHAR},
+      EPS012 = #{eps012,jdbcType=VARCHAR},
+      EPS013 = #{eps013,jdbcType=VARCHAR},
+      EPS014 = #{eps014,jdbcType=VARCHAR},
+      EPS015 = #{eps015,jdbcType=VARCHAR},
+      EPS016 = #{eps016,jdbcType=VARCHAR},
+      AAB301 = #{aab301,jdbcType=VARCHAR},
+      AAE011 = #{aae011,jdbcType=VARCHAR},
+      AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      AAE100 = #{aae100,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      AAE012 = #{aae012,jdbcType=VARCHAR},
+      DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      DELETEDATE = #{deletedate,jdbcType=TIMESTAMP}
+    where EPS001 = #{eps001,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="querEmploymentPovertySubsidyByEps002" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from EMPLOYMENT_POVERTY_SUBSIDY
+    where EPS002 = #{eps002,jdbcType=VARCHAR} and aae100='1'
+  </select>
+
+
+  <update id="deleteEmploymentPovertySubsidyByEps002" parameterType="java.lang.String" >
+    update  EMPLOYMENT_POVERTY_SUBSIDY  set aae100='0',DELETEBY=#{realname,jdbcType=VARCHAR},DELETEDATE=sysdate
+    where EPS001 = #{eps002,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="selectSubsibyByEps002" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+     sum(EPS005)EPS005, sum(EPS006) EPS006, sum(EPS007) EPS007
+    from EMPLOYMENT_POVERTY_SUBSIDY
+    where EPS002 = #{eps002,jdbcType=VARCHAR} and aae100='1'
+  </select>
+
+
+</mapper>

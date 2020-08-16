@@ -1,0 +1,8 @@
+/*设置字体变颜色*/
+.test{animation:change 10s linear 0s infinite;font-size:30px;font-weight:700;}
+@keyframes change{0%   {color:#333;}25%{color:#ff0;}50%{color:#f60;}75%{color:#cf0;}100% {color:#f00;}}
+
+.insetText{
+    color: #f00;
+    text-shadow: 4px 3px 0px #212121;
+}

@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tdkj.dao.LaborAlleviationCompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.tdkj.model.LaborAlleviationCompany" >
+    <id column="LAC001" property="lac001" jdbcType="VARCHAR" />
+    <result column="LAC002" property="lac002" jdbcType="VARCHAR" />
+    <result column="LAC003" property="lac003" jdbcType="VARCHAR" />
+    <result column="LAC004" property="lac004" jdbcType="VARCHAR" />
+    <result column="LAC005" property="lac005" jdbcType="VARCHAR" />
+    <result column="LAC006" property="lac006" jdbcType="VARCHAR" />
+    <result column="LAC007" property="lac007" jdbcType="VARCHAR" />
+    <result column="LAC008" property="lac008" jdbcType="VARCHAR" />
+    <result column="LAC009" property="lac009" jdbcType="VARCHAR" />
+    <result column="LAC010" property="lac010" jdbcType="VARCHAR" />
+    <result column="LAC011" property="lac011" jdbcType="VARCHAR" />
+    <result column="LAC012" property="lac012" jdbcType="VARCHAR" />
+    <result column="LAC013" property="lac013" jdbcType="VARCHAR" />
+    <result column="LAC014" property="lac014" jdbcType="VARCHAR" />
+    <result column="LAC015" property="lac015" jdbcType="VARCHAR" />
+    <result column="LAC016" property="lac016" jdbcType="VARCHAR" />
+    <result column="AAB301" property="aab301" jdbcType="VARCHAR" />
+    <result column="AAE011" property="aae011" jdbcType="VARCHAR" />
+    <result column="AAE036" property="aae036" jdbcType="TIMESTAMP" />
+    <result column="DATASOURCE" property="datasource" jdbcType="VARCHAR" />
+    <result column="AAE100" property="aae100" jdbcType="VARCHAR" />
+    <result column="UPDATEDATE" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="UPDATEBY" property="updateby" jdbcType="VARCHAR" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="AAE012" property="aae012" jdbcType="VARCHAR" />
+    <result column="DELETEBY" property="deleteby" jdbcType="VARCHAR" />
+    <result column="DELETEDATE" property="deletedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LAC001, LAC002, LAC003, LAC004, LAC005, LAC006, LAC007, LAC008, LAC009, LAC010, LAC011, 
+    LAC012, LAC013, LAC014, LAC015, LAC016, AAB301, AAE011, AAE036, DATASOURCE, AAE100, 
+    UPDATEDATE, UPDATEBY, CREATEBY, AAE012, DELETEBY, DELETEDATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from LABOR_ALLEVIATION_COMPANY
+    where LAC001 = #{lac001,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from LABOR_ALLEVIATION_COMPANY
+    where LAC001 = #{lac001,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.LaborAlleviationCompany" >
+    insert into LABOR_ALLEVIATION_COMPANY (LAC001, LAC002, LAC003, 
+      LAC004, LAC005, LAC006, 
+      LAC007, LAC008, LAC009, 
+      LAC010, LAC011, LAC012, 
+      LAC013, LAC014, LAC015, 
+      LAC016, AAB301, AAE011, 
+      AAE036, DATASOURCE, AAE100, 
+      UPDATEDATE, UPDATEBY, CREATEBY, 
+      AAE012, DELETEBY, DELETEDATE
+      )
+    values (#{lac001,jdbcType=VARCHAR}, #{lac002,jdbcType=VARCHAR}, #{lac003,jdbcType=VARCHAR}, 
+      #{lac004,jdbcType=VARCHAR}, #{lac005,jdbcType=VARCHAR}, #{lac006,jdbcType=VARCHAR}, 
+      #{lac007,jdbcType=VARCHAR}, #{lac008,jdbcType=VARCHAR}, #{lac009,jdbcType=VARCHAR}, 
+      #{lac010,jdbcType=VARCHAR}, #{lac011,jdbcType=VARCHAR}, #{lac012,jdbcType=VARCHAR}, 
+      #{lac013,jdbcType=VARCHAR}, #{lac014,jdbcType=VARCHAR}, #{lac015,jdbcType=VARCHAR}, 
+      #{lac016,jdbcType=VARCHAR}, #{aab301,jdbcType=VARCHAR}, #{aae011,jdbcType=VARCHAR}, 
+      #{aae036,jdbcType=TIMESTAMP}, #{datasource,jdbcType=VARCHAR}, #{aae100,jdbcType=VARCHAR}, 
+      #{updatedate,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{aae012,jdbcType=VARCHAR}, #{deleteby,jdbcType=VARCHAR}, #{deletedate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdkj.model.LaborAlleviationCompany" >
+    insert into LABOR_ALLEVIATION_COMPANY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lac001 != null" >
+        LAC001,
+      </if>
+      <if test="lac002 != null" >
+        LAC002,
+      </if>
+      <if test="lac003 != null" >
+        LAC003,
+      </if>
+      <if test="lac004 != null" >
+        LAC004,
+      </if>
+      <if test="lac005 != null" >
+        LAC005,
+      </if>
+      <if test="lac006 != null" >
+        LAC006,
+      </if>
+      <if test="lac007 != null" >
+        LAC007,
+      </if>
+      <if test="lac008 != null" >
+        LAC008,
+      </if>
+      <if test="lac009 != null" >
+        LAC009,
+      </if>
+      <if test="lac010 != null" >
+        LAC010,
+      </if>
+      <if test="lac011 != null" >
+        LAC011,
+      </if>
+      <if test="lac012 != null" >
+        LAC012,
+      </if>
+      <if test="lac013 != null" >
+        LAC013,
+      </if>
+      <if test="lac014 != null" >
+        LAC014,
+      </if>
+      <if test="lac015 != null" >
+        LAC015,
+      </if>
+      <if test="lac016 != null" >
+        LAC016,
+      </if>
+      <if test="aab301 != null" >
+        AAB301,
+      </if>
+      <if test="aae011 != null" >
+        AAE011,
+      </if>
+      <if test="aae036 != null" >
+        AAE036,
+      </if>
+      <if test="datasource != null" >
+        DATASOURCE,
+      </if>
+      <if test="aae100 != null" >
+        AAE100,
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE,
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="aae012 != null" >
+        AAE012,
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY,
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lac001 != null" >
+        #{lac001,jdbcType=VARCHAR},
+      </if>
+      <if test="lac002 != null" >
+        #{lac002,jdbcType=VARCHAR},
+      </if>
+      <if test="lac003 != null" >
+        #{lac003,jdbcType=VARCHAR},
+      </if>
+      <if test="lac004 != null" >
+        #{lac004,jdbcType=VARCHAR},
+      </if>
+      <if test="lac005 != null" >
+        #{lac005,jdbcType=VARCHAR},
+      </if>
+      <if test="lac006 != null" >
+        #{lac006,jdbcType=VARCHAR},
+      </if>
+      <if test="lac007 != null" >
+        #{lac007,jdbcType=VARCHAR},
+      </if>
+      <if test="lac008 != null" >
+        #{lac008,jdbcType=VARCHAR},
+      </if>
+      <if test="lac009 != null" >
+        #{lac009,jdbcType=VARCHAR},
+      </if>
+      <if test="lac010 != null" >
+        #{lac010,jdbcType=VARCHAR},
+      </if>
+      <if test="lac011 != null" >
+        #{lac011,jdbcType=VARCHAR},
+      </if>
+      <if test="lac012 != null" >
+        #{lac012,jdbcType=VARCHAR},
+      </if>
+      <if test="lac013 != null" >
+        #{lac013,jdbcType=VARCHAR},
+      </if>
+      <if test="lac014 != null" >
+        #{lac014,jdbcType=VARCHAR},
+      </if>
+      <if test="lac015 != null" >
+        #{lac015,jdbcType=VARCHAR},
+      </if>
+      <if test="lac016 != null" >
+        #{lac016,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null" >
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null" >
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null" >
+        #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datasource != null" >
+        #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null" >
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null" >
+        #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.LaborAlleviationCompany" >
+    update LABOR_ALLEVIATION_COMPANY
+    <set >
+      <if test="lac002 != null" >
+        LAC002 = #{lac002,jdbcType=VARCHAR},
+      </if>
+      <if test="lac003 != null" >
+        LAC003 = #{lac003,jdbcType=VARCHAR},
+      </if>
+      <if test="lac004 != null" >
+        LAC004 = #{lac004,jdbcType=VARCHAR},
+      </if>
+      <if test="lac005 != null" >
+        LAC005 = #{lac005,jdbcType=VARCHAR},
+      </if>
+      <if test="lac006 != null" >
+        LAC006 = #{lac006,jdbcType=VARCHAR},
+      </if>
+      <if test="lac007 != null" >
+        LAC007 = #{lac007,jdbcType=VARCHAR},
+      </if>
+      <if test="lac008 != null" >
+        LAC008 = #{lac008,jdbcType=VARCHAR},
+      </if>
+      <if test="lac009 != null" >
+        LAC009 = #{lac009,jdbcType=VARCHAR},
+      </if>
+      <if test="lac010 != null" >
+        LAC010 = #{lac010,jdbcType=VARCHAR},
+      </if>
+      <if test="lac011 != null" >
+        LAC011 = #{lac011,jdbcType=VARCHAR},
+      </if>
+      <if test="lac012 != null" >
+        LAC012 = #{lac012,jdbcType=VARCHAR},
+      </if>
+      <if test="lac013 != null" >
+        LAC013 = #{lac013,jdbcType=VARCHAR},
+      </if>
+      <if test="lac014 != null" >
+        LAC014 = #{lac014,jdbcType=VARCHAR},
+      </if>
+      <if test="lac015 != null" >
+        LAC015 = #{lac015,jdbcType=VARCHAR},
+      </if>
+      <if test="lac016 != null" >
+        LAC016 = #{lac016,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null" >
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null" >
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null" >
+        AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datasource != null" >
+        DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null" >
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null" >
+        AAE012 = #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where LAC001 = #{lac001,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.LaborAlleviationCompany" >
+    update LABOR_ALLEVIATION_COMPANY
+    set LAC002 = #{lac002,jdbcType=VARCHAR},
+      LAC003 = #{lac003,jdbcType=VARCHAR},
+      LAC004 = #{lac004,jdbcType=VARCHAR},
+      LAC005 = #{lac005,jdbcType=VARCHAR},
+      LAC006 = #{lac006,jdbcType=VARCHAR},
+      LAC007 = #{lac007,jdbcType=VARCHAR},
+      LAC008 = #{lac008,jdbcType=VARCHAR},
+      LAC009 = #{lac009,jdbcType=VARCHAR},
+      LAC010 = #{lac010,jdbcType=VARCHAR},
+      LAC011 = #{lac011,jdbcType=VARCHAR},
+      LAC012 = #{lac012,jdbcType=VARCHAR},
+      LAC013 = #{lac013,jdbcType=VARCHAR},
+      LAC014 = #{lac014,jdbcType=VARCHAR},
+      LAC015 = #{lac015,jdbcType=VARCHAR},
+      LAC016 = #{lac016,jdbcType=VARCHAR},
+      AAB301 = #{aab301,jdbcType=VARCHAR},
+      AAE011 = #{aae011,jdbcType=VARCHAR},
+      AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      AAE100 = #{aae100,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      AAE012 = #{aae012,jdbcType=VARCHAR},
+      DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      DELETEDATE = #{deletedate,jdbcType=TIMESTAMP}
+    where LAC001 = #{lac001,jdbcType=VARCHAR}
+  </update>
+
+
+  <!--根据行政区划 信息列表-->
+  <select id="queryLaborAlleviationCompanyByAab301" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select  LAC001, LAC002, LAC003, LAC004, LAC005, LAC006, LAC007, LAC008, LAC009, LAC010, LAC011,
+    LAC012, LAC013, LAC014, LAC015, LAC016, AAB301, AAE011, AAE036, DATASOURCE, AAE100,
+    UPDATEDATE, UPDATEBY, CREATEBY, AAE012, DELETEBY, DELETEDATE ,rn
+    from (select  LAC001, LAC002, LAC003, LAC004, LAC005, LAC006, LAC007, LAC008, LAC009, LAC010, LAC011,
+    LAC012, LAC013, LAC014, LAC015, LAC016, AAB301, AAE011, AAE036, DATASOURCE, AAE100,
+    UPDATEDATE, UPDATEBY, CREATEBY, AAE012, DELETEBY, DELETEDATE, rownum rn
+    from (select  LAC001, LAC002, LAC003, LAC004,
+    f_getcodename('AAA024',LAC005)LAC005, LAC006, LAC007,
+    f_getcodename('EDC441',LAC008) LAC008,
+    (select cts002 from centralized_settlements where cts001=LAC009)LAC009, LAC010,
+    f_getcodename('LEA005',LAC011) LAC011,f_getcodename('EDC441',LAC012)LAC012,
+    LAC013, LAC014, LAC015, LAC016, t.info AAB301, AAE011, AAE036, DATASOURCE, AAE100,
+    UPDATEDATE, UPDATEBY, CREATEBY, AAE012, DELETEBY, DELETEDATE
+    from LABOR_ALLEVIATION_COMPANY,POOR_XZQH t where AAB301=t.XZQHBM and aae100='1'
+    <if test="laborAlleviationCompany.aab301 != null and laborAlleviationCompany.aab301 !='' " >
+      and AAB301 like #{laborAlleviationCompany.aab301,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac002 != null and laborAlleviationCompany.lac002 !='' " >
+      and  LAC002 = #{laborAlleviationCompany.lac002,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac003 != null and laborAlleviationCompany.lac003 !='' " >
+      and  LAC003 = #{laborAlleviationCompany.lac003,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac004 != null and laborAlleviationCompany.lac004 !='' " >
+      and  LAC004 = #{laborAlleviationCompany.lac004,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac005 != null and laborAlleviationCompany.lac005 !='' " >
+      and  LAC005 = #{laborAlleviationCompany.lac005,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac006 != null and laborAlleviationCompany.lac006 !='' " >
+      and   LAC006 = #{laborAlleviationCompany.lac006,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac007 != null and laborAlleviationCompany.lac007 !='' " >
+      and   LAC007 = #{laborAlleviationCompany.lac007,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac008 != null and laborAlleviationCompany.lac008 !='' " >
+      and  LAC008 = #{laborAlleviationCompany.lac008,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac009 != null and laborAlleviationCompany.lac009 !='' " >
+      and  LAC009 = #{laborAlleviationCompany.lac009,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac010 != null and laborAlleviationCompany.lac010 !='' " >
+      and  LAC010 like #{laborAlleviationCompany.lac010,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac011 != null and laborAlleviationCompany.lac011 !='' " >
+      and  LAC011 = #{laborAlleviationCompany.lac011,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac012 != null and laborAlleviationCompany.lac012 !='' " >
+      and  LAC012 = #{laborAlleviationCompany.lac012,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac013 != null and laborAlleviationCompany.lac013 !='' " >
+      and  LAC013 = #{laborAlleviationCompany.lac013,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac014 != null and laborAlleviationCompany.lac014 !='' " >
+      and  LAC014 = #{laborAlleviationCompany.lac014,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac015 != null and laborAlleviationCompany.lac015 !='' " >
+      and  LAC015 = #{laborAlleviationCompany.lac015,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac016 != null and laborAlleviationCompany.lac016 !='' " >
+      and   LAC016 = #{laborAlleviationCompany.lac016,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.aae011 != null and laborAlleviationCompany.aae011 !='' " >
+      and  AAE011 = #{laborAlleviationCompany.aae011,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.aae036 != null and laborAlleviationCompany.aae036 !='' " >
+      and  AAE036 = #{laborAlleviationCompany.aae036,jdbcType=TIMESTAMP}
+    </if>
+    <if test="laborAlleviationCompany.datasource != null and laborAlleviationCompany.datasource !='' " >
+      and  DATASOURCE = #{laborAlleviationCompany.datasource,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.aae100 != null and laborAlleviationCompany.aae100 !='' " >
+      and  AAE100 = #{laborAlleviationCompany.aae100,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.updatedate != null and laborAlleviationCompany.updatedate !='' " >
+      and  UPDATEDATE = #{laborAlleviationCompany.updatedate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="laborAlleviationCompany.updateby != null and laborAlleviationCompany.updateby !='' " >
+      and  UPDATEBY = #{laborAlleviationCompany.updateby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.createby != null and laborAlleviationCompany.createby !='' " >
+      and  CREATEBY = #{laborAlleviationCompany.createby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.aae012 != null and laborAlleviationCompany.aae012 !='' " >
+      and  AAE012 = #{laborAlleviationCompany.aae012,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.deleteby != null and laborAlleviationCompany.deleteby !='' " >
+      and  DELETEBY = #{laborAlleviationCompany.deleteby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.deletedate != null and laborAlleviationCompany.deletedate !='' " >
+      and  DELETEDATE = #{laborAlleviationCompany.deletedate,jdbcType=TIMESTAMP}
+    </if>
+    ORDER BY AAE036 DESC
+    ) a1
+    where rownum &lt;= #{pageSize})
+    where rn &gt;= #{startRecord}
+  </select>
+
+
+  <!--查询所有多少个  根据行政区划-->
+  <select id="queryAllByAab301" resultType="java.lang.String" parameterType="java.lang.String" >
+    select count(1)
+    from LABOR_ALLEVIATION_COMPANY where  aae100='1'
+    <if test="laborAlleviationCompany.aab301 != null and laborAlleviationCompany.aab301 !='' " >
+      and AAB301 like #{laborAlleviationCompany.aab301,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac002 != null and laborAlleviationCompany.lac002 !='' " >
+      and  LAC002 = #{laborAlleviationCompany.lac002,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac003 != null and laborAlleviationCompany.lac003 !='' " >
+      and  LAC003 = #{laborAlleviationCompany.lac003,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac004 != null and laborAlleviationCompany.lac004 !='' " >
+      and  LAC004 = #{laborAlleviationCompany.lac004,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac005 != null and laborAlleviationCompany.lac005 !='' " >
+      and  LAC005 = #{laborAlleviationCompany.lac005,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac006 != null and laborAlleviationCompany.lac006 !='' " >
+      and   LAC006 = #{laborAlleviationCompany.lac006,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac007 != null and laborAlleviationCompany.lac007 !='' " >
+      and   LAC007 = #{laborAlleviationCompany.lac007,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac008 != null and laborAlleviationCompany.lac008 !='' " >
+      and  LAC008 = #{laborAlleviationCompany.lac008,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac009 != null and laborAlleviationCompany.lac009 !='' " >
+      and  LAC009 = #{laborAlleviationCompany.lac009,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac010 != null and laborAlleviationCompany.lac010 !='' " >
+      and  LAC010 like #{laborAlleviationCompany.lac010,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac011 != null and laborAlleviationCompany.lac011 !='' " >
+      and  LAC011 = #{laborAlleviationCompany.lac011,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac012 != null and laborAlleviationCompany.lac012 !='' " >
+      and  LAC012 = #{laborAlleviationCompany.lac012,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac013 != null and laborAlleviationCompany.lac013 !='' " >
+      and  LAC013 = #{laborAlleviationCompany.lac013,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac014 != null and laborAlleviationCompany.lac014 !='' " >
+      and  LAC014 = #{laborAlleviationCompany.lac014,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac015 != null and laborAlleviationCompany.lac015 !='' " >
+      and  LAC015 = #{laborAlleviationCompany.lac015,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.lac016 != null and laborAlleviationCompany.lac016 !='' " >
+      and   LAC016 = #{laborAlleviationCompany.lac016,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.aae011 != null and laborAlleviationCompany.aae011 !='' " >
+      and  AAE011 = #{laborAlleviationCompany.aae011,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.aae036 != null and laborAlleviationCompany.aae036 !='' " >
+      and  AAE036 = #{laborAlleviationCompany.aae036,jdbcType=TIMESTAMP}
+    </if>
+    <if test="laborAlleviationCompany.datasource != null and laborAlleviationCompany.datasource !='' " >
+      and  DATASOURCE = #{laborAlleviationCompany.datasource,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.aae100 != null and laborAlleviationCompany.aae100 !='' " >
+      and  AAE100 = #{laborAlleviationCompany.aae100,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.updatedate != null and laborAlleviationCompany.updatedate !='' " >
+      and  UPDATEDATE = #{laborAlleviationCompany.updatedate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="laborAlleviationCompany.updateby != null and laborAlleviationCompany.updateby !='' " >
+      and  UPDATEBY = #{laborAlleviationCompany.updateby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.createby != null and laborAlleviationCompany.createby !='' " >
+      and  CREATEBY = #{laborAlleviationCompany.createby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.aae012 != null and laborAlleviationCompany.aae012 !='' " >
+      and  AAE012 = #{laborAlleviationCompany.aae012,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.deleteby != null and laborAlleviationCompany.deleteby !='' " >
+      and  DELETEBY = #{laborAlleviationCompany.deleteby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborAlleviationCompany.deletedate != null and laborAlleviationCompany.deletedate !='' " >
+      and  DELETEDATE = #{laborAlleviationCompany.deletedate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+
+</mapper>

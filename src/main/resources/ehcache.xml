@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ehcache>
+    <cache name="objectCache"
+           eternal="false"
+           overflowToDisk="false"
+           diskPersistent="false"
+           timeToIdleSeconds="0"
+           maxEntriesLocalHeap="200"
+           timeToLiveSeconds="3600"
+           memoryStoreEvictionPolicy="LRU"
+    maxElementsInMemory="1000"></cache>
+</ehcache>

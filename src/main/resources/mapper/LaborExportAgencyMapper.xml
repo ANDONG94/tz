@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tdkj.dao.LaborExportAgencyMapper" >
+  <resultMap id="BaseResultMap" type="com.tdkj.model.LaborExportAgency" >
+    <id column="LEA001" property="lea001" jdbcType="VARCHAR" />
+    <result column="LEA002" property="lea002" jdbcType="VARCHAR" />
+    <result column="LEA003" property="lea003" jdbcType="VARCHAR" />
+    <result column="LEA004" property="lea004" jdbcType="VARCHAR" />
+    <result column="LEA005" property="lea005" jdbcType="VARCHAR" />
+    <result column="LEA006" property="lea006" jdbcType="VARCHAR" />
+    <result column="LEA007" property="lea007" jdbcType="VARCHAR" />
+    <result column="LEA008" property="lea008" jdbcType="VARCHAR" />
+    <result column="LEA009" property="lea009" jdbcType="VARCHAR" />
+    <result column="LEA010" property="lea010" jdbcType="VARCHAR" />
+    <result column="LEA011" property="lea011" jdbcType="VARCHAR" />
+    <result column="LEA012" property="lea012" jdbcType="VARCHAR" />
+    <result column="LEA013" property="lea013" jdbcType="VARCHAR" />
+    <result column="LEA014" property="lea014" jdbcType="VARCHAR" />
+    <result column="LEA015" property="lea015" jdbcType="VARCHAR" />
+    <result column="LEA016" property="lea016" jdbcType="VARCHAR" />
+    <result column="AAB301" property="aab301" jdbcType="VARCHAR" />
+    <result column="AAE011" property="aae011" jdbcType="VARCHAR" />
+    <result column="AAE036" property="aae036" jdbcType="TIMESTAMP" />
+    <result column="DATASOURCE" property="datasource" jdbcType="VARCHAR" />
+    <result column="AAE100" property="aae100" jdbcType="VARCHAR" />
+    <result column="UPDATEDATE" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="UPDATEBY" property="updateby" jdbcType="VARCHAR" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="AAE012" property="aae012" jdbcType="VARCHAR" />
+    <result column="DELETEBY" property="deleteby" jdbcType="VARCHAR" />
+    <result column="DELETEDATE" property="deletedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LEA001, LEA002, LEA003, LEA004, LEA005, LEA006, LEA007, LEA008, LEA009, LEA010, LEA011, 
+    LEA012, LEA013, LEA014, LEA015, LEA016, AAB301, AAE011, AAE036, DATASOURCE, AAE100, 
+    UPDATEDATE, UPDATEBY, CREATEBY, AAE012, DELETEBY, DELETEDATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from LABOR_EXPORT_AGENCY
+    where LEA001 = #{lea001,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from LABOR_EXPORT_AGENCY
+    where LEA001 = #{lea001,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.LaborExportAgency" >
+    insert into LABOR_EXPORT_AGENCY (LEA001, LEA002, LEA003, 
+      LEA004, LEA005, LEA006, 
+      LEA007, LEA008, LEA009, 
+      LEA010, LEA011, LEA012, 
+      LEA013, LEA014, LEA015, 
+      LEA016, AAB301, AAE011, 
+      AAE036, DATASOURCE, AAE100, 
+      UPDATEDATE, UPDATEBY, CREATEBY, 
+      AAE012, DELETEBY, DELETEDATE
+      )
+    values (#{lea001,jdbcType=VARCHAR}, #{lea002,jdbcType=VARCHAR}, #{lea003,jdbcType=VARCHAR}, 
+      #{lea004,jdbcType=VARCHAR}, #{lea005,jdbcType=VARCHAR}, #{lea006,jdbcType=VARCHAR}, 
+      #{lea007,jdbcType=VARCHAR}, #{lea008,jdbcType=VARCHAR}, #{lea009,jdbcType=VARCHAR}, 
+      #{lea010,jdbcType=VARCHAR}, #{lea011,jdbcType=VARCHAR}, #{lea012,jdbcType=VARCHAR}, 
+      #{lea013,jdbcType=VARCHAR}, #{lea014,jdbcType=VARCHAR}, #{lea015,jdbcType=VARCHAR}, 
+      #{lea016,jdbcType=VARCHAR}, #{aab301,jdbcType=VARCHAR}, #{aae011,jdbcType=VARCHAR}, 
+      #{aae036,jdbcType=TIMESTAMP}, #{datasource,jdbcType=VARCHAR}, #{aae100,jdbcType=VARCHAR}, 
+      #{updatedate,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{aae012,jdbcType=VARCHAR}, #{deleteby,jdbcType=VARCHAR}, #{deletedate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdkj.model.LaborExportAgency" >
+    insert into LABOR_EXPORT_AGENCY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lea001 != null" >
+        LEA001,
+      </if>
+      <if test="lea002 != null" >
+        LEA002,
+      </if>
+      <if test="lea003 != null" >
+        LEA003,
+      </if>
+      <if test="lea004 != null" >
+        LEA004,
+      </if>
+      <if test="lea005 != null" >
+        LEA005,
+      </if>
+      <if test="lea006 != null" >
+        LEA006,
+      </if>
+      <if test="lea007 != null" >
+        LEA007,
+      </if>
+      <if test="lea008 != null" >
+        LEA008,
+      </if>
+      <if test="lea009 != null" >
+        LEA009,
+      </if>
+      <if test="lea010 != null" >
+        LEA010,
+      </if>
+      <if test="lea011 != null" >
+        LEA011,
+      </if>
+      <if test="lea012 != null" >
+        LEA012,
+      </if>
+      <if test="lea013 != null" >
+        LEA013,
+      </if>
+      <if test="lea014 != null" >
+        LEA014,
+      </if>
+      <if test="lea015 != null" >
+        LEA015,
+      </if>
+      <if test="lea016 != null" >
+        LEA016,
+      </if>
+      <if test="aab301 != null" >
+        AAB301,
+      </if>
+      <if test="aae011 != null" >
+        AAE011,
+      </if>
+      <if test="aae036 != null" >
+        AAE036,
+      </if>
+      <if test="datasource != null" >
+        DATASOURCE,
+      </if>
+      <if test="aae100 != null" >
+        AAE100,
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE,
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="aae012 != null" >
+        AAE012,
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY,
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lea001 != null" >
+        #{lea001,jdbcType=VARCHAR},
+      </if>
+      <if test="lea002 != null" >
+        #{lea002,jdbcType=VARCHAR},
+      </if>
+      <if test="lea003 != null" >
+        #{lea003,jdbcType=VARCHAR},
+      </if>
+      <if test="lea004 != null" >
+        #{lea004,jdbcType=VARCHAR},
+      </if>
+      <if test="lea005 != null" >
+        #{lea005,jdbcType=VARCHAR},
+      </if>
+      <if test="lea006 != null" >
+        #{lea006,jdbcType=VARCHAR},
+      </if>
+      <if test="lea007 != null" >
+        #{lea007,jdbcType=VARCHAR},
+      </if>
+      <if test="lea008 != null" >
+        #{lea008,jdbcType=VARCHAR},
+      </if>
+      <if test="lea009 != null" >
+        #{lea009,jdbcType=VARCHAR},
+      </if>
+      <if test="lea010 != null" >
+        #{lea010,jdbcType=VARCHAR},
+      </if>
+      <if test="lea011 != null" >
+        #{lea011,jdbcType=VARCHAR},
+      </if>
+      <if test="lea012 != null" >
+        #{lea012,jdbcType=VARCHAR},
+      </if>
+      <if test="lea013 != null" >
+        #{lea013,jdbcType=VARCHAR},
+      </if>
+      <if test="lea014 != null" >
+        #{lea014,jdbcType=VARCHAR},
+      </if>
+      <if test="lea015 != null" >
+        #{lea015,jdbcType=VARCHAR},
+      </if>
+      <if test="lea016 != null" >
+        #{lea016,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null" >
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null" >
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null" >
+        #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datasource != null" >
+        #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null" >
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null" >
+        #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.LaborExportAgency" >
+    update LABOR_EXPORT_AGENCY
+    <set >
+      <if test="lea002 != null" >
+        LEA002 = #{lea002,jdbcType=VARCHAR},
+      </if>
+      <if test="lea003 != null" >
+        LEA003 = #{lea003,jdbcType=VARCHAR},
+      </if>
+      <if test="lea004 != null" >
+        LEA004 = #{lea004,jdbcType=VARCHAR},
+      </if>
+      <if test="lea005 != null" >
+        LEA005 = #{lea005,jdbcType=VARCHAR},
+      </if>
+      <if test="lea006 != null" >
+        LEA006 = #{lea006,jdbcType=VARCHAR},
+      </if>
+      <if test="lea007 != null" >
+        LEA007 = #{lea007,jdbcType=VARCHAR},
+      </if>
+      <if test="lea008 != null" >
+        LEA008 = #{lea008,jdbcType=VARCHAR},
+      </if>
+      <if test="lea009 != null" >
+        LEA009 = #{lea009,jdbcType=VARCHAR},
+      </if>
+      <if test="lea010 != null" >
+        LEA010 = #{lea010,jdbcType=VARCHAR},
+      </if>
+      <if test="lea011 != null" >
+        LEA011 = #{lea011,jdbcType=VARCHAR},
+      </if>
+      <if test="lea012 != null" >
+        LEA012 = #{lea012,jdbcType=VARCHAR},
+      </if>
+      <if test="lea013 != null" >
+        LEA013 = #{lea013,jdbcType=VARCHAR},
+      </if>
+      <if test="lea014 != null" >
+        LEA014 = #{lea014,jdbcType=VARCHAR},
+      </if>
+      <if test="lea015 != null" >
+        LEA015 = #{lea015,jdbcType=VARCHAR},
+      </if>
+      <if test="lea016 != null" >
+        LEA016 = #{lea016,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null" >
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null" >
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null" >
+        AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datasource != null" >
+        DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null" >
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null" >
+        AAE012 = #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where LEA001 = #{lea001,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.LaborExportAgency" >
+    update LABOR_EXPORT_AGENCY
+    set LEA002 = #{lea002,jdbcType=VARCHAR},
+      LEA003 = #{lea003,jdbcType=VARCHAR},
+      LEA004 = #{lea004,jdbcType=VARCHAR},
+      LEA005 = #{lea005,jdbcType=VARCHAR},
+      LEA006 = #{lea006,jdbcType=VARCHAR},
+      LEA007 = #{lea007,jdbcType=VARCHAR},
+      LEA008 = #{lea008,jdbcType=VARCHAR},
+      LEA009 = #{lea009,jdbcType=VARCHAR},
+      LEA010 = #{lea010,jdbcType=VARCHAR},
+      LEA011 = #{lea011,jdbcType=VARCHAR},
+      LEA012 = #{lea012,jdbcType=VARCHAR},
+      LEA013 = #{lea013,jdbcType=VARCHAR},
+      LEA014 = #{lea014,jdbcType=VARCHAR},
+      LEA015 = #{lea015,jdbcType=VARCHAR},
+      LEA016 = #{lea016,jdbcType=VARCHAR},
+      AAB301 = #{aab301,jdbcType=VARCHAR},
+      AAE011 = #{aae011,jdbcType=VARCHAR},
+      AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      AAE100 = #{aae100,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      AAE012 = #{aae012,jdbcType=VARCHAR},
+      DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      DELETEDATE = #{deletedate,jdbcType=TIMESTAMP}
+    where LEA001 = #{lea001,jdbcType=VARCHAR}
+  </update>
+
+
+  <!--根据行政区划  劳务输出机构 信息列表-->
+  <select id="queryLaborExportAgencyByAab301" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select   LEA001, LEA002, LEA003, LEA004, LEA005, LEA006, LEA007, LEA008, LEA009, LEA010, LEA011,
+    LEA012, LEA013, LEA014, LEA015, LEA016, AAB301, AAE011, AAE036, DATASOURCE, AAE100,
+    UPDATEDATE, UPDATEBY, CREATEBY, AAE012, DELETEBY, DELETEDATE ,rn
+    from (select   LEA001, LEA002, LEA003, LEA004, LEA005, LEA006, LEA007, LEA008, LEA009, LEA010, LEA011,
+    LEA012, LEA013, LEA014, LEA015, LEA016, AAB301, AAE011, AAE036, DATASOURCE, AAE100,
+    UPDATEDATE, UPDATEBY, CREATEBY, AAE012, DELETEBY, DELETEDATE, rownum rn
+    from (select   LEA001, LEA002, LEA003, LEA004,
+    f_getcodename('LEA005',LEA005) LEA005, f_getcodename('EDC441',LEA006)LEA006,
+    f_getcodename('AAA024',LEA007) LEA007, LEA008, LEA009,  f_getcodename('EDC441',LEA010) LEA010,
+    (select cts002 from centralized_settlements where cts001=LEA011)LEA011,
+    LEA012, LEA013, LEA014, LEA015, LEA016, AAB301, AAE011, AAE036, DATASOURCE, AAE100,
+    UPDATEDATE, UPDATEBY, CREATEBY, AAE012, DELETEBY, DELETEDATE
+    from LABOR_EXPORT_AGENCY where  aae100='1'
+    <if test="laborExportAgency.aab301 != null and laborExportAgency.aab301 !='' " >
+      and AAB301 like #{laborExportAgency.aab301,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea002  != null and laborExportAgency.lea002 !='' " >
+      and  LEA002 = #{laborExportAgency.lea002,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea003  != null and laborExportAgency.lea003 !='' " >
+      and  LEA003 = #{laborExportAgency.lea003,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea004  != null and laborExportAgency.lea004 !='' " >
+      and  LEA004 = #{laborExportAgency.lea004,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea005  != null and laborExportAgency.lea005 !='' " >
+      and  LEA005 = #{laborExportAgency.lea005,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea006  != null and laborExportAgency.lea006 !='' " >
+      and  LEA006 = #{laborExportAgency.lea006,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea007  != null and laborExportAgency.lea007 !='' " >
+      and  LEA007 = #{laborExportAgency.lea007,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea008  != null and laborExportAgency.lea008 !='' " >
+      and  LEA008 = #{laborExportAgency.lea008,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea009  != null and laborExportAgency.lea009 !='' " >
+      and  LEA009 = #{laborExportAgency.lea009,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea010  != null and laborExportAgency.lea010 !='' " >
+      and  LEA010 = #{laborExportAgency.lea010,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea011  != null and laborExportAgency.lea011 !='' " >
+      and  LEA011 = #{laborExportAgency.lea011,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea012  != null and laborExportAgency.lea012 !='' " >
+      and  LEA012 = #{laborExportAgency.lea012,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea013  != null and laborExportAgency.lea013 !='' " >
+      and   LEA013 = #{laborExportAgency.lea013,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea014  != null and laborExportAgency.lea014 !='' " >
+      and LEA014 = #{laborExportAgency.lea014,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea015  != null and laborExportAgency.lea015 !='' " >
+      and   LEA015 = #{laborExportAgency.lea015,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea016  != null and laborExportAgency.lea016 !='' " >
+      and  LEA016 = #{laborExportAgency.lea016,jdbcType=VARCHAR}
+    </if>
+
+    <if test="laborExportAgency.aae011  != null and laborExportAgency.aae011 !='' " >
+      and  AAE011 = #{laborExportAgency.aae011,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.aae036  != null and laborExportAgency.aae036 !='' " >
+      and AAE036 = #{laborExportAgency.aae036,jdbcType=TIMESTAMP}
+    </if>
+    <if test="laborExportAgency.datasource  != null and laborExportAgency.datasource !='' " >
+      and DATASOURCE = #{laborExportAgency.datasource,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.aae100  != null and laborExportAgency.aae100 !='' " >
+      and  AAE100 = #{laborExportAgency.aae100,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.updatedate  != null and laborExportAgency.updatedate !='' " >
+      and  UPDATEDATE = #{laborExportAgency.updatedate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="laborExportAgency.updateby  != null and laborExportAgency.updateby !='' " >
+      and  UPDATEBY = #{laborExportAgency.updateby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.createby  != null and laborExportAgency.createby !='' " >
+      and   CREATEBY = #{laborExportAgency.createby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.aae012  != null and laborExportAgency.aae012 !='' " >
+      and  AAE012 = #{laborExportAgency.aae012,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.deleteby  != null and laborExportAgency.deleteby !='' " >
+      and  DELETEBY = #{laborExportAgency.deleteby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.deletedate != null and laborExportAgency.deletedate !='' " >
+      and  DELETEDATE = #{laborExportAgency.deletedate,jdbcType=TIMESTAMP}
+    </if>
+    ORDER BY AAE036 DESC
+    ) a1
+    where rownum &lt;= #{pageSize})
+    where rn &gt;= #{startRecord}
+  </select>
+
+
+  <!--查询所有多少个  根据行政区划-->
+  <select id="queryAllByAab301" resultType="java.lang.String" parameterType="java.lang.String" >
+    select count(1)
+    from LABOR_EXPORT_AGENCY where  aae100='1'
+    <if test="laborExportAgency.aab301 != null and laborExportAgency.aab301 !='' " >
+      and AAB301 like #{laborExportAgency.aab301,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea002  != null and laborExportAgency.lea002 !='' " >
+      and  LEA002 = #{laborExportAgency.lea002,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea003  != null and laborExportAgency.lea003 !='' " >
+      and  LEA003 = #{laborExportAgency.lea003,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea004  != null and laborExportAgency.lea004 !='' " >
+      and  LEA004 = #{laborExportAgency.lea004,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea005  != null and laborExportAgency.lea005 !='' " >
+      and  LEA005 = #{laborExportAgency.lea005,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea006  != null and laborExportAgency.lea006 !='' " >
+      and  LEA006 = #{laborExportAgency.lea006,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea007  != null and laborExportAgency.lea007 !='' " >
+      and  LEA007 = #{laborExportAgency.lea007,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea008  != null and laborExportAgency.lea008 !='' " >
+      and  LEA008 = #{laborExportAgency.lea008,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea009  != null and laborExportAgency.lea009 !='' " >
+      and  LEA009 = #{laborExportAgency.lea009,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea010  != null and laborExportAgency.lea010 !='' " >
+      and  LEA010 = #{laborExportAgency.lea010,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea011  != null and laborExportAgency.lea011 !='' " >
+      and  LEA011 = #{laborExportAgency.lea011,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea012  != null and laborExportAgency.lea012 !='' " >
+      and  LEA012 = #{laborExportAgency.lea012,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea013  != null and laborExportAgency.lea013 !='' " >
+      and   LEA013 = #{laborExportAgency.lea013,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea014  != null and laborExportAgency.lea014 !='' " >
+      and LEA014 = #{laborExportAgency.lea014,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea015  != null and laborExportAgency.lea015 !='' " >
+      and   LEA015 = #{laborExportAgency.lea015,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.lea016  != null and laborExportAgency.lea016 !='' " >
+      and  LEA016 = #{laborExportAgency.lea016,jdbcType=VARCHAR}
+    </if>
+
+    <if test="laborExportAgency.aae011  != null and laborExportAgency.aae011 !='' " >
+      and  AAE011 = #{laborExportAgency.aae011,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.aae036  != null and laborExportAgency.aae036 !='' " >
+      and AAE036 = #{laborExportAgency.aae036,jdbcType=TIMESTAMP}
+    </if>
+    <if test="laborExportAgency.datasource  != null and laborExportAgency.datasource !='' " >
+      and DATASOURCE = #{laborExportAgency.datasource,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.aae100  != null and laborExportAgency.aae100 !='' " >
+      and  AAE100 = #{laborExportAgency.aae100,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.updatedate  != null and laborExportAgency.updatedate !='' " >
+      and  UPDATEDATE = #{laborExportAgency.updatedate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="laborExportAgency.updateby  != null and laborExportAgency.updateby !='' " >
+      and  UPDATEBY = #{laborExportAgency.updateby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.createby  != null and laborExportAgency.createby !='' " >
+      and   CREATEBY = #{laborExportAgency.createby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.aae012  != null and laborExportAgency.aae012 !='' " >
+      and  AAE012 = #{laborExportAgency.aae012,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.deleteby  != null and laborExportAgency.deleteby !='' " >
+      and  DELETEBY = #{laborExportAgency.deleteby,jdbcType=VARCHAR}
+    </if>
+    <if test="laborExportAgency.deletedate != null and laborExportAgency.deletedate !='' " >
+      and  DELETEDATE = #{laborExportAgency.deletedate,jdbcType=TIMESTAMP}
+    </if>
+  </select>
+</mapper>

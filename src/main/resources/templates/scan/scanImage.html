@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery/jquery-1.11.0.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div style="height: auto;width: auto">
+    <img id="imgid"/>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url:"/scan/view",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"id":"value"},    //参数值
+            type:"GET",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                   $("#imgid").attr('src',data.filePath);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tdkj.dao.IpLogin.IpLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.tdkj.model.IpLogin" >
+    <id column="UUID" property="uuid" jdbcType="VARCHAR" />
+    <result column="USERID" property="userid" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="USERCARDID" property="usercardid" jdbcType="VARCHAR" />
+    <result column="INTODATE" property="intodate" jdbcType="TIMESTAMP" />
+    <result column="OUTDATE" property="outdate" jdbcType="VARCHAR" />
+    <result column="LOG006" property="log006" jdbcType="VARCHAR" />
+    <result column="LOG007" property="log007" jdbcType="VARCHAR" />
+    <result column="LOG008" property="log008" jdbcType="VARCHAR" />
+    <result column="LOG009" property="log009" jdbcType="VARCHAR" />
+    <result column="LOG010" property="log010" jdbcType="VARCHAR" />
+    <result column="LOG011" property="log011" jdbcType="VARCHAR" />
+    <result column="LOG012" property="log012" jdbcType="VARCHAR" />
+    <result column="LOG013" property="log013" jdbcType="VARCHAR" />
+    <result column="LOG014" property="log014" jdbcType="VARCHAR" />
+    <result column="LOG015" property="log015" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    UUID, USERID, USERNAME, USERCARDID, INTODATE, OUTDATE, LOG006, LOG007, LOG008, LOG009, 
+    LOG010, LOG011, LOG012, LOG013, LOG014, LOG015
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from IP_LOGIN
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from IP_LOGIN
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.IpLogin" >
+    insert into IP_LOGIN (UUID, USERID, USERNAME, 
+      USERCARDID, INTODATE, OUTDATE, 
+      LOG006, LOG007, LOG008, 
+      LOG009, LOG010, LOG011, 
+      LOG012, LOG013, LOG014, 
+      LOG015)
+    values (#{uuid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{usercardid,jdbcType=VARCHAR}, #{intodate,jdbcType=TIMESTAMP}, #{outdate,jdbcType=VARCHAR}, 
+      #{log006,jdbcType=VARCHAR}, #{log007,jdbcType=VARCHAR}, #{log008,jdbcType=VARCHAR}, 
+      #{log009,jdbcType=VARCHAR}, #{log010,jdbcType=VARCHAR}, #{log011,jdbcType=VARCHAR}, 
+      #{log012,jdbcType=VARCHAR}, #{log013,jdbcType=VARCHAR}, #{log014,jdbcType=VARCHAR}, 
+      #{log015,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdkj.model.IpLogin" >
+    insert into IP_LOGIN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        UUID,
+      </if>
+      <if test="userid != null" >
+        USERID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="usercardid != null" >
+        USERCARDID,
+      </if>
+      <if test="intodate != null" >
+        INTODATE,
+      </if>
+      <if test="outdate != null" >
+        OUTDATE,
+      </if>
+      <if test="log006 != null" >
+        LOG006,
+      </if>
+      <if test="log007 != null" >
+        LOG007,
+      </if>
+      <if test="log008 != null" >
+        LOG008,
+      </if>
+      <if test="log009 != null" >
+        LOG009,
+      </if>
+      <if test="log010 != null" >
+        LOG010,
+      </if>
+      <if test="log011 != null" >
+        LOG011,
+      </if>
+      <if test="log012 != null" >
+        LOG012,
+      </if>
+      <if test="log013 != null" >
+        LOG013,
+      </if>
+      <if test="log014 != null" >
+        LOG014,
+      </if>
+      <if test="log015 != null" >
+        LOG015,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usercardid != null" >
+        #{usercardid,jdbcType=VARCHAR},
+      </if>
+      <if test="intodate != null" >
+        #{intodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outdate != null" >
+        #{outdate,jdbcType=VARCHAR},
+      </if>
+      <if test="log006 != null" >
+        #{log006,jdbcType=VARCHAR},
+      </if>
+      <if test="log007 != null" >
+        #{log007,jdbcType=VARCHAR},
+      </if>
+      <if test="log008 != null" >
+        #{log008,jdbcType=VARCHAR},
+      </if>
+      <if test="log009 != null" >
+        #{log009,jdbcType=VARCHAR},
+      </if>
+      <if test="log010 != null" >
+        #{log010,jdbcType=VARCHAR},
+      </if>
+      <if test="log011 != null" >
+        #{log011,jdbcType=VARCHAR},
+      </if>
+      <if test="log012 != null" >
+        #{log012,jdbcType=VARCHAR},
+      </if>
+      <if test="log013 != null" >
+        #{log013,jdbcType=VARCHAR},
+      </if>
+      <if test="log014 != null" >
+        #{log014,jdbcType=VARCHAR},
+      </if>
+      <if test="log015 != null" >
+        #{log015,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.IpLogin" >
+    update IP_LOGIN
+    <set >
+      <if test="userid != null" >
+        USERID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usercardid != null" >
+        USERCARDID = #{usercardid,jdbcType=VARCHAR},
+      </if>
+      <if test="intodate != null" >
+        INTODATE = #{intodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outdate != null" >
+        OUTDATE = #{outdate,jdbcType=VARCHAR},
+      </if>
+      <if test="log006 != null" >
+        LOG006 = #{log006,jdbcType=VARCHAR},
+      </if>
+      <if test="log007 != null" >
+        LOG007 = #{log007,jdbcType=VARCHAR},
+      </if>
+      <if test="log008 != null" >
+        LOG008 = #{log008,jdbcType=VARCHAR},
+      </if>
+      <if test="log009 != null" >
+        LOG009 = #{log009,jdbcType=VARCHAR},
+      </if>
+      <if test="log010 != null" >
+        LOG010 = #{log010,jdbcType=VARCHAR},
+      </if>
+      <if test="log011 != null" >
+        LOG011 = #{log011,jdbcType=VARCHAR},
+      </if>
+      <if test="log012 != null" >
+        LOG012 = #{log012,jdbcType=VARCHAR},
+      </if>
+      <if test="log013 != null" >
+        LOG013 = #{log013,jdbcType=VARCHAR},
+      </if>
+      <if test="log014 != null" >
+        LOG014 = #{log014,jdbcType=VARCHAR},
+      </if>
+      <if test="log015 != null" >
+        LOG015 = #{log015,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.IpLogin" >
+    update IP_LOGIN
+    set USERID = #{userid,jdbcType=VARCHAR},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      USERCARDID = #{usercardid,jdbcType=VARCHAR},
+      INTODATE = #{intodate,jdbcType=TIMESTAMP},
+      OUTDATE = #{outdate,jdbcType=VARCHAR},
+      LOG006 = #{log006,jdbcType=VARCHAR},
+      LOG007 = #{log007,jdbcType=VARCHAR},
+      LOG008 = #{log008,jdbcType=VARCHAR},
+      LOG009 = #{log009,jdbcType=VARCHAR},
+      LOG010 = #{log010,jdbcType=VARCHAR},
+      LOG011 = #{log011,jdbcType=VARCHAR},
+      LOG012 = #{log012,jdbcType=VARCHAR},
+      LOG013 = #{log013,jdbcType=VARCHAR},
+      LOG014 = #{log014,jdbcType=VARCHAR},
+      LOG015 = #{log015,jdbcType=VARCHAR}
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

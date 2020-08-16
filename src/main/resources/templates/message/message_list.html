@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言墙</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/dist/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/dist/demo.css">
+
+</head>
+
+<body class="gray-bg">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <ul class="notes" id="message_list_ul">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+<script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+<script src="/js/hjia/content.min.js?v=1.0.0"></script>
+<script src="/js/hjia/plugins/layer/layer.min.js"></script>
+<script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+
+<script>
+    $(function () {
+        queryAllMessage();//查询所有留言信息
+    })
+
+
+    /**
+     * 查询所有留言信息
+     */
+    function queryAllMessage(){
+        $.ajax({
+            url:"/message/queryAllMessage",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:"",    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    var li = "";
+                    for(var i=0;i<data.length;i++){
+                        //拼div  设置值，内容等
+                        li += "<li>";
+                        li += "<div>";
+                        li += "<small>"+data[i].createddate+"</small>";
+                        li += "<h4>电话："+data[i].mobilephome+"</h4>";
+                        li += "<p>"+data[i].comment+"</p>";
+                        li += "<a href='#' onclick=\"delMessage('"+data[i].id+"')\"><i class='fa fa-trash-o'></i></a>";
+                        li += "</div></li>";
+                    }
+                    $("#message_list_ul").html(li);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     * 删除留言信息
+     * @param id
+     */
+    function delMessage(id){
+        swal({
+            title: "您确定要删除这条信息吗",
+            text: "删除后将无法恢复，请谨慎操作！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            cancelButtonText:"取消",
+            confirmButtonText: "删除",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url:"/message/delMessage",    //请求的url地址
+                dataType:"text",   //返回格式为json
+                async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{"id":id},    //参数值
+                type:"POST",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    //请求成功时处理
+                    if(data != null && data != undefined){
+                        if(data == 'yes'){
+                            queryAllMessage();//查询所有留言信息
+                            swal("删除成功！", "您已经永久删除了这条留言。", "success");
+                        }else if(data == 'no'){
+                            swal("删除失败！", "您未删除这条留言。", "fail");
+                        }
+                    }
+                },
+                complete:function(){
+                    //请求完成的处理
+                  //  swal("删除成功！", "您已经永久删除了这条留言。", "success");
+
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+
+        });
+    }
+
+</script>
+</body>
+
+</html>

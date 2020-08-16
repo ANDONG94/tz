@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>西安九洲铂泰医疗器械有限公司文章列表</title>
+    <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content  animated fadeInRight blog">
+    <div class="row">
+        <div class="col-lg-12" id="article_list_div">
+        </div>
+    </div>
+</div>
+<script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+<script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+<script src="/js/hjia/content.min.js?v=1.0.0"></script>
+<script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+
+<script>
+    $(function () {
+        queryAllArticle();//查询所有文章信息
+    })
+
+
+    /**
+     * 查询所有文章信息
+     */
+    function queryAllArticle(){
+        $.ajax({
+            url:"/article/queryAllArticle",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:"",    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    var div = "";
+                    for(var i=0;i<data.length;i++){
+                        //拼div  设置值，内容等
+                        div += "<div class='ibox'>";
+                        div += "<div class='ibox-content'>";
+                        div += "<a href='/article/articleDetail?id="+data[i].id+"' class='btn-link'>";
+                        div += "<h2>"+data[i].title+"</h2></a><span style='margin-left: 90%'><button id='edit' class='btn btn-primary btn-xs m-l-sm' onclick=\"editArticle('"+data[i].id+"')\"  type='button'>编辑</button> <button id='delete' class='btn btn-primary  btn-xs' onclick=\"delArticle('"+data[i].id+"')\"  type='button'>删除</button></span>";
+                        div += "<div class='small m-b-xs'><strong>发表时间：</strong> <span class='text-muted'><i class='fa fa-clock-o'></i>"+data[i].createddate+"</span></div>";
+                        div += "<p>"+data[i].articleintro+"</p>";
+                        div += "<div class='row'>";
+
+                        div += "<div class='col-md-6'><h5>标签：</h5><button class='btn btn-white btn-xs' type='button'>apple</button></div>";
+                        div += "<div class='col-md-6'>";
+                        div += "<div class='small text-right'>";
+                        div += "<h5>状态：</h5>";
+                        div += "<i class='fa fa-eye'> </i> 已浏览 "+data[i].scancount+"";
+                        div += "</div></div></div></div></div>";
+                    }
+                    $("#article_list_div").html(div);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     * 文章信息修改
+     */
+    function editArticle(id) {
+        window.location.href="/article/updateArticle?id="+id;
+    }
+
+
+    /**
+     * 文章信息删除
+     */
+    function delArticle(id) {
+        swal({
+            title: "您确定要删除这条信息吗",
+            text: "删除后将无法恢复，请谨慎操作！",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            cancelButtonText:"取消",
+            confirmButtonText: "删除",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url:"/article/delArticle",    //请求的url地址
+                dataType:"text",   //返回格式为json
+                async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{"id":id},    //参数值
+                type:"POST",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    //请求成功时处理
+                    if(data != null && data != undefined){
+                        if(data == 'yes'){
+                            queryAllArticle();//查询所有文章信息
+                            swal("删除成功！", "您已经永久删除了这条信息。", "success");
+                        }else if(data == 'no'){
+                            swal("删除失败！", "您未删除这条信息。", "fail");
+                        }
+                    }
+                },
+                complete:function(){
+
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+
+        });
+
+    }
+
+</script>
+</body>
+
+</html>

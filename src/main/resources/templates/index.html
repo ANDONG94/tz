@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>陕西省就业扶贫台账系统</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <style>
+        /*html {
+            filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+            -webkit-filter: grayscale(100%);
+        }*/
+        .page-tabs a.active {
+            background: #39aef5;
+            color: #fff;
+        }
+
+        .navbar-default .nav > li > a:hover, .navbar-default .nav > li > a:focus {
+            background-color: #20517f;
+            color: white;
+        }
+
+        .nav-header {
+            padding: 33px 25px;
+            background: url(../css/patterns/header-profile-skin-1.png) no-repeat;
+        }
+
+        .navbar-static-side {
+            background: url(../css/patterns/header-profile-skin-1.png);
+        }
+
+        .nav>li>a {
+            color: #fff;
+            font-weight: 600;
+            padding: 14px 20px 14px 25px;
+        }
+
+        .nav>li.active {
+            border-left: 4px solid #19aa8d;
+            background: url(../css/patterns/header-profile-skin-1.png);
+        }
+
+        .btn-primary {
+            background-color: #5c8cdf;
+            border-color: #1ab394;
+            color: #FFF;
+        }
+    </style>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div id="wrapper">
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close"><i class="fa fa-times-circle"></i>
+        </div>
+
+        <div class="sidebar-collapse">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <!--
+                                                <a href="###"><span class="block m-t-xs"><strong class="font-bold">当前在线人数：<span id="person_count"></span></strong></span></a>
+                        -->
+                        <!-- <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span>-->
+                        <a href="陕西省就业扶贫台账信息系统1.0.docx"><span class="block m-t-xs"><strong class="font-bold">操作手册下载</strong></span></a>
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+<!--
+                               <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
+-->
+                                    <!--<a href=""><span class="block m-t-xs"><strong class="font-bold">操作手册下载</strong></span></a>-->
+                                <span class="block m-t-xs" ><span class="font-bold" id="manage_realname">超级管理员</span><b class="caret"></b></span>
+                                </span>
+                        </a>
+
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <!-- <li><a class="J_menuItem" href="form_avatar.html">修改头像</a>
+                             </li>
+                             <li><a class="J_menuItem" href="profile.html">个人资料</a>
+                             </li>
+                             <li><a class="J_menuItem" href="contacts.html">联系我们</a>
+                             </li>
+                             <li><a class="J_menuItem" href="mailbox.html">信箱</a>
+                             </li>-->
+                            <li><a class="J_menuItem" href="" onclick="UpdatePassword('many')">用户密码修改</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/loginOut">安全退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">陕西省就业扶贫台账系统
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-label">信息采集</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/poorwork/list" data-index="0"> <i class="fa fa-desktop"></i>贫困户</a>
+                        </li>
+
+                        <li class="statistical3">
+                            <a class="J_menuItem" href="/CommunityFactory/list"><i class="fa fa-desktop"></i>社区工厂</a>
+                        </li>
+
+
+                        <!-- <shiro:hasAnyRole name="Role_User">-->
+                        <li class="statistical3">
+                            <a class="J_menuItem" href="/povertyBase/list"><i class="fa fa-desktop"></i>就业扶贫基地</a>
+                        </li>
+                        <!--</shiro:hasAnyRole>-->
+
+                        <!--<div shiro:hasAnyRole ="Role_User">-->
+                        <li class="statistical2">
+                            <a class="J_menuItem" href="/IncubatorBase/list"><i class="fa fa-desktop"></i>创业基地园区中心</a>
+                        </li>
+                       <!-- &lt;!&ndash;</div>&ndash;&gt;-->
+
+                        <li class="statistical2">
+                            <a class="J_menuItem" href="/CreditVillage/list"><i class="fa fa-desktop"></i>信用乡村</a>
+                        </li>
+                        <li class="statistical2">
+                            <a class="J_menuItem" href="/JobFair/list"><i class="fa fa-desktop"></i>招聘会采集</a>
+                        </li>
+                        <li class="statistical2">
+                            <a class="J_menuItem" href="/Information/list"><i class="fa fa-desktop"></i>综合类信息</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/CentralizedSettlement/list"><i class="fa fa-desktop"></i>安置点名称</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/ndrw/list"><i class="fa fa-desktop"></i>年度任务</a>
+                        </li>
+                       <!-- <li>
+                            <a class="J_menuItem" href="/splitAndPoor/list"><i class="fa fa-desktop"></i>分户合户</a>
+                        </li>-->
+                    </ul>
+
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-bar-chart-o"></i>
+                        <span class="nav-label">台账管理</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/poorAccount/list"><i class="fa fa-desktop"></i>贫困户台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/PoorPersonAccount/list"><i class="fa fa-desktop"></i>贫困人口台账</a>
+                        </li>
+                       <li>
+                            <a class="J_menuItem" href="/PoorLaborForceAccount/list"><i class="fa fa-desktop"></i>劳动力台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/PoorLaborForceAccount/ruolist"><i class="fa fa-desktop"></i>弱劳动力台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/EmploymentSituationAccount/list"><i class="fa fa-desktop"></i>劳动力就业台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/EmploymentSituationAccount/ruolist"><i class="fa fa-desktop"></i>弱劳动力就业台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/EntrepreneurshipAccount/list"><i class="fa fa-desktop"></i>劳动力自主创业台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/TrainingSituationAccount/list"><i class="fa fa-desktop"></i>劳动力技能培训台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/TechnicalSchoolAccount/list"><i class="fa fa-desktop"></i>技工院校台账</a>
+                        </li>
+                       <li>
+                            <a class="J_menuItem" href="/EmploymentSituationTraining/list"><i class="fa fa-desktop"></i>苏陕协作培训就业台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/PublicPostAccount/list"><i class="fa fa-desktop"></i>劳动力公益性岗位台账</a>
+                        </li>
+                        <li class="statistical3">
+                            <a class="J_menuItem" href="/CommunityFactoryAccount/list"><i class="fa fa-desktop"></i>社区工厂台账</a>
+                        </li>
+                        <li class="statistical3">
+                            <a class="J_menuItem" href="/PovertyAlleviationBaseAccount/list"><i class="fa fa-desktop"></i>扶贫基地台账</a>
+                        </li>
+                        <li class="statistical2">
+                            <a class="J_menuItem" href="/IncubatorBaseAccount/list"><i class="fa fa-desktop"></i>创业基地园区中心台账</a>
+                        </li>
+                        <li class="statistical2">
+                            <a class="J_menuItem" href="/JobFairAccount/list"><i class="fa fa-desktop"></i>招聘会台账</a>
+                        </li>
+                        <li class="statistical2">
+                            <a class="J_menuItem" href="/CreditVillageAccount/list"><i class="fa fa-desktop"></i>信用乡村台账</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa fa-bar-chart-o"></i>
+                        <span class="nav-label">综合信息台账</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="/businessGuaranteeLoan/list"><i class="fa fa-desktop"></i>创业担保贷款台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/Information/teacherList"><i class="fa fa-desktop"></i>创业师资力量台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/Information/exSituPovertyList"><i class="fa fa-desktop"></i>易地扶贫就业服务站台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/Information/jobInformationBaseList"><i class="fa fa-desktop"></i>岗位信息库台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/Information/laborAlleviationCompanyList"><i class="fa fa-desktop"></i>劳务服务机构台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/Information/laowuPersonList"><i class="fa fa-desktop"></i>劳务经济人台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/newSushanTraining/list"><i class="fa fa-desktop"></i>苏陕合作培训台账</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="/Information/chuangyeLeaderList"><i class="fa fa-desktop"></i>创业带头人台账</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                     <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">数据导入</span><span class="fa arrow"></span></a>
+                     <ul class="nav nav-second-level">
+                         <li><a class="J_menuItem" href="/poorhouseholds/list">贫困户数据导入</a>
+                         </li>
+                         <li><a class="J_menuItem" href="/poorLaborForce/list">家庭成员数据导入</a>
+                         </li>
+                         <li><a class="J_menuItem" href="/EmploymentSintuation/list">劳动力就业信息导入</a>
+                         </li>
+                         <li><a class="J_menuItem" href="/Entrepreneurship/list">劳动力创业信息导入</a>
+                         </li>
+                         <li><a class="J_menuItem" href="/TechnicalSchools/list">劳动力技工院校信息导入</a>
+                         </li>
+                         <li><a class="J_menuItem" href="/TrainingSituation/list">劳动力培训信息导入</a>
+                         </li>
+
+                     </ul>
+                 </li>
+
+                  <li>
+                       <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">待确认查询</span><span class="fa arrow"></span></a>
+                       <ul class="nav nav-second-level">
+                           <li><a class="J_menuItem" href="/poorAccount/tobecomfirelist">待确认贫困户</a>
+                           </li>
+                           <li><a class="J_menuItem" href="/PoorLaborForceAccount/tobecomfirelist">待确认劳动力</a>
+                           </li>
+
+
+                       </ul>
+                   </li>
+             <li>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">待完善查询</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="/poorAccount/tobecompletelist"><i class="fa fa-desktop"></i>待完善贫困户</a>
+                        </li>
+                        <li><a class="J_menuItem" href="/PoorLaborForceComplete/list"><i class="fa fa-desktop"></i>待完善劳动力</a>
+                        </li>
+                       &lt;!&ndash;<li><a class="J_menuItem" href="/PoorLaborForceComplete/repeatWorklist"><i class="fa fa-desktop"></i>重复劳动力确认</a>
+                        </li>&ndash;&gt;
+                        <li><a class="J_menuItem" href="/EmploymentSituationTobeComplete/list"><i class="fa fa-desktop"></i>待完善就业信息</a>
+                        </li>
+                        <li><a class="J_menuItem" href="/EntrepreneurshipTobeComplete/list"><i class="fa fa-desktop"></i>待完善自主创业信息</a>
+                        </li>
+                        <li><a class="J_menuItem" href="/TrainingSituationTobeComplete/list"><i class="fa fa-desktop"></i>待完善技能培训信息</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/TechnicalSchoolTobeComplete/list"><i class="fa fa-desktop"></i>待完善技工院校信息</a>
+                        </li>
+                        <li><a class="J_menuItem" href="/PublicPostTobeComplete/list"><i class="fa fa-desktop"></i>待完善公益性岗位信息</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/IncubatorBaseTobeComplete/list"><i class="fa fa-desktop"></i>待完善创业基地园区中心信息</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/JobFairTobeComplete/list"><i class="fa fa-desktop"></i>待完善招聘会信息</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/CreditVillageToComplete/list"><i class="fa fa-desktop"></i>待完善信用乡村信息</a>
+                        </li>
+                        <li class="statistical3"><a class="J_menuItem" href="/CommunityFactoryComplete/list"><i class="fa fa-desktop"></i>待完善社区工厂</a>
+                        </li>
+                        <li class="statistical3"><a class="J_menuItem" href="/PovertyAlleviationBaseComplete/list"><i class="fa fa-desktop"></i>待完善扶贫基地</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--<li>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">待帮扶查询</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="/TobeHelphu/list"><i class="fa fa-desktop"></i>待帮扶户查询</a>
+                        </li>
+                        <li><a class="J_menuItem" href="/TobeHelpWorker/list"><i class="fa fa-desktop"></i>待帮扶劳动力查询</a>
+                        </li>
+                    </ul>
+                </li>-->
+                <li>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">统计分析</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li class="statistical2"><a class="J_menuItem" href="/Report1/list"><i class="fa fa-desktop"></i>就业创业统计</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report16/list"><i
+                                class="fa fa-desktop"></i>弱劳动力就业创业统计</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report10-1/list"><i
+                                class="fa fa-desktop"></i>苏陕劳务协作统计</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report2/list"><i class="fa fa-desktop"></i>职业培训教育统计</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report3/list"><i class="fa fa-desktop"></i>公益性岗位统计</a>
+                        </li>
+                        <li class="statistical3"><a class="J_menuItem" href="/Report4/list"><i class="fa fa-desktop"></i>社区工厂统计</a>
+                        </li>
+                        <li class="statistical3"><a class="J_menuItem" href="/Report5/list"><i class="fa fa-desktop"></i>就业扶贫基地统计</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report6/list"><i class="fa fa-desktop"></i>创业基地园区中心统计</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report14/list"><i class="fa fa-desktop"></i>技工院校教育统计</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report7/list"><i class="fa fa-desktop"></i>创业担保贷款统计</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report8/list"><i class="fa fa-desktop"></i>招聘会统计</a>
+                        </li>
+
+                        <li class="statistical2"><a class="J_menuItem" href="/Report9-1/list"><i class="fa fa-desktop"></i>综合信息统计表一(工厂、基地、园区)</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report9-2/list"><i class="fa fa-desktop"></i>综合信息统计表二(信用乡村、招聘会)</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report9-3/list"><i class="fa fa-desktop"></i>综合信息统计表三(技校、带头人、劳务输出站)</a>
+                        </li>
+
+                        <li class="statistical2"><a class="J_menuItem" href="/Report10-2/list"><i
+                                class="fa fa-desktop"></i>目标任务完成情况统计(三项指标)</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report11/list"><i class="fa fa-desktop"></i>陕西省补助补贴统计</a>
+                        </li>
+                        <li class="statistical2"><a class="J_menuItem" href="/Report13/list"><i class="fa fa-desktop"></i>待完善统计</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">问题数据管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="/ErrorPoorLaborForceComplete/list"><i class="fa fa-desktop"></i>有转移就业状态没转移就业信息</a></li>
+                        <li><a class="J_menuItem" href="/ErrorEmploymentSituationTobeComplete/list"><i class="fa fa-desktop"></i>多条就业没有结束日期</a></li>
+                    </ul>
+                </li>
+                <!--<li>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="J_menuItem" href="/fpUser/list"><i class="fa fa-desktop"></i>用户管理</a>
+                        </li>
+                    </ul>
+                </li>-->
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+
+        </div>
+        <div class="row content-tabs">
+            <button style="margin-left: 2.5%;" class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+            </button>
+            <button style="margin-top: -0.5px;margin-left: -0.4%;" class="roll-nav roll-left J_tabLeft navbar-minimalize minimalize-styl-2 btn btn-primary"><i class="fa fa-bars"></i>
+            </button>
+            <nav class="page-tabs J_menuTabs">
+                <div class="page-tabs-content">
+                    <a href="javascript:;" class="active J_menuTab" data-id="/poorwork/list">贫困户</a>
+                </div>
+            </nav>
+            <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
+            </button>
+            <div class="btn-group roll-nav roll-right">
+                <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>
+
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                    <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                    </li>
+                    <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                    </li>
+                </ul>
+            </div>
+            <a href="/loginOut" id="login_out" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+        </div>
+        <div class="row J_mainContent" id="content-main" style="height: calc(100% - 50px)">
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/poorwork/list" frameborder="0" data-id="/poorwork/list" seamless></iframe>
+        </div>
+
+    </div>
+    <!--右侧部分结束   -->
+    <!--右侧边栏开始-->
+</div>
+
+<!--模态窗口  修改密码信息  div-->
+<div class="modal inmodal" id="update_pass_div" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="margin:auto;width:800px">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header" style="padding: 10px 15px;text-align: left">
+                <button type="button" id="close_btn" style="display:none" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                </button>
+                <h6 id="update_pass_head" class="modal-title" style="font-size:16px">修改用户密码</h6>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="updatePassForm" action="#" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">所属行政区划：</label>
+                        <div class="col-sm-9 col-lable5">
+                            <input id="info" name="info" readonly="readonly" placeholder="请输入所属行政区划..." type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">真实姓名：<span style="color: red">*</span></label>
+                        <div class="col-sm-9 col-lable5">
+                            <input id="id" name="id"  type="hidden" >
+                            <input id="realname" name="realname"  placeholder="请输入真实姓名..."  type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">身份证号码：<span style="color: red">*</span></label>
+                        <div class="col-sm-9 col-lable5">
+                            <input id="idcard" name="idcard" onchange="checkIdcard(this.value)"    placeholder="请输入身份证号码..." type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">手机号码：<span style="color: red">*</span></label>
+                        <div class="col-sm-9 col-lable5">
+                            <input id="mobilephome" name="mobilephome" onchange="checkphone(this.value)"   placeholder="请输入手机号码..." type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">登录用户名：<span style="color: red">*</span></label>
+                        <div class="col-sm-9 col-lable5">
+                            <input id="username_hide" name="username_hide" type="hidden">
+                            <input id="username" name="username"   placeholder="请输入登录用户名..." type="text" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">原始密码<span style="color: red">*</span></label>
+                        <div class="col-sm-9 col-lable5">
+                            <input id="password_old"   name="password_old" placeholder="请输入原始密码..." type="password" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">新密码：<span style="color: red">*</span></label>
+                        <div class="col-sm-9 col-lable5">
+                            <input id="password_new"  name="password_new" placeholder="请输入新密码..."  type="password" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">确认新密码：<span style="color: red">*</span></label>
+                        <div class="col-sm-9 col-lable5">
+                            <input id="password" name="password"  placeholder="请确认新密码..."  type="password" class="form-control" required="" aria-required="true">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-primary" onclick="savePassword()">保存</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-white" onclick="cleaninput()">清空</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--模态窗口  修改密码信息  div-->
+
+
+<script src="js/hjia/jquery.min.js?v=2.1.4"></script>
+<script src="js/hjia/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/hjia/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/hjia/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="js/hjia/plugins/layer/layer.min.js"></script>
+<script src="js/hjia/hplus.min.js?v=4.1.0"></script>
+<script type="text/javascript" src="js/hjia/contabs.min.js"></script>
+<script src="js/hjia/plugins/pace/pace.min.js"></script>
+<script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+<script>
+    $(function () {
+        checkUser();
+
+        queryLoginUser();    //查询登录用户信息
+    })
+
+
+
+    /**
+     * 查看登录人员的详细信息
+     */
+    function queryLoginUser(){
+        $.ajax({
+            url:"/queryLoginUser",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    $("#manage_realname").text("欢迎："+data.realname);
+                    var aab301 =data.aab301;
+                    if(aab301=='610000000000'){
+                        $(".statistical").show();
+                    }else{
+                        if(aab301.substring(6, 12) == '000000'){
+                            $(".statistical2").show();
+                            $(".statistical3").show();
+                        }else if(aab301.substring(9, 12) == '000'){
+                            $(".statistical3").show();
+                            $(".statistical2").show();
+                        }else{
+                            $(".statistical2").hide();
+                            $(".statistical3").hide();
+                        }
+                        $(".statistical").hide();
+                    }
+                    //$("#manage_img").attr('src',data.imagepath);
+                    // $("#manage_loginname").text("欢迎："+data.username);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+    /**
+     * 修改用户密码
+     */
+    function UpdatePassword(flag) {
+        $("#update_pass_div").modal('show');
+        $.ajax({
+            url:"/queryLoginUser",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    $("#id").val(data.id);
+                    $("#info").val(data.info);
+                    $("#realname").val(data.realname);
+                    $("#idcard").val(data.idcard);
+                    $("#username").val(data.username);
+                    $("#username_hide").val(data.username);
+                    $("#mobilephome").val(data.mobilephome);
+                    if(flag == 'many'){ //说明不是第一次修改密码了，则用户名不能修改
+                        $('#username').attr("readonly","readonly");
+                        $('#realname').attr("readonly","readonly");
+                        $('#idcard').attr("readonly","readonly");
+                        $('#mobilephome').attr("readonly","readonly");
+
+                    }
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+    /**
+     * 修改密码的保存事件
+     */
+    function savePassword() {
+        if(checkAll_pass() == 0){
+            $.ajax({
+                url:"/savePassword",    //请求的url地址
+                dataType:"text",   //返回格式为json
+                async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:$('#updatePassForm').serialize(),    //参数值
+                type:"POST",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    if(data == 'update'){
+                        var username = $("#username").val();
+                        //请求完成的处理
+                        swal({title:"修改成功！",
+                            text:"您的新用户名是【"+username+"】,点击确定后使用新用户名登录系统",
+                            confirmButtonText:"确定",
+                            type:"success"},function(){
+                            window.location.href="/loginOut";//点击退出按钮
+                        })
+                    }else{  //说明是新增
+                        //请求完成的处理
+                        swal("密码修改失败！", "请联系管理员。", "fail");
+                    }
+                },
+                complete:function(){
+                    //请求完成的处理
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+        }
+    }
+
+    /**
+     * 原始密码比较，看对不对
+     */
+    function comparePass() {
+        var pass = $("#password_old").val();
+        $.ajax({
+            url:"/comparePass",    //请求的url地址
+            dataType:"text",   //返回格式为json
+            async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"pass":pass},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    if(data == "no"){
+                        //说明原始密码输入错误
+                        swal("您好！原始密码输入错误!");
+                        $("#password_old").val('');
+                        $("#password_old").focus();
+                    }
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+    /**
+     * 新密码和确认密码进行比较
+     */
+    function comparePass_new() {
+        var password_new = $("#password_new").val();
+        var password = $("#password").val();
+        if(password_new !=null && password_new !='' && password != null && password !=''){
+            if(password_new != password){
+                swal("您好！新密码和确认密码不一样!");
+                $("#password").val('');
+                $("#password").focus();
+            }
+        }
+    }
+
+    /**
+     * 保存之前进行校验
+     */
+    function checkAll_pass() {
+
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var password_old = $("#password_old").val();
+        var password_new = $("#password_new").val();
+        var realname = $("#realname").val();
+        var mobilephome = $("#mobilephome").val();
+        var idcard = $("#idcard").val();
+        var flag = 0;
+
+        if(username =="" || username == null){
+            swal({
+                title: "请输入登录用户名!",
+                text: "您好！登录用户名不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag = 1;;
+        }else{
+            var username_hide = $("#username_hide").val();
+            //通过ajax  调用后台方法
+            $.ajax({
+                async : false,
+                dataType:"text",   //返回格式为text
+                cache : false,
+                type : 'POST',
+                data: {"username":username},
+                url :  '/usernameCheck',
+                success : function(data) { //请求成功后处理函数。
+                    if(data != 'no' && data != username_hide){      //说明用户名已经存在则提示
+                        swal({
+                            title: "该用户已经存在，请重新修改用户名!",
+                            text: "您好！该用户名已经被占用，请重新修改用户名",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        return flag = 1;;
+                    }
+                }
+            });
+        }
+        if(password =="" || password == null){
+            swal({
+                title: "请输入确认密码!",
+                text: "您好！确认密码不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag = 1;;
+        }else{
+            var password_new = $("#password_new").val();
+            var password = $("#password").val();
+            if(password_new !=null && password_new !='' && password != null && password !=''){
+                if(password_new != password){
+                    swal("您好！新密码和确认密码不一样!");
+                    $("#password").val('');
+                    $("#password").focus();
+                    return flag = 1;;
+                }
+            }
+
+        }
+
+        if(password_old =="" || password_old == null){
+            swal({
+                title: "请输入原始密码!",
+                text: "您好！原始密码不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag = 1;;
+        }else{
+            var pass = $("#password_old").val();
+            $.ajax({
+                url:"/comparePass",    //请求的url地址
+                dataType:"text",   //返回格式为json
+                async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{"pass":pass},    //参数值
+                type:"POST",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    //请求成功时处理
+                    if(data != null && data != undefined){
+                        if(data == "no"){
+                            //说明原始密码输入错误
+                            swal("您好！原始密码输入错误!");
+                            $("#password_old").val('');
+                            $("#password_old").focus();
+                            return flag = 1;;
+                        }
+                    }
+                },
+                complete:function(){
+                    //请求完成的处理
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+
+        }
+        if(password_new =="" || password_new == null){
+            swal({
+                title: "请输入新密码!",
+                text: "您好！新密码不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag = 1;;
+        }else{
+            var password_new = $("#password_new").val();
+            var password = $("#password").val();
+            if(password_new !=null && password_new !='' && password != null && password !=''){
+                if(password_new != password){
+                    swal("您好！新密码和确认密码不一样!");
+                    $("#password").val('');
+                    $("#password").focus();
+                    return flag = 1;;
+                }
+            }
+        }
+        if(realname =="" || realname == null){
+            swal({
+                title: "请输入真实姓名!",
+                text: "您好！真实姓名不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag = 1;;
+        }
+        if(mobilephome =="" || mobilephome == null){
+            swal({
+                title: "请输入请输入联系方式!",
+                text: "您好！联系方式不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag = 1;;
+        }
+        if(idcard =="" || idcard == null){
+            swal({
+                title: "请输入身份证号码!",
+                text: "您好！身份证号码不能为空",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return flag = 1;;
+        }
+
+        return flag;
+    }
+
+
+    /**
+     * 清空
+     */
+    function cleaninput() {
+        $("#username").val('');
+        $("#password").val('');
+        $("#password_old").val('');
+        $("#password_new").val('');
+        $.ajax({
+            url:"/queryLoginUser",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{},    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    $("#id").val(data.id);
+                    $("#realname").val(data.realname);
+                    $("#idcard").val(data.idcard);
+                    $("#username").val(data.username);
+                }
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+
+    /**
+     * 检查登录用户的信息是否完整
+     */
+    function checkUser(){
+        //通过ajax  调用后台方法
+        $.ajax({
+            async : false,
+            dataType:"text",   //返回格式为text
+            cache : false,
+            type : 'POST',
+            data: {},
+            url :  '/login/checkUser',
+            success : function(data) { //请求成功后处理函数。
+                if(data == 'yes'){
+                    $("#close_btn").show();
+                    //说明该登录人员信息完整，则不用处理
+                }else if(data == 'no'){
+                    //说明太登录人员信息不完整，需要先完善基本信息，弹出模态框，让用户自己完善
+                    $("#close_btn").hide();
+                    UpdatePassword('frist');
+                }
+            }
+        });
+    }
+
+    /**
+     * 检查用户名是否已经登记
+     */
+    function username_check(username) {
+        var username_hide = $("#username_hide").val();
+        //通过ajax  调用后台方法
+        $.ajax({
+            async : false,
+            dataType:"text",   //返回格式为text
+            cache : false,
+            type : 'POST',
+            data: {"username":username},
+            url :  '/usernameCheck',
+            success : function(data) { //请求成功后处理函数。
+                if(data != 'no' && data != username_hide){      //说明用户名已经存在则提示
+                    swal({
+                        title: "该用户已经存在，请重新修改用户名!",
+                        text: "您好！该用户名已经被占用，请重新修改用户名",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                }
+            }
+        });
+    }
+
+
+    //身份证号码校验
+    function checkIdcard(card){
+
+        $.ajax({
+            url:"/checkIdcard",    //请求的url地址
+            dataType:"text",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:{"card":card},    //参数值
+            cache : false,
+            type : 'POST',
+            success : function(data) { //请求成功后处理函数。
+                alert(data);
+                if(data!="该身份证有效！"){
+
+                    swal({
+                        title: "身份证错误!",
+                        text: data,
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    $("#idcard").val('');
+                    $("#idcard").focus();
+                }
+            }
+        });
+    }
+
+    //手机号码校验
+    function checkphone(tel){
+        var re = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+        if(!re.test(tel)){
+            swal({
+                title: "手机号码错误!",
+                text: "您好！请输入正确的手机号码",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            $("#mobilephome").focus();
+        }
+    }
+
+
+
+    function IdCodeValid(code){
+        //身份证号合法性验证
+        //支持15位和18位身份证号
+        //支持地址编码、出生日期、校验位验证
+        var city={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",21:"辽宁",22:"吉林",23:"黑龙江 ",31:"上海",32:"江苏",33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北 ",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川",52:"贵州",53:"云南",54:"西藏 ",61:"陕西",62:"甘肃",63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外 "};
+        var row = true;
+        var msg = "验证成功";
+
+        if(!code || !/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|[xX])$/.test(code)){
+            row=false,
+                msg = "身份证号格式错误";
+        }else if(!city[code.substr(0,2)]){
+            row=false,
+                msg = "身份证号地址编码错误";
+        }else{
+            //18位身份证需要验证最后一位校验位
+            if(code.length == 18){
+                code = code.split('');
+                //∑(ai×Wi)(mod 11)
+                //加权因子
+                var factor = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 ];
+                //校验位
+                var parity = [ 1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2 ];
+                var sum = 0;
+                var ai = 0;
+                var wi = 0;
+                for (var i = 0; i < 17; i++)
+                {
+                    ai = code[i];
+                    wi = factor[i];
+                    sum += ai * wi;
+                }
+                if(parity[sum % 11] != code[17].toUpperCase()){
+                    row=false,
+                        msg = "身份证号校验位错误";
+                }
+            }
+        }
+        return row;
+    }
+
+
+
+    //计算在线人数
+    /*   var websocket = null;
+
+       //判断当前浏览器是否支持WebSocket
+       if('WebSocket' in window){
+           onlinenum = new WebSocket("ws://"+window.location.hostname+":8081/websocket");
+       }
+       else{
+           alert('该浏览器不支持在线人数查看')
+       }
+
+       //连接发生错误的回调方法
+       onlinenum.onerror = function(){
+           //setMessageInnerHTML("error");
+       };
+
+       //连接成功建立的回调方法
+       onlinenum.onopen = function(event){
+           //setMessageInnerHTML("open");
+       }
+
+       //接收到消息的回调方法
+       onlinenum.onmessage = function(event){
+           setMessageInnerHTML(event.data);
+       }
+
+       //连接关闭的回调方法
+       onlinenum.onclose = function(){
+           //setMessageInnerHTML("close");
+       }
+
+
+       //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+       window.onbeforeunload = function(){
+           onlinenum.close();
+       }
+
+       //将消息显示在网页上
+       function setMessageInnerHTML(innerHTML){
+           $("#person_count").text(innerHTML);
+       }
+
+       //关闭连接
+       function closeWebSocket(){
+           onlinenum.close();
+       }*/
+
+
+
+
+
+
+</script>
+
+<script>
+    window.onload = function(){
+        //屏蔽键盘事件
+        document.onkeydown = function (){
+            var e = window.event || arguments[0];
+            //F12
+            if(e.keyCode == 123){
+                return false;
+                //Ctrl+Shift+I
+            }else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+                return false;
+                //Shift+F10
+            }else if((e.shiftKey) && (e.keyCode == 121)){
+                return false;
+                //Ctrl+U
+            }else if((e.ctrlKey) && (e.keyCode == 85)){
+                return false;
+            }
+        };
+        //屏蔽鼠标右键
+        document.oncontextmenu = function (){
+            return false;
+        }
+    }
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdkj.dao.importExcle.EntrepreneurshipTmpMapper">
+  <resultMap id="BaseResultMap" type="com.tdkj.model.EntrepreneurshipTmp">
+    <id column="EPP001" jdbcType="VARCHAR" property="epp001" />
+    <result column="EPP002" jdbcType="VARCHAR" property="epp002" />
+    <result column="EPP003" jdbcType="VARCHAR" property="epp003" />
+    <result column="EPP004" jdbcType="VARCHAR" property="epp004" />
+    <result column="EPP005" jdbcType="VARCHAR" property="epp005" />
+    <result column="EPP006" jdbcType="VARCHAR" property="epp006" />
+    <result column="EPP007" jdbcType="VARCHAR" property="epp007" />
+    <result column="EPP008" jdbcType="VARCHAR" property="epp008" />
+    <result column="EPP009" jdbcType="VARCHAR" property="epp009" />
+    <result column="AAB301" jdbcType="VARCHAR" property="aab301" />
+    <result column="AAE011" jdbcType="VARCHAR" property="aae011" />
+    <result column="AAE036" jdbcType="TIMESTAMP" property="aae036" />
+    <result column="DATASOURCE" jdbcType="VARCHAR" property="datasource" />
+    <result column="AAE100" jdbcType="VARCHAR" property="aae100" />
+    <result column="UPDATEDATE" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="UPDATEBY" jdbcType="VARCHAR" property="updateby" />
+    <result column="CREATEBY" jdbcType="VARCHAR" property="createby" />
+    <result column="AAE012" jdbcType="VARCHAR" property="aae012" />
+    <result column="EPP010" jdbcType="VARCHAR" property="epp010" />
+    <result column="EPP011" jdbcType="VARCHAR" property="epp011" />
+    <result column="EPP012" jdbcType="VARCHAR" property="epp012" />
+    <result column="EPP013" jdbcType="VARCHAR" property="epp013" />
+    <result column="EPP014" jdbcType="VARCHAR" property="epp014" />
+    <result column="EPP015" jdbcType="VARCHAR" property="epp015" />
+    <result column="BATCH" jdbcType="VARCHAR" property="batch" />
+    <result column="IDENTIFICATION" jdbcType="VARCHAR" property="identification" />
+    <result column="MESSAGE" jdbcType="VARCHAR" property="message" />
+    <result column="ISNEW" jdbcType="VARCHAR" property="isnew" />
+    <result column="AAC003" jdbcType="VARCHAR" property="aac003" />
+    <result column="DELETEBY" property="deleteby" jdbcType="VARCHAR" />
+    <result column="DELETEDATE" property="deletedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    EPP001, EPP002, EPP003, EPP004, EPP005, EPP006, EPP007, EPP008, EPP009, AAB301, AAE011, 
+    AAE036, DATASOURCE, AAE100, UPDATEDATE, UPDATEBY, CREATEBY, AAE012, EPP010, EPP011, 
+    EPP012, EPP013, EPP014, EPP015, BATCH, IDENTIFICATION, MESSAGE, ISNEW, AAC003,DELETEBY,DELETEDATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ENTREPRENEURSHIP_TMP
+    where EPP001 = #{epp001,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ENTREPRENEURSHIP_TMP
+    where EPP001 = #{epp001,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.EntrepreneurshipTmp">
+    insert into ENTREPRENEURSHIP_TMP (EPP001, EPP002, EPP003, 
+      EPP004, EPP005, EPP006, 
+      EPP007, EPP008, EPP009, 
+      AAB301, AAE011, AAE036, 
+      DATASOURCE, AAE100, UPDATEDATE, 
+      UPDATEBY, CREATEBY, AAE012, 
+      EPP010, EPP011, EPP012, 
+      EPP013, EPP014, EPP015, 
+      BATCH, IDENTIFICATION, MESSAGE, 
+      ISNEW, AAC003,DELETEBY,DELETEDATE)
+    values (#{epp001,jdbcType=VARCHAR}, #{epp002,jdbcType=VARCHAR}, #{epp003,jdbcType=VARCHAR},
+      #{epp004,jdbcType=VARCHAR}, #{epp005,jdbcType=VARCHAR}, #{epp006,jdbcType=VARCHAR},
+      #{epp007,jdbcType=VARCHAR}, #{epp008,jdbcType=VARCHAR}, #{epp009,jdbcType=VARCHAR},
+      #{aab301,jdbcType=VARCHAR}, #{aae011,jdbcType=VARCHAR}, #{aae036,jdbcType=TIMESTAMP},
+      #{datasource,jdbcType=VARCHAR}, #{aae100,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP},
+      #{updateby,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{aae012,jdbcType=VARCHAR},
+      #{epp010,jdbcType=VARCHAR}, #{epp011,jdbcType=VARCHAR}, #{epp012,jdbcType=VARCHAR},
+      #{epp013,jdbcType=VARCHAR}, #{epp014,jdbcType=VARCHAR}, #{epp015,jdbcType=VARCHAR},
+      #{batch,jdbcType=VARCHAR}, #{identification,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR},
+      #{isnew,jdbcType=VARCHAR}, #{aac003,jdbcType=VARCHAR},#{deleteby,jdbcType=VARCHAR},#{deletedate,jdbcType=TIMESTAMP})
+  </insert>
+
+  <insert id="addList" parameterType="java.util.List" useGeneratedKeys="false">
+        INSERT INTO ENTREPRENEURSHIP_TMP
+
+        (EPP001, EPP002, EPP003,
+        EPP004, EPP005, EPP006,
+        EPP007, EPP008, EPP009,
+        AAB301, AAE011, AAE036,
+        DATASOURCE, AAE100, UPDATEDATE,
+        UPDATEBY, CREATEBY, AAE012,
+        EPP010, EPP011, EPP012,
+        EPP013, EPP014, EPP015,
+        BATCH, IDENTIFICATION, MESSAGE,
+        ISNEW, AAC003,DELETEBY,DELETEDATE)
+
+        <foreach item="bean" index="index" collection="list" separator="union all">
+            (
+
+            select #{bean.epp001,jdbcType=VARCHAR}, #{bean.epp002,jdbcType=VARCHAR}, #{bean.epp003,jdbcType=VARCHAR},
+            #{bean.epp004,jdbcType=VARCHAR}, #{bean.epp005,jdbcType=VARCHAR}, #{bean.epp006,jdbcType=VARCHAR},
+            #{bean.epp007,jdbcType=VARCHAR}, #{bean.epp008,jdbcType=VARCHAR}, #{bean.epp009,jdbcType=VARCHAR},
+            #{bean.aab301,jdbcType=VARCHAR}, #{bean.aae011,jdbcType=VARCHAR}, #{bean.aae036,jdbcType=TIMESTAMP},
+            #{bean.datasource,jdbcType=VARCHAR}, #{bean.aae100,jdbcType=VARCHAR}, #{bean.updatedate,jdbcType=TIMESTAMP},
+            #{bean.updateby,jdbcType=VARCHAR}, #{bean.createby,jdbcType=VARCHAR}, #{bean.aae012,jdbcType=VARCHAR},
+            #{bean.epp010,jdbcType=VARCHAR}, #{bean.epp011,jdbcType=VARCHAR}, #{bean.epp012,jdbcType=VARCHAR},
+            #{bean.epp013,jdbcType=VARCHAR}, #{bean.epp014,jdbcType=VARCHAR}, #{bean.epp015,jdbcType=VARCHAR},
+            #{bean.batch,jdbcType=VARCHAR}, #{bean.identification,jdbcType=VARCHAR}, #{bean.message,jdbcType=VARCHAR},
+            #{bean.isnew,jdbcType=VARCHAR}, #{bean.aac003,jdbcType=VARCHAR},#{bean.deleteby,jdbcType=VARCHAR},#{bean.deletedate,jdbcType=TIMESTAMP}
+            from dual
+
+            )
+        </foreach>
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.tdkj.model.EntrepreneurshipTmp">
+    insert into ENTREPRENEURSHIP_TMP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="epp001 != null">
+        EPP001,
+      </if>
+      <if test="epp002 != null">
+        EPP002,
+      </if>
+      <if test="epp003 != null">
+        EPP003,
+      </if>
+      <if test="epp004 != null">
+        EPP004,
+      </if>
+      <if test="epp005 != null">
+        EPP005,
+      </if>
+      <if test="epp006 != null">
+        EPP006,
+      </if>
+      <if test="epp007 != null">
+        EPP007,
+      </if>
+      <if test="epp008 != null">
+        EPP008,
+      </if>
+      <if test="epp009 != null">
+        EPP009,
+      </if>
+      <if test="aab301 != null">
+        AAB301,
+      </if>
+      <if test="aae011 != null">
+        AAE011,
+      </if>
+      <if test="aae036 != null">
+        AAE036,
+      </if>
+      <if test="datasource != null">
+        DATASOURCE,
+      </if>
+      <if test="aae100 != null">
+        AAE100,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updateby != null">
+        UPDATEBY,
+      </if>
+      <if test="createby != null">
+        CREATEBY,
+      </if>
+      <if test="aae012 != null">
+        AAE012,
+      </if>
+      <if test="epp010 != null">
+        EPP010,
+      </if>
+      <if test="epp011 != null">
+        EPP011,
+      </if>
+      <if test="epp012 != null">
+        EPP012,
+      </if>
+      <if test="epp013 != null">
+        EPP013,
+      </if>
+      <if test="epp014 != null">
+        EPP014,
+      </if>
+      <if test="epp015 != null">
+        EPP015,
+      </if>
+      <if test="batch != null">
+        BATCH,
+      </if>
+      <if test="identification != null">
+        IDENTIFICATION,
+      </if>
+      <if test="message != null">
+        MESSAGE,
+      </if>
+      <if test="isnew != null">
+        ISNEW,
+      </if>
+      <if test="aac003 != null">
+        AAC003,
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY,
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="epp001 != null">
+        #{epp001,jdbcType=VARCHAR},
+      </if>
+      <if test="epp002 != null">
+        #{epp002,jdbcType=VARCHAR},
+      </if>
+      <if test="epp003 != null">
+        #{epp003,jdbcType=VARCHAR},
+      </if>
+      <if test="epp004 != null">
+        #{epp004,jdbcType=VARCHAR},
+      </if>
+      <if test="epp005 != null">
+        #{epp005,jdbcType=VARCHAR},
+      </if>
+      <if test="epp006 != null">
+        #{epp006,jdbcType=VARCHAR},
+      </if>
+      <if test="epp007 != null">
+        #{epp007,jdbcType=VARCHAR},
+      </if>
+      <if test="epp008 != null">
+        #{epp008,jdbcType=VARCHAR},
+      </if>
+      <if test="epp009 != null">
+        #{epp009,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null">
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datasource != null">
+        #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null">
+        #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="epp010 != null">
+        #{epp010,jdbcType=VARCHAR},
+      </if>
+      <if test="epp011 != null">
+        #{epp011,jdbcType=VARCHAR},
+      </if>
+      <if test="epp012 != null">
+        #{epp012,jdbcType=VARCHAR},
+      </if>
+      <if test="epp013 != null">
+        #{epp013,jdbcType=VARCHAR},
+      </if>
+      <if test="epp014 != null">
+        #{epp014,jdbcType=VARCHAR},
+      </if>
+      <if test="epp015 != null">
+        #{epp015,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="isnew != null">
+        #{isnew,jdbcType=VARCHAR},
+      </if>
+      <if test="aac003 != null">
+        #{aac003,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.EntrepreneurshipTmp">
+    update ENTREPRENEURSHIP_TMP
+    <set>
+      <if test="epp002 != null">
+        EPP002 = #{epp002,jdbcType=VARCHAR},
+      </if>
+      <if test="epp003 != null">
+        EPP003 = #{epp003,jdbcType=VARCHAR},
+      </if>
+      <if test="epp004 != null">
+        EPP004 = #{epp004,jdbcType=VARCHAR},
+      </if>
+      <if test="epp005 != null">
+        EPP005 = #{epp005,jdbcType=VARCHAR},
+      </if>
+      <if test="epp006 != null">
+        EPP006 = #{epp006,jdbcType=VARCHAR},
+      </if>
+      <if test="epp007 != null">
+        EPP007 = #{epp007,jdbcType=VARCHAR},
+      </if>
+      <if test="epp008 != null">
+        EPP008 = #{epp008,jdbcType=VARCHAR},
+      </if>
+      <if test="epp009 != null">
+        EPP009 = #{epp009,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null">
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datasource != null">
+        DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null">
+        AAE012 = #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="epp010 != null">
+        EPP010 = #{epp010,jdbcType=VARCHAR},
+      </if>
+      <if test="epp011 != null">
+        EPP011 = #{epp011,jdbcType=VARCHAR},
+      </if>
+      <if test="epp012 != null">
+        EPP012 = #{epp012,jdbcType=VARCHAR},
+      </if>
+      <if test="epp013 != null">
+        EPP013 = #{epp013,jdbcType=VARCHAR},
+      </if>
+      <if test="epp014 != null">
+        EPP014 = #{epp014,jdbcType=VARCHAR},
+      </if>
+      <if test="epp015 != null">
+        EPP015 = #{epp015,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        BATCH = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        MESSAGE = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="isnew != null">
+        ISNEW = #{isnew,jdbcType=VARCHAR},
+      </if>
+      <if test="aac003 != null">
+        AAC003 = #{aac003,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where EPP001 = #{epp001,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.EntrepreneurshipTmp">
+    update ENTREPRENEURSHIP_TMP
+    set EPP002 = #{epp002,jdbcType=VARCHAR},
+      EPP003 = #{epp003,jdbcType=VARCHAR},
+      EPP004 = #{epp004,jdbcType=VARCHAR},
+      EPP005 = #{epp005,jdbcType=VARCHAR},
+      EPP006 = #{epp006,jdbcType=VARCHAR},
+      EPP007 = #{epp007,jdbcType=VARCHAR},
+      EPP008 = #{epp008,jdbcType=VARCHAR},
+      EPP009 = #{epp009,jdbcType=VARCHAR},
+      AAB301 = #{aab301,jdbcType=VARCHAR},
+      AAE011 = #{aae011,jdbcType=VARCHAR},
+      AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      AAE100 = #{aae100,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      AAE012 = #{aae012,jdbcType=VARCHAR},
+      EPP010 = #{epp010,jdbcType=VARCHAR},
+      EPP011 = #{epp011,jdbcType=VARCHAR},
+      EPP012 = #{epp012,jdbcType=VARCHAR},
+      EPP013 = #{epp013,jdbcType=VARCHAR},
+      EPP014 = #{epp014,jdbcType=VARCHAR},
+      EPP015 = #{epp015,jdbcType=VARCHAR},
+      BATCH = #{batch,jdbcType=VARCHAR},
+      IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      MESSAGE = #{message,jdbcType=VARCHAR},
+      ISNEW = #{isnew,jdbcType=VARCHAR},
+      AAC003 = #{aac003,jdbcType=VARCHAR},
+      DELETEBY = #{deleteby,jdbcType=VARCHAR},
+    DELETEDATE = #{deletedate,jdbcType=TIMESTAMP}
+    where EPP001 = #{epp001,jdbcType=VARCHAR}
+  </update>
+
+    <update id="updateCardList" parameterType="java.util.List">
+        <foreach collection="updatelist" item="bean" index="index" open="begin" close=";end;" separator=";">
+            UPDATE ENTREPRENEURSHIP_TMP
+            <set>
+
+                <if test="bean.identification != null" >
+                    identification = #{bean.identification,jdbcType=VARCHAR},
+                </if>
+                <if test="bean.message != null" >
+                    message = #{bean.message,jdbcType=VARCHAR}
+                </if>
+            </set>
+            <where>
+                <if test="bean.epp001 != null" >
+                    EPP001 = #{bean.epp001,jdbcType=VARCHAR}
+                </if>
+            </where>
+        </foreach>
+    </update>
+
+</mapper>

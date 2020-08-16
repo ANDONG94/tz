@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>西安九洲铂泰医疗器械有限公司地图</title>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/sky/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/sky/demo.css">
+    <link rel="stylesheet" href="/css/sky/style.css">
+    <link type="text/css" rel="stylesheet" href="/js/lunboimage/style/nihongdeng.css">
+    <script src="https://webapi.amap.com/maps?v=1.4.2&key=a32698998266bc74d9b9f221f154a072"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
+    <style type="text/css">
+        #container{
+            width: 100%;
+            height: 430px;
+        }
+
+    </style>
+</head>
+<script type="text/javascript" src="/js/website/jquery.min.js"></script>
+<body >
+<div class="satic-area" style="position:absolute;width:100%;height: 100%" >
+    <div class="dynamic-area1"></div>
+    <div class="dynamic-area2"></div>
+    <div>
+
+        <marquee class="test insetText"  style="width:100%;color:#FFFFFF;font-size: 30px;" onMouseOut="this.start()"  onMouseOver="this.stop()" direction="left" behavior="alternate" scrollamount="3" scrolldelay="0" loop="-1" width="100%" height="50" hspace="10" vspace="10" >
+            西安九洲铂泰医疗器械有限公司  &nbsp;&nbsp;&nbsp;&nbsp;  联系电话：<span id="tele_pnhone"></span>
+        </marquee>
+    </div>
+    <div style="width:100%;height: 32%;text-align: center">
+        <p style=": blue"><h4 id="company_address"></h4></p>
+        <p> <h4 id="company_detail"></h4></p>
+        <p> <h5 id="company_person1"></h5></p>
+        <p> <h5 id="company_person2"></h5></p>
+        <p> <h5 id="company_phone"></h5></p>
+        <p><h5 id="company_email"></h5></p>
+        <p><h5 id="company_qq"></h5></p>
+    </div>
+    <!--高德地图容器-->
+    <div><div id="container"></div></div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        center:[116.480983, 39.989628],
+        zoom:11
+    });
+    AMap.plugin('AMap.ToolBar',function(){
+        var toolbar = new AMap.ToolBar();
+        map.addControl(toolbar)
+    })
+
+
+    //修改地址时重新在地图上描点
+    function changeMap(address) {
+        AMap.service(["AMap.PlaceSearch"], function () {
+            var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+                pageSize: 1,
+                pageIndex: 1,
+                map: map,
+            });
+            //关键字查询
+            placeSearch.search(address, function (status, result) {
+                if (result.info == "OK") {
+                    $('#gps_lon').val(result.poiList.pois[0].location.lng);
+                    $('#gps_lat').val(result.poiList.pois[0].location.lat);
+                    $('#gps').val(result.poiList.pois[0].location.lat + ',' + result.poiList.pois[0].location.lng);
+                }else{
+
+
+                }
+            });
+        });
+    }
+
+    $(function () {
+        queryCompanyInfo();//查询公司信息
+    })
+
+
+    /**
+     * 查询公司信息
+     */
+    function queryCompanyInfo(){
+        $.ajax({
+            url:"/web/queryCompanyInfo",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:"",    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                if(data != null && data != undefined){
+                    $("#company_name").text(data.companyname);
+                    $("#company_address").text("公司地址："+data.address+""+data.compantype);
+                    $("#company_detail").text(data.detail);
+                    $("#company_person1").text("联系人："+data.contectperson1+"  "+data.mobilephome1);
+                    if(data.contectperson2 != null && data.contectperson2 != undefined && data.contectperson2 != ''){
+                        $("#company_person2").text("联系人："+data.contectperson2+"  "+data.mobilephome2);
+                    }
+                    $("#company_phone").text("服务电话："+data.phone);
+                    $("#company_qq").text("服务QQ："+data.qq);
+                    $("#company_email").text("邮箱地址："+data.email);
+                    $("#tele_pnhone").text(data.phone);
+                    changeMap(data.compantype+data.detail);
+                }
+            },
+            complete:function(){
+
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+
+
+
+
+
+</script>
+</html>

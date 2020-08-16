@@ -1,0 +1,109 @@
+.laypage_main a,.laypage_main input,.laypage_main span {
+	
+}
+
+.laypage_main button,.laypage_main input,.laypageskin_default a {
+	border: 1px solid #d3d3d3;
+}
+
+.laypage_main {
+	font-size: 0;
+	clear: both;
+	color: #666;
+	margin-top:6px;
+}
+
+.laypage_main * {
+	display: inline-block;
+	vertical-align: top;
+	font-size: 12px
+}
+
+.laypage_main a {
+	text-decoration: none;
+	color: #666
+}
+	.laypage_main a:hover{
+		background-color:#fff;
+	}
+
+.laypage_main a,.laypage_main span {
+	margin: 0 3px 6px;
+	padding: 5px 10px
+}
+
+.laypage_main input {
+	width: 40px;
+	margin: 0 5px;
+	padding: 0 5px
+}
+
+.laypage_main button {
+	margin-left: 5px;
+	padding: 0 10px;
+}
+
+.laypageskin_default span {
+	color: #999
+}
+
+.laypageskin_default .laypage_curr {
+	font-weight: 700;
+	color: #fff;
+	background-color: #59ce2a;
+	border:1px solid #41B82c;
+}
+
+.laypage_total{
+	padding:0px !important;
+	line-height:27px;
+}
+	.laypage_skip{
+		display:inline-block !important;
+		height:auto !important;
+	}
+
+.laypageskin_molv a,.laypageskin_molv span {
+	padding: 0 12px;
+	border-radius: 2px
+}
+
+.laypageskin_molv a {
+	background-color: #f1eff0
+}
+
+.laypageskin_molv .laypage_curr {
+	background-color: #00AA91;
+	color: #fff
+}
+
+.laypageskin_molv input {
+	
+}
+
+.laypageskin_molv button {
+	
+}
+
+.laypageskin_yahei {
+	color: #333
+}
+
+.laypageskin_yahei a,.laypageskin_yahei span {
+	padding: 0 13px;
+	border-radius: 2px;
+	color: #333
+}
+
+.laypageskin_yahei .laypage_curr {
+	background-color: #333;
+	color: #fff
+}
+
+.laypageskin_flow {
+	text-align: center
+}
+
+.laypageskin_flow .page_nomore {
+	color: #999
+}

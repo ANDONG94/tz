@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照片列表</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!-- datatables-->
+    <link href="/css/plugins/dataTables/dataTables.bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/css/dist/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/dist/demo.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/webuploader/webuploader.css" />
+    <link rel="stylesheet" type="text/css" href="/css/webuploader/style.css" />
+
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <header>
+                            <label class="col-sm-3 control-label">图片类型：</label>
+                            <div class="col-sm-5" style="margin-left:-160px;margin-top:-8px">
+                                <select id="imagetype"  class="form-control m-b" name="imagetype"></select>
+                            </div>
+                    </header>
+                </div>
+
+                    <div id="container">
+                        <!--头部，相册选择和格式选择-->
+
+                        <div id="uploader" >
+
+                            <div class="item_container">
+                                <div id="" class="queueList" >
+                                    <div id="dndArea" class="placeholder">
+                                        <div id="filePicker"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="statusBar" style="display:none;">
+                                <div class="progress">
+                                    <span class="text">0%</span>
+                                    <span class="percentage"></span>
+                                </div><div class="info"></div>
+                                <div class="btns">
+                                    <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div class="ibox-content">
+                    <table class="table table-striped table-bordered table-hover " id="editable"><thead>
+                    <tr>
+                        <th>图片名称</th>
+                        <th>图片类型</th>
+                        <th>图片格式</th>
+                        <th>图片大小</th>
+                        <th>上传时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead></table><table>
+                </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/webuploader/webuploader.js"></script>
+    <script src="/js/webuploader/jquery.sortable.js"></script>
+    <script src="/js/webuploader/upload.js"></script>
+    <script src="/js/hjia/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/js/hjia/plugins/layer/layer.min.js"></script>
+    <script src="/js/hjia/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/js/hjia/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/js/hjia/content.min.js?v=1.0.0"></script>
+    <script src="/js/hjia/plugins/validate/jquery.validate.min.js"></script>
+    <script src="/js/hjia/plugins/validate/messages_zh.min.js"></script>
+    <script src="/js/hjia/demo/form-validate-demo.min.js"></script>
+    <script src="/js/hjia/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script>
+        //图片上传
+        var tdkj_datatable ;
+        $(function () {
+            queryImageType();//查询图片类型
+
+            //提示信息  初始化设置 一般不需要改
+            var lang = {
+                "sProcessing": "处理中...",
+                "sLengthMenu": "每页 _MENU_ 项",
+                "sZeroRecords": "没有匹配结果",
+                "sInfo": "当前显示第 _START_ 至 _END_ 项，共 _TOTAL_ 项。",
+                "sInfoEmpty": "当前显示第 0 至 0 项，共 0 项",
+                "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                "sInfoPostFix": "",
+                "sSearch": "搜索:",
+                "sUrl": "",
+                "sEmptyTable": "表中数据为空",
+                "sLoadingRecords": "载入中...",
+                "sInfoThousands": ",",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页",
+                    "sJump": "跳转"
+                },
+                "oAria": {
+                    "sSortAscending": ": 以升序排列此列",
+                    "sSortDescending": ": 以降序排列此列"
+                }
+            };
+
+
+            //重要修改 表格内容的自定义，需要根据业务定制
+            tdkj_datatable = $("#editable").dataTable({
+                language:lang,  //提示信息
+                autoWidth: false,  //禁用自动调整列宽
+                stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+                processing: true,  //隐藏加载提示,自行处理
+                serverSide: false,  //启用服务器端分页
+                aLengthMenu:[10,20,50,100],  //用户可自选每页展示数量 5条或10条
+                searching: false,  //禁用原生搜索
+                orderMulti: false,  //启用多列排序
+                order: [],  //取消默认排序查询,否则复选框一列会出现小箭头
+                renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+                pagingType: "full_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
+                columnDefs: [{
+                    "targets": 'nosort',  //列的样式名
+                    "orderable": false    //包含上样式名‘nosort’的禁止排序
+                }],
+                ajax: function (data, callback, settings) {
+
+                    //封装请求参数
+                    var param = {};
+                    param.pageSize= data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+                    param.startIndex = data.start;//开始的记录序号
+                    param.pageIndex = (data.start / data.length);//当前页码
+
+                    //ajax请求数据方法
+                    $.ajax({
+                        type: "GET",
+                        url: "/imagelunbo/queryAllPhoto",//url请求的地址
+                        cache: false,  //禁用缓存
+                        data: param,  //传入组装的参数
+                        dataType: "json",
+                        success: function (result) {
+
+                            //封装返回数据重要
+                            var returnData = {};
+                            //这里直接自行返回了draw计数器,应该由后台返回
+                            //returnData.draw = data.draw;
+                            //返回数据全部记录
+                            returnData.recordsTotal = result.recordsTotal;
+                            //后台不实现过滤功能，每次查询均视作全部结果
+                            returnData.recordsFiltered = result.recordsFiltered;
+                            //返回的数据列表
+                            returnData.data = result.data;
+
+                            //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                            //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                            callback(returnData);
+                        }
+                    });
+                },
+                //列表表头字段
+                columns: [
+                    { "data": "imagename" },
+                    { "data": "imagetype" },
+                    { "data": "imagegeshi" },
+                    { "data": "imagesize" },
+                    { "data": "createddate" },
+                    {"data":"id", "render":function(data, type, full, meta){
+                        // return	data="<button onclick=\"updateUser('"+data+"')\"  class='btn btn-sm btn-primary btn-edit' data-toggle='modal' data-target='#useradd' >修 改</button>   <button  class='btn btn-sm btn-danger btn-del' onclick=\"delUser('"+data+"')\">删 除</button>";
+                        return	data="<button  class='btn btn-sm btn-danger btn-del' onclick=\"delImage('"+data+"')\">删 除</button>    <a href='/article/addarticleByImgId?imgId="+data+"'  class='btn btn-sm btn-primary btn-edit'  >添加文章</a> ";
+                    }}]
+            }).api();
+            //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
+        });
+
+
+        /**
+         *删除图片信息
+         */
+        function delImage(id){
+            swal({
+                title: "您确定要删除这条信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                cancelButtonText:"取消",
+                confirmButtonText: "删除",
+                closeOnConfirm: false
+            }, function () {
+                $.ajax({
+                    url:"/imagelunbo/delImage",    //请求的url地址
+                    dataType:"json",   //返回格式为json
+                    async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                    data:{"id":id},    //参数值
+                    type:"POST",   //请求方式
+                    beforeSend:function(){
+                        //请求前的处理
+                    },
+                    success:function(data){
+                        //请求成功时处理
+                        if(data != null && data != undefined){
+                            alert(21312);
+                            if(data.flag == 'yes'){
+                                swal("删除成功！", "您已经永久删除了这条信息。", "success");
+                            }else if(data.flag == 'no'){
+                                swal("删除失败！", "您未删除这条信息。", "fail");
+                            }
+                        }
+                    },
+                    complete:function(){
+                        //请求完成的处理
+                        tdkj_datatable.ajax.reload();
+                        swal("删除成功！", "您已经永久删除了这条信息。", "success");
+                    },
+                    error:function(){
+                        //请求出错处理
+                    }
+                });
+
+            });
+        }
+
+
+        /**
+         * 查询字典表，获取对应的图片类型
+         */
+        function queryImageType(){
+            $("#imagetype").empty();
+            $.ajax({
+                url:"/user/queryDictType",    //请求的url地址
+                dataType:"json",   //返回格式为json
+                async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+                data:{"type":"IMAGETYPE"},    //参数值
+                type:"POST",   //请求方式
+                beforeSend:function(){
+                    //请求前的处理
+                },
+                success:function(data){
+                    //请求成功时处理
+                    if(data != null && data != undefined){
+                        var options ="";
+                        for(var i=0;i<data.length;i++){
+                            options +="<option value='"+data[i].value+"'>"+data[i].typename+"</option>";
+                        }
+                        $("#imagetype").append(options);
+                    }
+                },
+                complete:function(){
+                    //请求完成的处理
+                },
+                error:function(){
+                    //请求出错处理
+                }
+            });
+        }
+
+
+    </script>
+
+</body>
+
+</html>

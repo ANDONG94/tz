@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tdkj.dao.importExcle.PoorHouseholdsTmpMapper" >
+  <resultMap id="BaseResultMap" type="com.tdkj.model.PoorHouseholdsTmp" >
+    <id column="PHD001" property="phd001" jdbcType="VARCHAR" />
+    <result column="PHD002" property="phd002" jdbcType="VARCHAR" />
+    <result column="PHD003" property="phd003" jdbcType="VARCHAR" />
+    <result column="PHD004" property="phd004" jdbcType="VARCHAR" />
+    <result column="PHD005" property="phd005" jdbcType="VARCHAR" />
+    <result column="PHD006" property="phd006" jdbcType="VARCHAR" />
+    <result column="PHD007" property="phd007" jdbcType="VARCHAR" />
+    <result column="PHD008" property="phd008" jdbcType="DECIMAL" />
+    <result column="PHD009" property="phd009" jdbcType="DECIMAL" />
+    <result column="AAB301" property="aab301" jdbcType="VARCHAR" />
+
+    <result column="PHD011" property="phd011" jdbcType="VARCHAR" />
+    <result column="PHD012" property="phd012" jdbcType="VARCHAR" />
+    <result column="AAE011" property="aae011" jdbcType="VARCHAR" />
+    <result column="AAE036" property="aae036" jdbcType="TIMESTAMP" />
+    <result column="PHD010" property="phd010" jdbcType="VARCHAR" />
+    <result column="PHD013" property="phd013" jdbcType="VARCHAR" />
+    <result column="PHD014" property="phd014" jdbcType="VARCHAR" />
+    <result column="PHD015" property="phd015" jdbcType="VARCHAR" />
+    <result column="DATASOURCE" property="datasource" jdbcType="VARCHAR" />
+    <result column="AAE100" property="aae100" jdbcType="VARCHAR" />
+    <result column="UPDATEDATE" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="UPDATEBY" property="updateby" jdbcType="VARCHAR" />
+    <result column="CREATEBY" property="createby" jdbcType="VARCHAR" />
+    <result column="AAE012" property="aae012" jdbcType="VARCHAR" />
+    <result column="PHD016" property="phd016" jdbcType="VARCHAR" />
+    <result column="BATCH" property="batch" jdbcType="VARCHAR" />
+    <result column="IDENTIFICATION" property="identification" jdbcType="VARCHAR" />
+    <result column="MESSAGE" property="message" jdbcType="VARCHAR" />
+    <result column="HELPYEAR" property="helpyear" jdbcType="VARCHAR" />
+    <result column="DELETEBY" property="deleteby" jdbcType="VARCHAR" />
+    <result column="DELETEDATE" property="deletedate" jdbcType="TIMESTAMP" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PHD001, PHD002, PHD003, PHD004, PHD005, PHD006, PHD007, PHD008, PHD009, AAB301, PHD011, 
+    PHD012, AAE011, AAE036, PHD010, PHD013, PHD014, PHD015, DATASOURCE, AAE100, UPDATEDATE, 
+    UPDATEBY, CREATEBY, AAE012, PHD016, BATCH, IDENTIFICATION, MESSAGE,HELPYEAR,DELETEBY,DELETEDATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from POOR_HOUSEHOLDS_TMP
+    where PHD001 = #{phd001,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from POOR_HOUSEHOLDS_TMP
+    where PHD001 = #{phd001,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.PoorHouseholdsTmp" >
+    insert into POOR_HOUSEHOLDS_TMP (PHD001, PHD002, PHD003, 
+      PHD004, PHD005, PHD006, 
+      PHD007, PHD008, PHD009, 
+      AAB301, PHD011, PHD012, 
+      AAE011, AAE036, PHD010, 
+      PHD013, PHD014, PHD015, 
+      DATASOURCE, AAE100, UPDATEDATE, 
+      UPDATEBY, CREATEBY, AAE012, 
+      PHD016, BATCH, IDENTIFICATION, 
+      MESSAGE,HELPYEAR,DELETEBY,DELETEDATE)
+    values (#{phd001,jdbcType=VARCHAR}, #{phd002,jdbcType=VARCHAR}, #{phd003,jdbcType=VARCHAR}, 
+      #{phd004,jdbcType=VARCHAR}, #{phd005,jdbcType=VARCHAR}, #{phd006,jdbcType=VARCHAR}, 
+      #{phd007,jdbcType=VARCHAR}, #{phd008,jdbcType=DECIMAL}, #{phd009,jdbcType=DECIMAL}, 
+      #{aab301,jdbcType=VARCHAR}, #{phd011,jdbcType=VARCHAR}, #{phd012,jdbcType=VARCHAR}, 
+      #{aae011,jdbcType=VARCHAR}, #{aae036,jdbcType=TIMESTAMP}, #{phd010,jdbcType=VARCHAR}, 
+      #{phd013,jdbcType=VARCHAR}, #{phd014,jdbcType=VARCHAR}, #{phd015,jdbcType=VARCHAR}, 
+      #{datasource,jdbcType=VARCHAR}, #{aae100,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, 
+      #{updateby,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{aae012,jdbcType=VARCHAR}, 
+      #{phd016,jdbcType=VARCHAR}, #{batch,jdbcType=VARCHAR}, #{identification,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR},#{helpyear,jdbcType=VARCHAR},#{deleteby,jdbcType=VARCHAR},#{deletedate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdkj.model.PoorHouseholdsTmp" >
+    insert into POOR_HOUSEHOLDS_TMP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="phd001 != null" >
+        PHD001,
+      </if>
+      <if test="phd002 != null" >
+        PHD002,
+      </if>
+      <if test="phd003 != null" >
+        PHD003,
+      </if>
+      <if test="phd004 != null" >
+        PHD004,
+      </if>
+      <if test="phd005 != null" >
+        PHD005,
+      </if>
+      <if test="phd006 != null" >
+        PHD006,
+      </if>
+      <if test="phd007 != null" >
+        PHD007,
+      </if>
+      <if test="phd008 != null" >
+        PHD008,
+      </if>
+      <if test="phd009 != null" >
+        PHD009,
+      </if>
+      <if test="aab301 != null" >
+        AAB301,
+      </if>
+      <if test="phd011 != null" >
+        PHD011,
+      </if>
+      <if test="phd012 != null" >
+        PHD012,
+      </if>
+      <if test="aae011 != null" >
+        AAE011,
+      </if>
+      <if test="aae036 != null" >
+        AAE036,
+      </if>
+      <if test="phd010 != null" >
+        PHD010,
+      </if>
+      <if test="phd013 != null" >
+        PHD013,
+      </if>
+      <if test="phd014 != null" >
+        PHD014,
+      </if>
+      <if test="phd015 != null" >
+        PHD015,
+      </if>
+      <if test="datasource != null" >
+        DATASOURCE,
+      </if>
+      <if test="aae100 != null" >
+        AAE100,
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE,
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY,
+      </if>
+      <if test="createby != null" >
+        CREATEBY,
+      </if>
+      <if test="aae012 != null" >
+        AAE012,
+      </if>
+      <if test="phd016 != null" >
+        PHD016,
+      </if>
+      <if test="batch != null" >
+        BATCH,
+      </if>
+      <if test="identification != null" >
+        IDENTIFICATION,
+      </if>
+      <if test="message != null" >
+        MESSAGE,
+      </if>
+      <if test="helpyear != null" >
+        HELPYEAR,
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY,
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="phd001 != null" >
+        #{phd001,jdbcType=VARCHAR},
+      </if>
+      <if test="phd002 != null" >
+        #{phd002,jdbcType=VARCHAR},
+      </if>
+      <if test="phd003 != null" >
+        #{phd003,jdbcType=VARCHAR},
+      </if>
+      <if test="phd004 != null" >
+        #{phd004,jdbcType=VARCHAR},
+      </if>
+      <if test="phd005 != null" >
+        #{phd005,jdbcType=VARCHAR},
+      </if>
+      <if test="phd006 != null" >
+        #{phd006,jdbcType=VARCHAR},
+      </if>
+      <if test="phd007 != null" >
+        #{phd007,jdbcType=VARCHAR},
+      </if>
+      <if test="phd008 != null" >
+        #{phd008,jdbcType=DECIMAL},
+      </if>
+      <if test="phd009 != null" >
+        #{phd009,jdbcType=DECIMAL},
+      </if>
+      <if test="aab301 != null" >
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="phd011 != null" >
+        #{phd011,jdbcType=VARCHAR},
+      </if>
+      <if test="phd012 != null" >
+        #{phd012,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null" >
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null" >
+        #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phd010 != null" >
+        #{phd010,jdbcType=VARCHAR},
+      </if>
+      <if test="phd013 != null" >
+        #{phd013,jdbcType=VARCHAR},
+      </if>
+      <if test="phd014 != null" >
+        #{phd014,jdbcType=VARCHAR},
+      </if>
+      <if test="phd015 != null" >
+        #{phd015,jdbcType=VARCHAR},
+      </if>
+      <if test="datasource != null" >
+        #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null" >
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null" >
+        #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="phd016 != null" >
+        #{phd016,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null" >
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null" >
+        #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="helpyear != null" >
+        #{helpyear,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.PoorHouseholdsTmp" >
+    update POOR_HOUSEHOLDS_TMP
+    <set >
+      <if test="phd002 != null" >
+        PHD002 = #{phd002,jdbcType=VARCHAR},
+      </if>
+      <if test="phd003 != null" >
+        PHD003 = #{phd003,jdbcType=VARCHAR},
+      </if>
+      <if test="phd004 != null" >
+        PHD004 = #{phd004,jdbcType=VARCHAR},
+      </if>
+      <if test="phd005 != null" >
+        PHD005 = #{phd005,jdbcType=VARCHAR},
+      </if>
+      <if test="phd006 != null" >
+        PHD006 = #{phd006,jdbcType=VARCHAR},
+      </if>
+      <if test="phd007 != null" >
+        PHD007 = #{phd007,jdbcType=VARCHAR},
+      </if>
+      <if test="phd008 != null" >
+        PHD008 = #{phd008,jdbcType=DECIMAL},
+      </if>
+      <if test="phd009 != null" >
+        PHD009 = #{phd009,jdbcType=DECIMAL},
+      </if>
+      <if test="aab301 != null" >
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="phd011 != null" >
+        PHD011 = #{phd011,jdbcType=VARCHAR},
+      </if>
+      <if test="phd012 != null" >
+        PHD012 = #{phd012,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null" >
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null" >
+        AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phd010 != null" >
+        PHD010 = #{phd010,jdbcType=VARCHAR},
+      </if>
+      <if test="phd013 != null" >
+        PHD013 = #{phd013,jdbcType=VARCHAR},
+      </if>
+      <if test="phd014 != null" >
+        PHD014 = #{phd014,jdbcType=VARCHAR},
+      </if>
+      <if test="phd015 != null" >
+        PHD015 = #{phd015,jdbcType=VARCHAR},
+      </if>
+      <if test="datasource != null" >
+        DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null" >
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null" >
+        AAE012 = #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="phd016 != null" >
+        PHD016 = #{phd016,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null" >
+        BATCH = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null" >
+        IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        MESSAGE = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="helpyear != null" >
+        HELPYEAR = #{helpyear,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PHD001 = #{phd001,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.PoorHouseholdsTmp" >
+    update POOR_HOUSEHOLDS_TMP
+    set PHD002 = #{phd002,jdbcType=VARCHAR},
+      PHD003 = #{phd003,jdbcType=VARCHAR},
+      PHD004 = #{phd004,jdbcType=VARCHAR},
+      PHD005 = #{phd005,jdbcType=VARCHAR},
+      PHD006 = #{phd006,jdbcType=VARCHAR},
+      PHD007 = #{phd007,jdbcType=VARCHAR},
+      PHD008 = #{phd008,jdbcType=DECIMAL},
+      PHD009 = #{phd009,jdbcType=DECIMAL},
+      AAB301 = #{aab301,jdbcType=VARCHAR},
+      PHD011 = #{phd011,jdbcType=VARCHAR},
+      PHD012 = #{phd012,jdbcType=VARCHAR},
+      AAE011 = #{aae011,jdbcType=VARCHAR},
+      AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      PHD010 = #{phd010,jdbcType=VARCHAR},
+      PHD013 = #{phd013,jdbcType=VARCHAR},
+      PHD014 = #{phd014,jdbcType=VARCHAR},
+      PHD015 = #{phd015,jdbcType=VARCHAR},
+      DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      AAE100 = #{aae100,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      AAE012 = #{aae012,jdbcType=VARCHAR},
+      PHD016 = #{phd016,jdbcType=VARCHAR},
+      BATCH = #{batch,jdbcType=VARCHAR},
+      IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      MESSAGE = #{message,jdbcType=VARCHAR},
+      HELPYEAR = #{helpyear,jdbcType=VARCHAR},
+      DELETEBY = #{deleteby,jdbcType=VARCHAR},
+    DELETEDATE = #{deletedate,jdbcType=TIMESTAMP}
+    where PHD001 = #{phd001,jdbcType=VARCHAR}
+  </update>
+
+
+    <select id="CoppyselectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from POOR_HOUSEHOLDS_TMP
+        where batch = #{batch,jdbcType=VARCHAR} and IDENTIFICATION='1'
+    </select>
+
+
+
+    <insert id="addList" parameterType="java.util.List" useGeneratedKeys="false">
+                 INSERT INTO POOR_HOUSEHOLDS_TMP
+
+                    (PHD001, PHD002, PHD003,
+                    PHD004, PHD005, PHD006,
+                    PHD007, PHD008, PHD009,
+                    AAB301, PHD011, PHD012,
+                    AAE011, AAE036, PHD010,
+                    PHD013, PHD014, PHD015,
+                    DATASOURCE, AAE100, UPDATEDATE,
+                    UPDATEBY, CREATEBY, AAE012,
+                    PHD016, BATCH, IDENTIFICATION,
+                    MESSAGE,HELPYEAR)
+
+                 <foreach item="bean" index="index" collection="list" separator="union all">
+                     (
+
+                     select #{bean.phd001,jdbcType=VARCHAR}, #{bean.phd002,jdbcType=VARCHAR}, #{bean.phd003,jdbcType=VARCHAR},
+                     #{bean.phd004,jdbcType=VARCHAR}, #{bean.phd005,jdbcType=VARCHAR}, #{bean.phd006,jdbcType=VARCHAR},
+                     #{bean.phd007,jdbcType=VARCHAR}, #{bean.phd008,jdbcType=DECIMAL}, #{bean.phd009,jdbcType=DECIMAL},
+                     #{bean.aab301,jdbcType=VARCHAR}, #{bean.phd011,jdbcType=VARCHAR}, #{bean.phd012,jdbcType=VARCHAR},
+                     #{bean.aae011,jdbcType=VARCHAR}, #{bean.aae036,jdbcType=TIMESTAMP}, #{bean.phd010,jdbcType=VARCHAR},
+                     #{bean.phd013,jdbcType=VARCHAR}, #{bean.phd014,jdbcType=VARCHAR}, #{bean.phd015,jdbcType=VARCHAR},
+                     #{bean.datasource,jdbcType=VARCHAR}, #{bean.aae100,jdbcType=VARCHAR}, #{bean.updatedate,jdbcType=TIMESTAMP},
+                     #{bean.updateby,jdbcType=VARCHAR}, #{bean.createby,jdbcType=VARCHAR}, #{bean.aae012,jdbcType=VARCHAR},
+                     #{bean.phd016,jdbcType=VARCHAR}, #{bean.batch,jdbcType=VARCHAR}, #{bean.identification,jdbcType=VARCHAR},
+                     #{bean.message,jdbcType=VARCHAR},#{bean.helpyear,jdbcType=VARCHAR}
+                     from dual
+
+                     )
+                 </foreach>
+    </insert>
+</mapper>

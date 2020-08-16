@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdkj.dao.importExcle.PoorLaborForceTmpMapper">
+  <resultMap id="BaseResultMap" type="com.tdkj.model.PoorLaborForceTmp">
+    <id column="PLF001" jdbcType="VARCHAR" property="plf001" />
+    <result column="PLF002" jdbcType="VARCHAR" property="plf002" />
+    <result column="AAB301" jdbcType="VARCHAR" property="aab301" />
+    <result column="PLF004" jdbcType="VARCHAR" property="plf004" />
+    <result column="PLF005" jdbcType="VARCHAR" property="plf005" />
+    <result column="PLF006" jdbcType="VARCHAR" property="plf006" />
+    <result column="PLF007" jdbcType="VARCHAR" property="plf007" />
+    <result column="PLF008" jdbcType="VARCHAR" property="plf008" />
+    <result column="PLF009" jdbcType="VARCHAR" property="plf009" />
+    <result column="PLF010" jdbcType="VARCHAR" property="plf010" />
+    <result column="PLF011" jdbcType="VARCHAR" property="plf011" />
+    <result column="PLF012" jdbcType="VARCHAR" property="plf012" />
+    <result column="PLF013" jdbcType="VARCHAR" property="plf013" />
+    <result column="PLF014" jdbcType="VARCHAR" property="plf014" />
+    <result column="AAE011" jdbcType="VARCHAR" property="aae011" />
+    <result column="AAE036" jdbcType="TIMESTAMP" property="aae036" />
+    <result column="PLF016" jdbcType="VARCHAR" property="plf016" />
+    <result column="PLF015" jdbcType="VARCHAR" property="plf015" />
+    <result column="PLF017" jdbcType="VARCHAR" property="plf017" />
+    <result column="PLF018" jdbcType="VARCHAR" property="plf018" />
+    <result column="PLF019" jdbcType="VARCHAR" property="plf019" />
+    <result column="PLF020" jdbcType="VARCHAR" property="plf020" />
+    <result column="PLF021" jdbcType="VARCHAR" property="plf021" />
+    <result column="PLF022" jdbcType="VARCHAR" property="plf022" />
+    <result column="DATASOURCE" jdbcType="VARCHAR" property="datasource" />
+    <result column="AAE100" jdbcType="VARCHAR" property="aae100" />
+    <result column="UPDATEDATE" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="UPDATEBY" jdbcType="VARCHAR" property="updateby" />
+    <result column="CREATEBY" jdbcType="VARCHAR" property="createby" />
+    <result column="AAE012" jdbcType="VARCHAR" property="aae012" />
+    <result column="PLF023" jdbcType="VARCHAR" property="plf023" />
+    <result column="PLF024" jdbcType="VARCHAR" property="plf024" />
+    <result column="ISOVERAGE" jdbcType="VARCHAR" property="isoverage" />
+    <result column="BATCH" jdbcType="VARCHAR" property="batch" />
+    <result column="IDENTIFICATION" jdbcType="VARCHAR" property="identification" />
+    <result column="MESSAGE" jdbcType="VARCHAR" property="message" />
+    <result column="HELPYEAR" jdbcType="VARCHAR" property="helpyear" />
+    <result column="AAC003" jdbcType="VARCHAR" property="aac003" />
+    <result column="DELETEBY" property="deleteby" jdbcType="VARCHAR" />
+    <result column="DELETEDATE" property="deletedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PLF001, PLF002, AAB301, PLF004, PLF005, PLF006, PLF007, PLF008, PLF009, PLF010, PLF011, 
+    PLF012, PLF013, PLF014, AAE011, AAE036, PLF016, PLF015, PLF017, PLF018, PLF019, PLF020, 
+    PLF021, PLF022, DATASOURCE, AAE100, UPDATEDATE, UPDATEBY, CREATEBY, AAE012, PLF023, 
+    PLF024, ISOVERAGE, BATCH, IDENTIFICATION, MESSAGE, HELPYEAR, AAC003,DELETEBY,DELETEDATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from POOR_LABOR_FORCE_TMP
+    where PLF001 = #{plf001,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from POOR_LABOR_FORCE_TMP
+    where PLF001 = #{plf001,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.PoorLaborForceTmp">
+    insert into POOR_LABOR_FORCE_TMP (PLF001, PLF002, AAB301, 
+      PLF004, PLF005, PLF006, 
+      PLF007, PLF008, PLF009, 
+      PLF010, PLF011, PLF012, 
+      PLF013, PLF014, AAE011, 
+      AAE036, PLF016, PLF015, 
+      PLF017, PLF018, PLF019, 
+      PLF020, PLF021, PLF022, 
+      DATASOURCE, AAE100, UPDATEDATE, 
+      UPDATEBY, CREATEBY, AAE012, 
+      PLF023, PLF024, ISOVERAGE, 
+      BATCH, IDENTIFICATION, MESSAGE, 
+      HELPYEAR, AAC003,DELETEBY,DELETEDATE)
+    values (#{plf001,jdbcType=VARCHAR}, #{plf002,jdbcType=VARCHAR}, #{aab301,jdbcType=VARCHAR}, 
+      #{plf004,jdbcType=VARCHAR}, #{plf005,jdbcType=VARCHAR}, #{plf006,jdbcType=VARCHAR}, 
+      #{plf007,jdbcType=VARCHAR}, #{plf008,jdbcType=VARCHAR}, #{plf009,jdbcType=VARCHAR}, 
+      #{plf010,jdbcType=VARCHAR}, #{plf011,jdbcType=VARCHAR}, #{plf012,jdbcType=VARCHAR}, 
+      #{plf013,jdbcType=VARCHAR}, #{plf014,jdbcType=VARCHAR}, #{aae011,jdbcType=VARCHAR}, 
+      #{aae036,jdbcType=TIMESTAMP}, #{plf016,jdbcType=VARCHAR}, #{plf015,jdbcType=VARCHAR}, 
+      #{plf017,jdbcType=VARCHAR}, #{plf018,jdbcType=VARCHAR}, #{plf019,jdbcType=VARCHAR}, 
+      #{plf020,jdbcType=VARCHAR}, #{plf021,jdbcType=VARCHAR}, #{plf022,jdbcType=VARCHAR}, 
+      #{datasource,jdbcType=VARCHAR}, #{aae100,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, 
+      #{updateby,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{aae012,jdbcType=VARCHAR}, 
+      #{plf023,jdbcType=VARCHAR}, #{plf024,jdbcType=VARCHAR}, #{isoverage,jdbcType=VARCHAR}, 
+      #{batch,jdbcType=VARCHAR}, #{identification,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
+      #{helpyear,jdbcType=VARCHAR}, #{aac003,jdbcType=VARCHAR},#{deleteby,jdbcType=VARCHAR},#{deletedate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdkj.model.PoorLaborForceTmp">
+    insert into POOR_LABOR_FORCE_TMP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="plf001 != null">
+        PLF001,
+      </if>
+      <if test="plf002 != null">
+        PLF002,
+      </if>
+      <if test="aab301 != null">
+        AAB301,
+      </if>
+      <if test="plf004 != null">
+        PLF004,
+      </if>
+      <if test="plf005 != null">
+        PLF005,
+      </if>
+      <if test="plf006 != null">
+        PLF006,
+      </if>
+      <if test="plf007 != null">
+        PLF007,
+      </if>
+      <if test="plf008 != null">
+        PLF008,
+      </if>
+      <if test="plf009 != null">
+        PLF009,
+      </if>
+      <if test="plf010 != null">
+        PLF010,
+      </if>
+      <if test="plf011 != null">
+        PLF011,
+      </if>
+      <if test="plf012 != null">
+        PLF012,
+      </if>
+      <if test="plf013 != null">
+        PLF013,
+      </if>
+      <if test="plf014 != null">
+        PLF014,
+      </if>
+      <if test="aae011 != null">
+        AAE011,
+      </if>
+      <if test="aae036 != null">
+        AAE036,
+      </if>
+      <if test="plf016 != null">
+        PLF016,
+      </if>
+      <if test="plf015 != null">
+        PLF015,
+      </if>
+      <if test="plf017 != null">
+        PLF017,
+      </if>
+      <if test="plf018 != null">
+        PLF018,
+      </if>
+      <if test="plf019 != null">
+        PLF019,
+      </if>
+      <if test="plf020 != null">
+        PLF020,
+      </if>
+      <if test="plf021 != null">
+        PLF021,
+      </if>
+      <if test="plf022 != null">
+        PLF022,
+      </if>
+      <if test="datasource != null">
+        DATASOURCE,
+      </if>
+      <if test="aae100 != null">
+        AAE100,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updateby != null">
+        UPDATEBY,
+      </if>
+      <if test="createby != null">
+        CREATEBY,
+      </if>
+      <if test="aae012 != null">
+        AAE012,
+      </if>
+      <if test="plf023 != null">
+        PLF023,
+      </if>
+      <if test="plf024 != null">
+        PLF024,
+      </if>
+      <if test="isoverage != null">
+        ISOVERAGE,
+      </if>
+      <if test="batch != null">
+        BATCH,
+      </if>
+      <if test="identification != null">
+        IDENTIFICATION,
+      </if>
+      <if test="message != null">
+        MESSAGE,
+      </if>
+      <if test="helpyear != null">
+        HELPYEAR,
+      </if>
+      <if test="aac003 != null">
+        AAC003,
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY,
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="plf001 != null">
+        #{plf001,jdbcType=VARCHAR},
+      </if>
+      <if test="plf002 != null">
+        #{plf002,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="plf004 != null">
+        #{plf004,jdbcType=VARCHAR},
+      </if>
+      <if test="plf005 != null">
+        #{plf005,jdbcType=VARCHAR},
+      </if>
+      <if test="plf006 != null">
+        #{plf006,jdbcType=VARCHAR},
+      </if>
+      <if test="plf007 != null">
+        #{plf007,jdbcType=VARCHAR},
+      </if>
+      <if test="plf008 != null">
+        #{plf008,jdbcType=VARCHAR},
+      </if>
+      <if test="plf009 != null">
+        #{plf009,jdbcType=VARCHAR},
+      </if>
+      <if test="plf010 != null">
+        #{plf010,jdbcType=VARCHAR},
+      </if>
+      <if test="plf011 != null">
+        #{plf011,jdbcType=VARCHAR},
+      </if>
+      <if test="plf012 != null">
+        #{plf012,jdbcType=VARCHAR},
+      </if>
+      <if test="plf013 != null">
+        #{plf013,jdbcType=VARCHAR},
+      </if>
+      <if test="plf014 != null">
+        #{plf014,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null">
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plf016 != null">
+        #{plf016,jdbcType=VARCHAR},
+      </if>
+      <if test="plf015 != null">
+        #{plf015,jdbcType=VARCHAR},
+      </if>
+      <if test="plf017 != null">
+        #{plf017,jdbcType=VARCHAR},
+      </if>
+      <if test="plf018 != null">
+        #{plf018,jdbcType=VARCHAR},
+      </if>
+      <if test="plf019 != null">
+        #{plf019,jdbcType=VARCHAR},
+      </if>
+      <if test="plf020 != null">
+        #{plf020,jdbcType=VARCHAR},
+      </if>
+      <if test="plf021 != null">
+        #{plf021,jdbcType=VARCHAR},
+      </if>
+      <if test="plf022 != null">
+        #{plf022,jdbcType=VARCHAR},
+      </if>
+      <if test="datasource != null">
+        #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null">
+        #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="plf023 != null">
+        #{plf023,jdbcType=VARCHAR},
+      </if>
+      <if test="plf024 != null">
+        #{plf024,jdbcType=VARCHAR},
+      </if>
+      <if test="isoverage != null">
+        #{isoverage,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="helpyear != null">
+        #{helpyear,jdbcType=VARCHAR},
+      </if>
+      <if test="aac003 != null">
+        #{aac003,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.PoorLaborForceTmp">
+    update POOR_LABOR_FORCE_TMP
+    <set>
+      <if test="plf002 != null">
+        PLF002 = #{plf002,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="plf004 != null">
+        PLF004 = #{plf004,jdbcType=VARCHAR},
+      </if>
+      <if test="plf005 != null">
+        PLF005 = #{plf005,jdbcType=VARCHAR},
+      </if>
+      <if test="plf006 != null">
+        PLF006 = #{plf006,jdbcType=VARCHAR},
+      </if>
+      <if test="plf007 != null">
+        PLF007 = #{plf007,jdbcType=VARCHAR},
+      </if>
+      <if test="plf008 != null">
+        PLF008 = #{plf008,jdbcType=VARCHAR},
+      </if>
+      <if test="plf009 != null">
+        PLF009 = #{plf009,jdbcType=VARCHAR},
+      </if>
+      <if test="plf010 != null">
+        PLF010 = #{plf010,jdbcType=VARCHAR},
+      </if>
+      <if test="plf011 != null">
+        PLF011 = #{plf011,jdbcType=VARCHAR},
+      </if>
+      <if test="plf012 != null">
+        PLF012 = #{plf012,jdbcType=VARCHAR},
+      </if>
+      <if test="plf013 != null">
+        PLF013 = #{plf013,jdbcType=VARCHAR},
+      </if>
+      <if test="plf014 != null">
+        PLF014 = #{plf014,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null">
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="plf016 != null">
+        PLF016 = #{plf016,jdbcType=VARCHAR},
+      </if>
+      <if test="plf015 != null">
+        PLF015 = #{plf015,jdbcType=VARCHAR},
+      </if>
+      <if test="plf017 != null">
+        PLF017 = #{plf017,jdbcType=VARCHAR},
+      </if>
+      <if test="plf018 != null">
+        PLF018 = #{plf018,jdbcType=VARCHAR},
+      </if>
+      <if test="plf019 != null">
+        PLF019 = #{plf019,jdbcType=VARCHAR},
+      </if>
+      <if test="plf020 != null">
+        PLF020 = #{plf020,jdbcType=VARCHAR},
+      </if>
+      <if test="plf021 != null">
+        PLF021 = #{plf021,jdbcType=VARCHAR},
+      </if>
+      <if test="plf022 != null">
+        PLF022 = #{plf022,jdbcType=VARCHAR},
+      </if>
+      <if test="datasource != null">
+        DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null">
+        AAE012 = #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="plf023 != null">
+        PLF023 = #{plf023,jdbcType=VARCHAR},
+      </if>
+      <if test="plf024 != null">
+        PLF024 = #{plf024,jdbcType=VARCHAR},
+      </if>
+      <if test="isoverage != null">
+        ISOVERAGE = #{isoverage,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        BATCH = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        MESSAGE = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="helpyear != null">
+        HELPYEAR = #{helpyear,jdbcType=VARCHAR},
+      </if>
+      <if test="aac003 != null">
+        AAC003 = #{aac003,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PLF001 = #{plf001,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.PoorLaborForceTmp">
+    update POOR_LABOR_FORCE_TMP
+    set PLF002 = #{plf002,jdbcType=VARCHAR},
+      AAB301 = #{aab301,jdbcType=VARCHAR},
+      PLF004 = #{plf004,jdbcType=VARCHAR},
+      PLF005 = #{plf005,jdbcType=VARCHAR},
+      PLF006 = #{plf006,jdbcType=VARCHAR},
+      PLF007 = #{plf007,jdbcType=VARCHAR},
+      PLF008 = #{plf008,jdbcType=VARCHAR},
+      PLF009 = #{plf009,jdbcType=VARCHAR},
+      PLF010 = #{plf010,jdbcType=VARCHAR},
+      PLF011 = #{plf011,jdbcType=VARCHAR},
+      PLF012 = #{plf012,jdbcType=VARCHAR},
+      PLF013 = #{plf013,jdbcType=VARCHAR},
+      PLF014 = #{plf014,jdbcType=VARCHAR},
+      AAE011 = #{aae011,jdbcType=VARCHAR},
+      AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      PLF016 = #{plf016,jdbcType=VARCHAR},
+      PLF015 = #{plf015,jdbcType=VARCHAR},
+      PLF017 = #{plf017,jdbcType=VARCHAR},
+      PLF018 = #{plf018,jdbcType=VARCHAR},
+      PLF019 = #{plf019,jdbcType=VARCHAR},
+      PLF020 = #{plf020,jdbcType=VARCHAR},
+      PLF021 = #{plf021,jdbcType=VARCHAR},
+      PLF022 = #{plf022,jdbcType=VARCHAR},
+      DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      AAE100 = #{aae100,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      AAE012 = #{aae012,jdbcType=VARCHAR},
+      PLF023 = #{plf023,jdbcType=VARCHAR},
+      PLF024 = #{plf024,jdbcType=VARCHAR},
+      ISOVERAGE = #{isoverage,jdbcType=VARCHAR},
+      BATCH = #{batch,jdbcType=VARCHAR},
+      IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      MESSAGE = #{message,jdbcType=VARCHAR},
+      HELPYEAR = #{helpyear,jdbcType=VARCHAR},
+      AAC003 = #{aac003,jdbcType=VARCHAR},
+      DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      DELETEDATE = #{deletedate,jdbcType=TIMESTAMP}
+    where PLF001 = #{plf001,jdbcType=VARCHAR}
+  </update>
+
+  <insert id="addList" parameterType="java.util.List" useGeneratedKeys="false">
+        INSERT INTO POOR_LABOR_FORCE_TMP
+
+        (PLF001, PLF002, AAB301,
+        PLF004, PLF005, PLF006,
+        PLF007, PLF008, PLF009,
+        PLF010, PLF011, PLF012,
+        PLF013, PLF014, AAE011,
+        AAE036, PLF016, PLF015,
+        PLF017, PLF018, PLF019,
+        PLF020, PLF021, PLF022,
+        DATASOURCE, AAE100, UPDATEDATE,
+        UPDATEBY, CREATEBY, AAE012,
+        PLF023, PLF024, ISOVERAGE,
+        BATCH, IDENTIFICATION, MESSAGE,
+        HELPYEAR, AAC003)
+
+        <foreach item="bean" index="index" collection="list" separator="union all">
+            (
+
+            select #{bean.plf001,jdbcType=VARCHAR}, #{bean.plf002,jdbcType=VARCHAR}, #{bean.aab301,jdbcType=VARCHAR},
+            #{bean.plf004,jdbcType=VARCHAR}, #{bean.plf005,jdbcType=VARCHAR}, #{bean.plf006,jdbcType=VARCHAR},
+            #{bean.plf007,jdbcType=VARCHAR}, #{bean.plf008,jdbcType=VARCHAR}, #{bean.plf009,jdbcType=VARCHAR},
+            #{bean.plf010,jdbcType=VARCHAR}, #{bean.plf011,jdbcType=VARCHAR}, #{bean.plf012,jdbcType=VARCHAR},
+            #{bean.plf013,jdbcType=VARCHAR}, #{bean.plf014,jdbcType=VARCHAR}, #{bean.aae011,jdbcType=VARCHAR},
+            #{bean.aae036,jdbcType=TIMESTAMP}, #{bean.plf016,jdbcType=VARCHAR}, #{bean.plf015,jdbcType=VARCHAR},
+            #{bean.plf017,jdbcType=VARCHAR}, #{bean.plf018,jdbcType=VARCHAR}, #{bean.plf019,jdbcType=VARCHAR},
+            #{bean.plf020,jdbcType=VARCHAR}, #{bean.plf021,jdbcType=VARCHAR}, #{bean.plf022,jdbcType=VARCHAR},
+            #{bean.datasource,jdbcType=VARCHAR}, #{bean.aae100,jdbcType=VARCHAR}, #{bean.updatedate,jdbcType=TIMESTAMP},
+            #{bean.updateby,jdbcType=VARCHAR}, #{bean.createby,jdbcType=VARCHAR}, #{bean.aae012,jdbcType=VARCHAR},
+            #{bean.plf023,jdbcType=VARCHAR}, #{bean.plf024,jdbcType=VARCHAR}, #{bean.isoverage,jdbcType=VARCHAR},
+            #{bean.batch,jdbcType=VARCHAR}, #{bean.identification,jdbcType=VARCHAR}, #{bean.message,jdbcType=VARCHAR},
+            #{bean.helpyear,jdbcType=VARCHAR}, #{bean.aac003,jdbcType=VARCHAR}
+            from dual
+
+            )
+        </foreach>
+  </insert>
+
+    <update id="updateCardList" parameterType="java.util.List">
+        <foreach collection="updatelist" item="bean" index="index" open="begin" close=";end;" separator=";">
+            UPDATE POOR_LABOR_FORCE_TMP
+            <set>
+
+                <if test="bean.identification != null" >
+                    identification = #{bean.identification,jdbcType=VARCHAR},
+                </if>
+                <if test="bean.message != null" >
+                    message = #{bean.message,jdbcType=VARCHAR}
+                </if>
+            </set>
+            <where>
+                <if test="bean.plf001 != null" >
+                    plf001 = #{bean.plf001,jdbcType=VARCHAR}
+                </if>
+            </where>
+        </foreach>
+    </update>
+
+</mapper>

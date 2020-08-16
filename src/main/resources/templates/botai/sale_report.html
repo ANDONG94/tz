@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div  >
+    <iframe  id="myIframe" height="600" width="99.6%"  src="/webapps/WEB-INF/reportlets/assistance/SXJY_JYYZGL_010_001/mm.html"></iframe>
+</div>
+</body>
+
+<script>
+
+    $(function () {
+       // skip();
+    })
+
+    function skip(){
+       // var reportletUrl = 'webapps/WEB-INF/reportlets/assistance/SXJY_JYYZGL_010_001/jkrybdtjfx.cpt';
+        var reportletUrl = 'webapps/WEB-INF/reportlets/assistance/SXJY_JYYZGL_010_001/mm.html';
+        var url = "/botai/sale_report.html?reportlet="+reportletUrl;
+        $("#myIframe").attr("src",url);
+    }
+</script>
+</html>

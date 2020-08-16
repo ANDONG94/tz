@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 本地数据库驱动程序jar包的全路径 -->
+    <classPathEntry location="D:\repository\com\oracle\ojdbc7\12.1.0.2\ojdbc7-12.1.0.2.jar"/>
+
+    <!-- <classPathEntry location="D:\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"/>-->
+
+    <context id="context" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <!-- 数据库的相关配置 -->
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@10.189.186.51:1521:sxjy"
+                        userId="sxxd" password="sxxd" />
+        <!-- <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                         connectionURL="jdbc:mysql://47.110.128.122:3306/employment"
+                         userId="root" password="EM_610100" />-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.tdkj.model"
+                            targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置
+           如果maven工程只是单独的一个工程，targetProject="src/main/java"
+           若果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：
+           targetProject="ecps-manager-mapper"，下同-->
+         <sqlMapGenerator targetPackage="mapper"
+                          targetProject="src/main/resources">
+             <property name="enableSubPackages" value="false" />
+         </sqlMapGenerator>
+         <javaClientGenerator type="XMLMAPPER"
+                              targetPackage="com.tdkj.dao"
+                              targetProject="src/main/java">
+             <property name="enableSubPackages" value="false" />
+         </javaClientGenerator>
+        <!-- 相关表的配置-->
+        <table tableName="dk10" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+
+
+    </context>
+</generatorConfiguration>

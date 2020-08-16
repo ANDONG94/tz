@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdkj.dao.importExcle.EmploymentSituationTmpMapper">
+  <resultMap id="BaseResultMap" type="com.tdkj.model.EmploymentSituationTmp">
+    <id column="EYS001" jdbcType="VARCHAR" property="eys001" />
+    <result column="EYS002" jdbcType="VARCHAR" property="eys002" />
+    <result column="EYS003" jdbcType="VARCHAR" property="eys003" />
+    <result column="EYS004" jdbcType="VARCHAR" property="eys004" />
+    <result column="EYS005" jdbcType="VARCHAR" property="eys005" />
+    <result column="EYS006" jdbcType="VARCHAR" property="eys006" />
+    <result column="EYS007" jdbcType="VARCHAR" property="eys007" />
+    <result column="EYS008" jdbcType="VARCHAR" property="eys008" />
+    <result column="EYS009" jdbcType="VARCHAR" property="eys009" />
+    <result column="EYS010" jdbcType="VARCHAR" property="eys010" />
+    <result column="EYS011" jdbcType="VARCHAR" property="eys011" />
+    <result column="EYS012" jdbcType="VARCHAR" property="eys012" />
+    <result column="EYS013" jdbcType="VARCHAR" property="eys013" />
+    <result column="EYS014" jdbcType="VARCHAR" property="eys014" />
+    <result column="AAB301" jdbcType="VARCHAR" property="aab301" />
+    <result column="AAE011" jdbcType="VARCHAR" property="aae011" />
+    <result column="AAE036" jdbcType="TIMESTAMP" property="aae036" />
+    <result column="EYS015" jdbcType="VARCHAR" property="eys015" />
+    <result column="DATASOURCE" jdbcType="VARCHAR" property="datasource" />
+    <result column="AAE100" jdbcType="VARCHAR" property="aae100" />
+    <result column="UPDATEDATE" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="UPDATEBY" jdbcType="VARCHAR" property="updateby" />
+    <result column="CREATEBY" jdbcType="VARCHAR" property="createby" />
+    <result column="AAE012" jdbcType="VARCHAR" property="aae012" />
+    <result column="EYS016" jdbcType="VARCHAR" property="eys016" />
+    <result column="EYS017" jdbcType="VARCHAR" property="eys017" />
+    <result column="EYS018" jdbcType="VARCHAR" property="eys018" />
+    <result column="EYS019" jdbcType="VARCHAR" property="eys019" />
+    <result column="EYS020" jdbcType="VARCHAR" property="eys020" />
+    <result column="EYS021" jdbcType="VARCHAR" property="eys021" />
+    <result column="EYS022" jdbcType="VARCHAR" property="eys022" />
+    <result column="BATCH" jdbcType="VARCHAR" property="batch" />
+    <result column="IDENTIFICATION" jdbcType="VARCHAR" property="identification" />
+    <result column="MESSAGE" jdbcType="VARCHAR" property="message" />
+    <result column="ISNEW" jdbcType="VARCHAR" property="isnew" />
+    <result column="AAC003" jdbcType="VARCHAR" property="aac003" />
+    <result column="DELETEBY" property="deleteby" jdbcType="VARCHAR" />
+    <result column="DELETEDATE" property="deletedate" jdbcType="TIMESTAMP" />
+
+  </resultMap>
+  <sql id="Base_Column_List">
+    EYS001, EYS002, EYS003, EYS004, EYS005, EYS006, EYS007, EYS008, EYS009, EYS010, EYS011, 
+    EYS012, EYS013, EYS014, AAB301, AAE011, AAE036, EYS015, DATASOURCE, AAE100, UPDATEDATE, 
+    UPDATEBY, CREATEBY, AAE012, EYS016, EYS017, EYS018, EYS019, EYS020, EYS021, EYS022, 
+    BATCH, IDENTIFICATION, MESSAGE, ISNEW, AAC003,DELETEBY,DELETEDATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from EMPLOYMENT_SITUATION_TMP
+    where EYS001 = #{eys001,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from EMPLOYMENT_SITUATION_TMP
+    where EYS001 = #{eys001,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.EmploymentSituationTmp">
+    insert into EMPLOYMENT_SITUATION_TMP (EYS001, EYS002, EYS003, 
+      EYS004, EYS005, EYS006, 
+      EYS007, EYS008, EYS009, 
+      EYS010, EYS011, EYS012, 
+      EYS013, EYS014, AAB301, 
+      AAE011, AAE036, EYS015, 
+      DATASOURCE, AAE100, UPDATEDATE, 
+      UPDATEBY, CREATEBY, AAE012, 
+      EYS016, EYS017, EYS018, 
+      EYS019, EYS020, EYS021, 
+      EYS022, BATCH, IDENTIFICATION, 
+      MESSAGE, ISNEW, AAC003,DELETEBY,DELETEDATE
+      )
+    values (#{eys001,jdbcType=VARCHAR}, #{eys002,jdbcType=VARCHAR}, #{eys003,jdbcType=VARCHAR}, 
+      #{eys004,jdbcType=VARCHAR}, #{eys005,jdbcType=VARCHAR}, #{eys006,jdbcType=VARCHAR}, 
+      #{eys007,jdbcType=VARCHAR}, #{eys008,jdbcType=VARCHAR}, #{eys009,jdbcType=VARCHAR}, 
+      #{eys010,jdbcType=VARCHAR}, #{eys011,jdbcType=VARCHAR}, #{eys012,jdbcType=VARCHAR}, 
+      #{eys013,jdbcType=VARCHAR}, #{eys014,jdbcType=VARCHAR}, #{aab301,jdbcType=VARCHAR}, 
+      #{aae011,jdbcType=VARCHAR}, #{aae036,jdbcType=TIMESTAMP}, #{eys015,jdbcType=VARCHAR}, 
+      #{datasource,jdbcType=VARCHAR}, #{aae100,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, 
+      #{updateby,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{aae012,jdbcType=VARCHAR}, 
+      #{eys016,jdbcType=VARCHAR}, #{eys017,jdbcType=VARCHAR}, #{eys018,jdbcType=VARCHAR}, 
+      #{eys019,jdbcType=VARCHAR}, #{eys020,jdbcType=VARCHAR}, #{eys021,jdbcType=VARCHAR}, 
+      #{eys022,jdbcType=VARCHAR}, #{batch,jdbcType=VARCHAR}, #{identification,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR}, #{isnew,jdbcType=VARCHAR}, #{aac003,jdbcType=VARCHAR},#{deleteby,jdbcType=VARCHAR},
+      #{deletedate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+
+  <insert id="addList" parameterType="java.util.List" useGeneratedKeys="false">
+        INSERT INTO EMPLOYMENT_SITUATION_TMP
+
+        (EYS001, EYS002, EYS003,
+        EYS004, EYS005, EYS006,
+        EYS007, EYS008, EYS009,
+        EYS010, EYS011, EYS012,
+        EYS013, EYS014, AAB301,
+        AAE011, AAE036, EYS015,
+        DATASOURCE, AAE100, UPDATEDATE,
+        UPDATEBY, CREATEBY, AAE012,
+        EYS016, EYS017, EYS018,
+        EYS019, EYS020, EYS021,
+        EYS022, BATCH, IDENTIFICATION,
+        MESSAGE, ISNEW, AAC003,DELETEBY,DELETEDATE)
+
+        <foreach item="bean" index="index" collection="list" separator="union all">
+            (
+
+            select #{bean.eys001,jdbcType=VARCHAR}, #{bean.eys002,jdbcType=VARCHAR}, #{bean.eys003,jdbcType=VARCHAR},
+            #{bean.eys004,jdbcType=VARCHAR}, #{bean.eys005,jdbcType=VARCHAR}, #{bean.eys006,jdbcType=VARCHAR},
+            #{bean.eys007,jdbcType=VARCHAR}, #{bean.eys008,jdbcType=VARCHAR}, #{bean.eys009,jdbcType=VARCHAR},
+            #{bean.eys010,jdbcType=VARCHAR}, #{bean.eys011,jdbcType=VARCHAR}, #{bean.eys012,jdbcType=VARCHAR},
+            #{bean.eys013,jdbcType=VARCHAR}, #{bean.eys014,jdbcType=VARCHAR}, #{bean.aab301,jdbcType=VARCHAR},
+            #{bean.aae011,jdbcType=VARCHAR}, #{bean.aae036,jdbcType=TIMESTAMP}, #{bean.eys015,jdbcType=VARCHAR},
+            #{bean.datasource,jdbcType=VARCHAR}, #{bean.aae100,jdbcType=VARCHAR}, #{bean.updatedate,jdbcType=TIMESTAMP},
+            #{bean.updateby,jdbcType=VARCHAR}, #{bean.createby,jdbcType=VARCHAR}, #{bean.aae012,jdbcType=VARCHAR},
+            #{bean.eys016,jdbcType=VARCHAR}, #{bean.eys017,jdbcType=VARCHAR}, #{bean.eys018,jdbcType=VARCHAR},
+            #{bean.eys019,jdbcType=VARCHAR}, #{bean.eys020,jdbcType=VARCHAR}, #{bean.eys021,jdbcType=VARCHAR},
+            #{bean.eys022,jdbcType=VARCHAR}, #{bean.batch,jdbcType=VARCHAR}, #{bean.identification,jdbcType=VARCHAR},
+            #{bean.message,jdbcType=VARCHAR}, #{bean.isnew,jdbcType=VARCHAR}, #{bean.aac003,jdbcType=VARCHAR},#{bean.deleteby,jdbcType=VARCHAR},
+            #{bean.deletedate,jdbcType=TIMESTAMP}
+            from dual
+
+
+            )
+        </foreach>
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.tdkj.model.EmploymentSituationTmp">
+    insert into EMPLOYMENT_SITUATION_TMP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="eys001 != null">
+        EYS001,
+      </if>
+      <if test="eys002 != null">
+        EYS002,
+      </if>
+      <if test="eys003 != null">
+        EYS003,
+      </if>
+      <if test="eys004 != null">
+        EYS004,
+      </if>
+      <if test="eys005 != null">
+        EYS005,
+      </if>
+      <if test="eys006 != null">
+        EYS006,
+      </if>
+      <if test="eys007 != null">
+        EYS007,
+      </if>
+      <if test="eys008 != null">
+        EYS008,
+      </if>
+      <if test="eys009 != null">
+        EYS009,
+      </if>
+      <if test="eys010 != null">
+        EYS010,
+      </if>
+      <if test="eys011 != null">
+        EYS011,
+      </if>
+      <if test="eys012 != null">
+        EYS012,
+      </if>
+      <if test="eys013 != null">
+        EYS013,
+      </if>
+      <if test="eys014 != null">
+        EYS014,
+      </if>
+      <if test="aab301 != null">
+        AAB301,
+      </if>
+      <if test="aae011 != null">
+        AAE011,
+      </if>
+      <if test="aae036 != null">
+        AAE036,
+      </if>
+      <if test="eys015 != null">
+        EYS015,
+      </if>
+      <if test="datasource != null">
+        DATASOURCE,
+      </if>
+      <if test="aae100 != null">
+        AAE100,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updateby != null">
+        UPDATEBY,
+      </if>
+      <if test="createby != null">
+        CREATEBY,
+      </if>
+      <if test="aae012 != null">
+        AAE012,
+      </if>
+      <if test="eys016 != null">
+        EYS016,
+      </if>
+      <if test="eys017 != null">
+        EYS017,
+      </if>
+      <if test="eys018 != null">
+        EYS018,
+      </if>
+      <if test="eys019 != null">
+        EYS019,
+      </if>
+      <if test="eys020 != null">
+        EYS020,
+      </if>
+      <if test="eys021 != null">
+        EYS021,
+      </if>
+      <if test="eys022 != null">
+        EYS022,
+      </if>
+      <if test="batch != null">
+        BATCH,
+      </if>
+      <if test="identification != null">
+        IDENTIFICATION,
+      </if>
+      <if test="message != null">
+        MESSAGE,
+      </if>
+      <if test="isnew != null">
+        ISNEW,
+      </if>
+      <if test="aac003 != null">
+        AAC003,
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY,
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="eys001 != null">
+        #{eys001,jdbcType=VARCHAR},
+      </if>
+      <if test="eys002 != null">
+        #{eys002,jdbcType=VARCHAR},
+      </if>
+      <if test="eys003 != null">
+        #{eys003,jdbcType=VARCHAR},
+      </if>
+      <if test="eys004 != null">
+        #{eys004,jdbcType=VARCHAR},
+      </if>
+      <if test="eys005 != null">
+        #{eys005,jdbcType=VARCHAR},
+      </if>
+      <if test="eys006 != null">
+        #{eys006,jdbcType=VARCHAR},
+      </if>
+      <if test="eys007 != null">
+        #{eys007,jdbcType=VARCHAR},
+      </if>
+      <if test="eys008 != null">
+        #{eys008,jdbcType=VARCHAR},
+      </if>
+      <if test="eys009 != null">
+        #{eys009,jdbcType=VARCHAR},
+      </if>
+      <if test="eys010 != null">
+        #{eys010,jdbcType=VARCHAR},
+      </if>
+      <if test="eys011 != null">
+        #{eys011,jdbcType=VARCHAR},
+      </if>
+      <if test="eys012 != null">
+        #{eys012,jdbcType=VARCHAR},
+      </if>
+      <if test="eys013 != null">
+        #{eys013,jdbcType=VARCHAR},
+      </if>
+      <if test="eys014 != null">
+        #{eys014,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null">
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eys015 != null">
+        #{eys015,jdbcType=VARCHAR},
+      </if>
+      <if test="datasource != null">
+        #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null">
+        #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="eys016 != null">
+        #{eys016,jdbcType=VARCHAR},
+      </if>
+      <if test="eys017 != null">
+        #{eys017,jdbcType=VARCHAR},
+      </if>
+      <if test="eys018 != null">
+        #{eys018,jdbcType=VARCHAR},
+      </if>
+      <if test="eys019 != null">
+        #{eys019,jdbcType=VARCHAR},
+      </if>
+      <if test="eys020 != null">
+        #{eys020,jdbcType=VARCHAR},
+      </if>
+      <if test="eys021 != null">
+        #{eys021,jdbcType=VARCHAR},
+      </if>
+      <if test="eys022 != null">
+        #{eys022,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="isnew != null">
+        #{isnew,jdbcType=VARCHAR},
+      </if>
+      <if test="aac003 != null">
+        #{aac003,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.EmploymentSituationTmp">
+    update EMPLOYMENT_SITUATION_TMP
+    <set>
+      <if test="eys002 != null">
+        EYS002 = #{eys002,jdbcType=VARCHAR},
+      </if>
+      <if test="eys003 != null">
+        EYS003 = #{eys003,jdbcType=VARCHAR},
+      </if>
+      <if test="eys004 != null">
+        EYS004 = #{eys004,jdbcType=VARCHAR},
+      </if>
+      <if test="eys005 != null">
+        EYS005 = #{eys005,jdbcType=VARCHAR},
+      </if>
+      <if test="eys006 != null">
+        EYS006 = #{eys006,jdbcType=VARCHAR},
+      </if>
+      <if test="eys007 != null">
+        EYS007 = #{eys007,jdbcType=VARCHAR},
+      </if>
+      <if test="eys008 != null">
+        EYS008 = #{eys008,jdbcType=VARCHAR},
+      </if>
+      <if test="eys009 != null">
+        EYS009 = #{eys009,jdbcType=VARCHAR},
+      </if>
+      <if test="eys010 != null">
+        EYS010 = #{eys010,jdbcType=VARCHAR},
+      </if>
+      <if test="eys011 != null">
+        EYS011 = #{eys011,jdbcType=VARCHAR},
+      </if>
+      <if test="eys012 != null">
+        EYS012 = #{eys012,jdbcType=VARCHAR},
+      </if>
+      <if test="eys013 != null">
+        EYS013 = #{eys013,jdbcType=VARCHAR},
+      </if>
+      <if test="eys014 != null">
+        EYS014 = #{eys014,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae011 != null">
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eys015 != null">
+        EYS015 = #{eys015,jdbcType=VARCHAR},
+      </if>
+      <if test="datasource != null">
+        DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null">
+        AAE012 = #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="eys016 != null">
+        EYS016 = #{eys016,jdbcType=VARCHAR},
+      </if>
+      <if test="eys017 != null">
+        EYS017 = #{eys017,jdbcType=VARCHAR},
+      </if>
+      <if test="eys018 != null">
+        EYS018 = #{eys018,jdbcType=VARCHAR},
+      </if>
+      <if test="eys019 != null">
+        EYS019 = #{eys019,jdbcType=VARCHAR},
+      </if>
+      <if test="eys020 != null">
+        EYS020 = #{eys020,jdbcType=VARCHAR},
+      </if>
+      <if test="eys021 != null">
+        EYS021 = #{eys021,jdbcType=VARCHAR},
+      </if>
+      <if test="eys022 != null">
+        EYS022 = #{eys022,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        BATCH = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        MESSAGE = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="isnew != null">
+        ISNEW = #{isnew,jdbcType=VARCHAR},
+      </if>
+      <if test="aac003 != null">
+        AAC003 = #{aac003,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where EYS001 = #{eys001,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.EmploymentSituationTmp">
+    update EMPLOYMENT_SITUATION_TMP
+    set EYS002 = #{eys002,jdbcType=VARCHAR},
+      EYS003 = #{eys003,jdbcType=VARCHAR},
+      EYS004 = #{eys004,jdbcType=VARCHAR},
+      EYS005 = #{eys005,jdbcType=VARCHAR},
+      EYS006 = #{eys006,jdbcType=VARCHAR},
+      EYS007 = #{eys007,jdbcType=VARCHAR},
+      EYS008 = #{eys008,jdbcType=VARCHAR},
+      EYS009 = #{eys009,jdbcType=VARCHAR},
+      EYS010 = #{eys010,jdbcType=VARCHAR},
+      EYS011 = #{eys011,jdbcType=VARCHAR},
+      EYS012 = #{eys012,jdbcType=VARCHAR},
+      EYS013 = #{eys013,jdbcType=VARCHAR},
+      EYS014 = #{eys014,jdbcType=VARCHAR},
+      AAB301 = #{aab301,jdbcType=VARCHAR},
+      AAE011 = #{aae011,jdbcType=VARCHAR},
+      AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      EYS015 = #{eys015,jdbcType=VARCHAR},
+      DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      AAE100 = #{aae100,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      AAE012 = #{aae012,jdbcType=VARCHAR},
+      EYS016 = #{eys016,jdbcType=VARCHAR},
+      EYS017 = #{eys017,jdbcType=VARCHAR},
+      EYS018 = #{eys018,jdbcType=VARCHAR},
+      EYS019 = #{eys019,jdbcType=VARCHAR},
+      EYS020 = #{eys020,jdbcType=VARCHAR},
+      EYS021 = #{eys021,jdbcType=VARCHAR},
+      EYS022 = #{eys022,jdbcType=VARCHAR},
+      BATCH = #{batch,jdbcType=VARCHAR},
+      IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      MESSAGE = #{message,jdbcType=VARCHAR},
+      ISNEW = #{isnew,jdbcType=VARCHAR},
+      AAC003 = #{aac003,jdbcType=VARCHAR},
+      DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      DELETEDATE = #{deletedate,jdbcType=TIMESTAMP}
+    where EYS001 = #{eys001,jdbcType=VARCHAR}
+  </update>
+
+
+    <update id="updateCardList" parameterType="java.util.List">
+        <foreach collection="updatelist" item="bean" index="index" open="begin" close=";end;" separator=";">
+            UPDATE EMPLOYMENT_SITUATION_TMP
+            <set>
+
+                <if test="bean.identification != null" >
+                    identification = #{bean.identification,jdbcType=VARCHAR},
+                </if>
+                <if test="bean.message != null" >
+                    message = #{bean.message,jdbcType=VARCHAR}
+                </if>
+            </set>
+            <where>
+                <if test="bean.eys001 != null" >
+                    eys001 = #{bean.eys001,jdbcType=VARCHAR}
+                </if>
+            </where>
+        </foreach>
+    </update>
+</mapper>

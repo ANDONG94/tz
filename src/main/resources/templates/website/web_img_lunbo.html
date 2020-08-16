@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>西安九洲铂泰医疗器械有限公司</title>
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/hjia/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/sky/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="/css/sky/demo.css">
+    <link rel="stylesheet" href="/css/sky/style.css">
+    <link href="/css/hjia/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/hjia/animate.min.css" rel="stylesheet">
+    <link href="/css/hjia/style.min.css?v=4.1.0" rel="stylesheet">
+</head>
+<body style="height: 520px; width: 99%">
+
+<!--动态天空-->
+<div class="satic-area" style="position:absolute;z-index: -99999">
+    <div class="dynamic-area1"></div>
+    <div class="dynamic-area2"></div>
+</div>
+<div class="wrapper wrapper-content  animated fadeInRight article">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="pull-right">
+                        <button class="btn btn-white btn-xs" type="button" id="time"></button>
+                        <button class="btn btn-white btn-xs" type="button" id="person"></button>
+                    </div>
+                    <div class="text-center article-title" id="article_head_div">
+                    </div>
+                    <p id="article_detail_p">
+                    </p>
+                    <hr>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="/js/hjia/jquery.min.js?v=2.1.4"></script>
+
+
+<script>
+
+    $(function () {
+        scanArticleDetail();
+    })
+
+
+    /**
+     * 查看文章详情
+     */
+    function scanArticleDetail(){
+        $.ajax({
+            url:"/web/scanNewsDetailByArticleId",    //请求的url地址
+            dataType:"json",   //返回格式为json
+            async:false,//请求是否异步，默认为异步，这也是ajax重要特性
+            data:"",    //参数值
+            type:"POST",   //请求方式
+            beforeSend:function(){
+                //请求前的处理
+            },
+            success:function(data){
+                //请求成功时处理
+                var div = "";
+                div += "<h1>"+data.title+"</h1>";
+                $("#article_head_div").html(div);
+                var p = "";
+                p += data.content;
+                $("#article_detail_p").html(p);
+                $("#time").text(data.createddate);
+                $("#person").text("系统管理员");
+            },
+            complete:function(){
+                //请求完成的处理
+            },
+            error:function(){
+                //请求出错处理
+            }
+        });
+    }
+</script>
+</body>
+</html>

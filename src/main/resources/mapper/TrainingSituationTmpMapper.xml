@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdkj.dao.importExcle.TrainingSituationTmpMapper">
+  <resultMap id="BaseResultMap" type="com.tdkj.model.TrainingSituationTmp">
+    <id column="TSN001" jdbcType="VARCHAR" property="tsn001" />
+    <result column="TSN010" jdbcType="VARCHAR" property="tsn010" />
+    <result column="TSN003" jdbcType="VARCHAR" property="tsn003" />
+    <result column="TSN004" jdbcType="VARCHAR" property="tsn004" />
+    <result column="TSN005" jdbcType="VARCHAR" property="tsn005" />
+    <result column="TSN006" jdbcType="VARCHAR" property="tsn006" />
+    <result column="TSN007" jdbcType="VARCHAR" property="tsn007" />
+    <result column="TSN008" jdbcType="VARCHAR" property="tsn008" />
+    <result column="TSN002" jdbcType="VARCHAR" property="tsn002" />
+    <result column="TSN009" jdbcType="VARCHAR" property="tsn009" />
+    <result column="AAB301" jdbcType="VARCHAR" property="aab301" />
+    <result column="AAE036" jdbcType="TIMESTAMP" property="aae036" />
+    <result column="AAE011" jdbcType="VARCHAR" property="aae011" />
+    <result column="TSN011" jdbcType="VARCHAR" property="tsn011" />
+    <result column="DATASOURCE" jdbcType="VARCHAR" property="datasource" />
+    <result column="AAE100" jdbcType="VARCHAR" property="aae100" />
+    <result column="UPDATEDATE" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="UPDATEBY" jdbcType="VARCHAR" property="updateby" />
+    <result column="CREATEBY" jdbcType="VARCHAR" property="createby" />
+    <result column="AAE012" jdbcType="VARCHAR" property="aae012" />
+    <result column="TSN012" jdbcType="VARCHAR" property="tsn012" />
+    <result column="TSN013" jdbcType="VARCHAR" property="tsn013" />
+    <result column="TSN014" jdbcType="VARCHAR" property="tsn014" />
+    <result column="TSN015" jdbcType="VARCHAR" property="tsn015" />
+    <result column="TSN016" jdbcType="VARCHAR" property="tsn016" />
+    <result column="BATCH" jdbcType="VARCHAR" property="batch" />
+    <result column="IDENTIFICATION" jdbcType="VARCHAR" property="identification" />
+    <result column="MESSAGE" jdbcType="VARCHAR" property="message" />
+    <result column="ISNEW" jdbcType="VARCHAR" property="isnew" />
+    <result column="AAC003" jdbcType="VARCHAR" property="aac003" />
+    <result column="DELETEBY" property="deleteby" jdbcType="VARCHAR" />
+    <result column="DELETEDATE" property="deletedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TSN001, TSN010, TSN003, TSN004, TSN005, TSN006, TSN007, TSN008, TSN002, TSN009, AAB301, 
+    AAE036, AAE011, TSN011, DATASOURCE, AAE100, UPDATEDATE, UPDATEBY, CREATEBY, AAE012, 
+    TSN012, TSN013, TSN014, TSN015, TSN016, BATCH, IDENTIFICATION, MESSAGE, ISNEW, AAC003,DELETEBY,DELETEDATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from TRAINING_SITUATION_TMP
+    where TSN001 = #{tsn001,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from TRAINING_SITUATION_TMP
+    where TSN001 = #{tsn001,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.tdkj.model.TrainingSituationTmp">
+    insert into TRAINING_SITUATION_TMP (TSN001, TSN010, TSN003, 
+      TSN004, TSN005, TSN006, 
+      TSN007, TSN008, TSN002, 
+      TSN009, AAB301, AAE036, 
+      AAE011, TSN011, DATASOURCE, 
+      AAE100, UPDATEDATE, UPDATEBY, 
+      CREATEBY, AAE012, TSN012, 
+      TSN013, TSN014, TSN015, 
+      TSN016, BATCH, IDENTIFICATION, 
+      MESSAGE, ISNEW, AAC003,DELETEBY,DELETEDATE
+      )
+    values (#{tsn001,jdbcType=VARCHAR}, #{tsn010,jdbcType=VARCHAR}, #{tsn003,jdbcType=VARCHAR}, 
+      #{tsn004,jdbcType=VARCHAR}, #{tsn005,jdbcType=VARCHAR}, #{tsn006,jdbcType=VARCHAR}, 
+      #{tsn007,jdbcType=VARCHAR}, #{tsn008,jdbcType=VARCHAR}, #{tsn002,jdbcType=VARCHAR}, 
+      #{tsn009,jdbcType=VARCHAR}, #{aab301,jdbcType=VARCHAR}, #{aae036,jdbcType=TIMESTAMP}, 
+      #{aae011,jdbcType=VARCHAR}, #{tsn011,jdbcType=VARCHAR}, #{datasource,jdbcType=VARCHAR}, 
+      #{aae100,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, 
+      #{createby,jdbcType=VARCHAR}, #{aae012,jdbcType=VARCHAR}, #{tsn012,jdbcType=VARCHAR}, 
+      #{tsn013,jdbcType=VARCHAR}, #{tsn014,jdbcType=VARCHAR}, #{tsn015,jdbcType=VARCHAR}, 
+      #{tsn016,jdbcType=VARCHAR}, #{batch,jdbcType=VARCHAR}, #{identification,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR}, #{isnew,jdbcType=VARCHAR}, #{aac003,jdbcType=VARCHAR},
+      #{deleteby,jdbcType=VARCHAR},#{deletedate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+
+  <insert id="addList" parameterType="java.util.List" useGeneratedKeys="false">
+        INSERT INTO TRAINING_SITUATION_TMP
+
+        (TSN001, TSN010, TSN003,
+      TSN004, TSN005, TSN006,
+      TSN007, TSN008, TSN002,
+      TSN009, AAB301, AAE036,
+      AAE011, TSN011, DATASOURCE,
+      AAE100, UPDATEDATE, UPDATEBY,
+      CREATEBY, AAE012, TSN012,
+      TSN013, TSN014, TSN015,
+      TSN016, BATCH, IDENTIFICATION,
+      MESSAGE, ISNEW, AAC003,DELETEBY,DELETEDATE)
+
+        <foreach item="bean" index="index" collection="list" separator="union all">
+            (
+
+            select #{bean.tsn001,jdbcType=VARCHAR}, #{bean.tsn010,jdbcType=VARCHAR}, #{bean.tsn003,jdbcType=VARCHAR},
+            #{bean.tsn004,jdbcType=VARCHAR}, #{bean.tsn005,jdbcType=VARCHAR}, #{bean.tsn006,jdbcType=VARCHAR},
+            #{bean.tsn007,jdbcType=VARCHAR}, #{bean.tsn008,jdbcType=VARCHAR}, #{bean.tsn002,jdbcType=VARCHAR},
+            #{bean.tsn009,jdbcType=VARCHAR}, #{bean.aab301,jdbcType=VARCHAR}, #{bean.aae036,jdbcType=TIMESTAMP},
+            #{bean.aae011,jdbcType=VARCHAR}, #{bean.tsn011,jdbcType=VARCHAR}, #{bean.datasource,jdbcType=VARCHAR},
+            #{bean.aae100,jdbcType=VARCHAR}, #{bean.updatedate,jdbcType=TIMESTAMP}, #{bean.updateby,jdbcType=VARCHAR},
+            #{bean.createby,jdbcType=VARCHAR}, #{bean.aae012,jdbcType=VARCHAR}, #{bean.tsn012,jdbcType=VARCHAR},
+            #{bean.tsn013,jdbcType=VARCHAR}, #{bean.tsn014,jdbcType=VARCHAR}, #{bean.tsn015,jdbcType=VARCHAR},
+            #{bean.tsn016,jdbcType=VARCHAR}, #{bean.batch,jdbcType=VARCHAR}, #{bean.identification,jdbcType=VARCHAR},
+            #{bean.message,jdbcType=VARCHAR}, #{bean.isnew,jdbcType=VARCHAR}, #{bean.aac003,jdbcType=VARCHAR},
+            #{bean.deleteby,jdbcType=VARCHAR},#{bean.deletedate,jdbcType=TIMESTAMP}
+            from dual
+
+            )
+        </foreach>
+  </insert>
+  <insert id="insertSelective" parameterType="com.tdkj.model.TrainingSituationTmp">
+    insert into TRAINING_SITUATION_TMP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tsn001 != null">
+        TSN001,
+      </if>
+      <if test="tsn010 != null">
+        TSN010,
+      </if>
+      <if test="tsn003 != null">
+        TSN003,
+      </if>
+      <if test="tsn004 != null">
+        TSN004,
+      </if>
+      <if test="tsn005 != null">
+        TSN005,
+      </if>
+      <if test="tsn006 != null">
+        TSN006,
+      </if>
+      <if test="tsn007 != null">
+        TSN007,
+      </if>
+      <if test="tsn008 != null">
+        TSN008,
+      </if>
+      <if test="tsn002 != null">
+        TSN002,
+      </if>
+      <if test="tsn009 != null">
+        TSN009,
+      </if>
+      <if test="aab301 != null">
+        AAB301,
+      </if>
+      <if test="aae036 != null">
+        AAE036,
+      </if>
+      <if test="aae011 != null">
+        AAE011,
+      </if>
+      <if test="tsn011 != null">
+        TSN011,
+      </if>
+      <if test="datasource != null">
+        DATASOURCE,
+      </if>
+      <if test="aae100 != null">
+        AAE100,
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE,
+      </if>
+      <if test="updateby != null">
+        UPDATEBY,
+      </if>
+      <if test="createby != null">
+        CREATEBY,
+      </if>
+      <if test="aae012 != null">
+        AAE012,
+      </if>
+      <if test="tsn012 != null">
+        TSN012,
+      </if>
+      <if test="tsn013 != null">
+        TSN013,
+      </if>
+      <if test="tsn014 != null">
+        TSN014,
+      </if>
+      <if test="tsn015 != null">
+        TSN015,
+      </if>
+      <if test="tsn016 != null">
+        TSN016,
+      </if>
+      <if test="batch != null">
+        BATCH,
+      </if>
+      <if test="identification != null">
+        IDENTIFICATION,
+      </if>
+      <if test="message != null">
+        MESSAGE,
+      </if>
+      <if test="isnew != null">
+        ISNEW,
+      </if>
+      <if test="aac003 != null">
+        AAC003,
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY,
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tsn001 != null">
+        #{tsn001,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn010 != null">
+        #{tsn010,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn003 != null">
+        #{tsn003,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn004 != null">
+        #{tsn004,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn005 != null">
+        #{tsn005,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn006 != null">
+        #{tsn006,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn007 != null">
+        #{tsn007,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn008 != null">
+        #{tsn008,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn002 != null">
+        #{tsn002,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn009 != null">
+        #{tsn009,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aae011 != null">
+        #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn011 != null">
+        #{tsn011,jdbcType=VARCHAR},
+      </if>
+      <if test="datasource != null">
+        #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null">
+        #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn012 != null">
+        #{tsn012,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn013 != null">
+        #{tsn013,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn014 != null">
+        #{tsn014,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn015 != null">
+        #{tsn015,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn016 != null">
+        #{tsn016,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="isnew != null">
+        #{isnew,jdbcType=VARCHAR},
+      </if>
+      <if test="aac003 != null">
+        #{aac003,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tdkj.model.TrainingSituationTmp">
+    update TRAINING_SITUATION_TMP
+    <set>
+      <if test="tsn010 != null">
+        TSN010 = #{tsn010,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn003 != null">
+        TSN003 = #{tsn003,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn004 != null">
+        TSN004 = #{tsn004,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn005 != null">
+        TSN005 = #{tsn005,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn006 != null">
+        TSN006 = #{tsn006,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn007 != null">
+        TSN007 = #{tsn007,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn008 != null">
+        TSN008 = #{tsn008,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn002 != null">
+        TSN002 = #{tsn002,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn009 != null">
+        TSN009 = #{tsn009,jdbcType=VARCHAR},
+      </if>
+      <if test="aab301 != null">
+        AAB301 = #{aab301,jdbcType=VARCHAR},
+      </if>
+      <if test="aae036 != null">
+        AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aae011 != null">
+        AAE011 = #{aae011,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn011 != null">
+        TSN011 = #{tsn011,jdbcType=VARCHAR},
+      </if>
+      <if test="datasource != null">
+        DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      </if>
+      <if test="aae100 != null">
+        AAE100 = #{aae100,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        CREATEBY = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="aae012 != null">
+        AAE012 = #{aae012,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn012 != null">
+        TSN012 = #{tsn012,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn013 != null">
+        TSN013 = #{tsn013,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn014 != null">
+        TSN014 = #{tsn014,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn015 != null">
+        TSN015 = #{tsn015,jdbcType=VARCHAR},
+      </if>
+      <if test="tsn016 != null">
+        TSN016 = #{tsn016,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        BATCH = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        MESSAGE = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="isnew != null">
+        ISNEW = #{isnew,jdbcType=VARCHAR},
+      </if>
+      <if test="aac003 != null">
+        AAC003 = #{aac003,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteby != null" >
+        DELETEBY = #{deleteby,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedate != null" >
+        DELETEDATE = #{deletedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where TSN001 = #{tsn001,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tdkj.model.TrainingSituationTmp">
+    update TRAINING_SITUATION_TMP
+    set TSN010 = #{tsn010,jdbcType=VARCHAR},
+      TSN003 = #{tsn003,jdbcType=VARCHAR},
+      TSN004 = #{tsn004,jdbcType=VARCHAR},
+      TSN005 = #{tsn005,jdbcType=VARCHAR},
+      TSN006 = #{tsn006,jdbcType=VARCHAR},
+      TSN007 = #{tsn007,jdbcType=VARCHAR},
+      TSN008 = #{tsn008,jdbcType=VARCHAR},
+      TSN002 = #{tsn002,jdbcType=VARCHAR},
+      TSN009 = #{tsn009,jdbcType=VARCHAR},
+      AAB301 = #{aab301,jdbcType=VARCHAR},
+      AAE036 = #{aae036,jdbcType=TIMESTAMP},
+      AAE011 = #{aae011,jdbcType=VARCHAR},
+      TSN011 = #{tsn011,jdbcType=VARCHAR},
+      DATASOURCE = #{datasource,jdbcType=VARCHAR},
+      AAE100 = #{aae100,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      UPDATEBY = #{updateby,jdbcType=VARCHAR},
+      CREATEBY = #{createby,jdbcType=VARCHAR},
+      AAE012 = #{aae012,jdbcType=VARCHAR},
+      TSN012 = #{tsn012,jdbcType=VARCHAR},
+      TSN013 = #{tsn013,jdbcType=VARCHAR},
+      TSN014 = #{tsn014,jdbcType=VARCHAR},
+      TSN015 = #{tsn015,jdbcType=VARCHAR},
+      TSN016 = #{tsn016,jdbcType=VARCHAR},
+      BATCH = #{batch,jdbcType=VARCHAR},
+      IDENTIFICATION = #{identification,jdbcType=VARCHAR},
+      MESSAGE = #{message,jdbcType=VARCHAR},
+      ISNEW = #{isnew,jdbcType=VARCHAR},
+      AAC003 = #{aac003,jdbcType=VARCHAR},
+      DELETEBY = #{deleteby,jdbcType=VARCHAR},
+    DELETEDATE = #{deletedate,jdbcType=TIMESTAMP}
+    where TSN001 = #{tsn001,jdbcType=VARCHAR}
+  </update>
+
+
+
+    <update id="updateCardList" parameterType="java.util.List">
+        <foreach collection="updatelist" item="bean" index="index" open="begin" close=";end;" separator=";">
+            UPDATE TRAINING_SITUATION_TMP
+            <set>
+
+                <if test="bean.identification != null" >
+                    identification = #{bean.identification,jdbcType=VARCHAR},
+                </if>
+                <if test="bean.message != null" >
+                    message = #{bean.message,jdbcType=VARCHAR}
+                </if>
+            </set>
+            <where>
+                <if test="bean.tsn001 != null" >
+                    tsn001 = #{bean.tsn001,jdbcType=VARCHAR}
+                </if>
+            </where>
+        </foreach>
+    </update>
+</mapper>
