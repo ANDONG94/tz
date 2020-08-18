@@ -40,7 +40,6 @@ public class CommunityFactoryAccountController {
     @Autowired
     private RelationService relationService;
 
-
     /**
      * 查询社区工厂台账列表
      * @return
